@@ -3,7 +3,7 @@ SOLARFIDGET
 
 BSD 3-Clause License
 
-The parts marked SOLARFIDGET (C) Kurt Manucredo (fuzzybritches)
+The parts marked SOLARFIDGET (C) 2021 Kurt Manucredo (fuzzybritches)
 
 All rights reserved
 
