@@ -176,22 +176,22 @@ int sf_led_off = 0;
 
 void sf_calc_accel() {
   diff = sf_accel_led - led;
-  if ( diff > sf_max_led * 2) diff = sf_max_led * 4 - diff;
-  else if ( diff < -(sf_max_led * 2) ) diff = -(sf_max_led * 4 + diff);
-  else diff = diff * -1;
-  if ( diff > 0 ) diff = sf_max_led * 2 - diff;
-  else if ( diff < 0 ) diff = -(sf_max_led * 2 + diff);
-  sf_speed_accel = round(diff * (ms - ms_1) * sf_accel / 80 );
+  if ( diff > sf_max_led * 2) diff = -1;
+  else if ( diff > 0 && diff <= sf_max_led * 2) diff = 1;
+  else if ( diff < 0 && diff >= -sf_max_led * 2) diff = -1;
+  else if ( diff < -(sf_max_led * 2) ) diff = 1;
+  if ( diff != 0 ) sf_speed_accel = round(diff * (ms - ms_1) * sf_accel * 20 );
+  else sf_speed_accel = 0;
 }
 
 void sf_calc_well() {
   diff = sf_well_led - led;
-  if ( diff > sf_max_led * 2) diff = sf_max_led * 4 - diff;
-  else if ( diff < -(sf_max_led * 2) ) diff = -(sf_max_led * 4 + diff);
-  else diff = diff * -1;
-  if ( diff > 0 ) diff = sf_max_led * 2 - diff;
-  else if ( diff < 0 ) diff = -(sf_max_led * 2 + diff);
-  sf_speed_well = round(diff * (ms - ms_1) * sf_well / 1000);
+  if ( diff > sf_max_led * 2) diff = -1;
+  else if ( diff > 0 && diff <= sf_max_led * 2) diff = 1;
+  else if ( diff < 0 && diff >= -sf_max_led * 2) diff = -1;
+  else if ( diff < -(sf_max_led * 2) ) diff = 1;
+  if ( diff != 0 ) sf_speed_well = round(diff * (ms - ms_1) * sf_well * 2);
+  else sf_speed_well = 0;
 }
 
 void sf_calc_pos() {
