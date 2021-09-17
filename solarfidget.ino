@@ -313,18 +313,18 @@ void setup() {
     devStatus = mpu.dmpInitialize();
 
     // supply your own gyro offsets here, scaled for min sensitivity
-    mpu.setXGyroOffset(-139);
-    mpu.setYGyroOffset(40);
-    mpu.setZGyroOffset(-17);
-    mpu.setXAccelOffset(-4391);
-    mpu.setYAccelOffset(821);
-    mpu.setZAccelOffset(975); // 1688 factory default for my test chip
+    //mpu.setXGyroOffset(-139);
+    //mpu.setYGyroOffset(40);
+    //mpu.setZGyroOffset(-17);
+    //mpu.setXAccelOffset(-4391);
+    //mpu.setYAccelOffset(821);
+    //mpu.setZAccelOffset(975); // 1688 factory default for my test chip
 
     // make sure it worked (returns 0 if so)
     if (devStatus == 0) {
         // Calibration Time: generate offsets and calibrate our MPU6050
-        //mpu.CalibrateAccel(6);
-        //mpu.CalibrateGyro(6);
+        mpu.CalibrateAccel(6);
+        mpu.CalibrateGyro(6);
         //mpu.PrintActiveOffsets();
         // turn on the DMP, now that it's ready
         //Serial.println(F("Enabling DMP..."));
