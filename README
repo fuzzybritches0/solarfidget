@@ -1,3 +1,7 @@
 An Arduino Project for a light spinning fidget
 
-using an LED-Ring (of 24 rgb leds) and an MPU6050 gyro/accel this programme calculates the position of an elusive light point that behaves like a ball running inside the spinner.
+Using an LED-Ring (of 36 rgb leds) and an MPU6050 gyro/accel, this
+programme calculates the position of an elusive light point that behaves
+like a ball reacting to acceleration and gravity in its one-dimensional
+space.
+
