@@ -233,7 +233,6 @@ void accel_point(float x,float y, int r, int g, int b) {
 
 	if ( quad == 0 || quad == 2 ) accel_led += round(angle_accel * per_led) * -1;
 	else if ( quad == 1 || quad == 3 ) accel_led += max_led - round(angle_accel * per_led);
-	if ( flipped ) accel_led = max_led * 4 - accel_led;
 	if ( accel_led != 0 ) accel_led -= 1;
 	//_pixels(accel_led, r, g, b);
 }
