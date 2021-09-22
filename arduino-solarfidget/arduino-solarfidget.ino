@@ -163,9 +163,9 @@ bool flipped;
 
 int led;
 int diff;
-int speed;
-int speed_grav;
-int speed_accel;
+float speed;
+float speed_grav;
+float speed_accel;
 int led_old;
 int led_off;
 
