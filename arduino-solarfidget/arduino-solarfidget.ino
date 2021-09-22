@@ -217,7 +217,7 @@ void calc_pos() {
 	ms_1 = ms;
 }
 
-void accel_point(float x,float y, int r, int g, int b) {
+void accel_point(float x,float y) {
 
 	int quad;
 	float angle_accel = atan(y/x);
@@ -234,10 +234,9 @@ void accel_point(float x,float y, int r, int g, int b) {
 	if ( quad == 0 || quad == 2 ) accel_led += round(angle_accel * per_led) * -1;
 	else if ( quad == 1 || quad == 3 ) accel_led += max_led - round(angle_accel * per_led);
 	if ( accel_led != 0 ) accel_led -= 1;
-	//_pixels(accel_led, r, g, b);
 }
 
-void grav_point(float pitch,float roll, int r, int g, int b) {
+void grav_point(float pitch,float roll) {
 
 	int quad;
 	float angle_grav = atan(sin(roll)/tan(pitch));
@@ -276,7 +275,6 @@ void grav_point(float pitch,float roll, int r, int g, int b) {
 		if ( grav_led > max_led * 4 ) grav_led -= max_led * 4;
 	}
 	if ( grav_led != 0 ) grav_led -= 1;
-	//_pixels(grav_led, r, g, b);
 }
 
 void _pixels(int led, int r, int g, int b) {
@@ -455,14 +453,6 @@ void loop() {
         mpu.dmpGetGravity(&gravity, &q);
 	mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
         mpu.dmpGetLinearAccel(&aaReal, &aa, &gravity);
-         //   Serial.print("ypr\t");
-         //   Serial.print(ypr[0]);
-         //   Serial.print("\t");
-         //   Serial.print(ypr[1]);
-         //   Serial.print("\t");
-         //   Serial.println(grav_led);
-         //   Serial.print("\t");
-         //   Serial.println(ypr[2]);
   	pixels.clear(); // Set all NeoPixel leds to 'off'
         grav_point(ypr[1],ypr[2], 0, 1, 0);
         accel_point(aaReal.x, aaReal.y, 0, 1, 0);
