@@ -198,8 +198,8 @@ void calc_pos() {
 
 	ms = millis();
 
-	if ( speed > 0 ) speed -= 1;
-	else if ( speed < 0 ) speed += 1;
+	if ( speed > 0 ) speed -= .2;
+	else if ( speed < 0 ) speed += .2;
 	if ( led > max_led * 4 - 1 ) led -= max_led * 4;
 	if ( led < 0 ) led += max_led * 4;
 
@@ -210,7 +210,7 @@ void calc_pos() {
 	speed += speed_accel;
 
 	led_old = led;  
-	led += round((ms-ms_1) * speed / 40);
+	led += round((ms-ms_1) * speed / 10);
 
 	_pixels(led, 1, 0, 1);
 
