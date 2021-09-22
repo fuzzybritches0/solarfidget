@@ -180,7 +180,7 @@ void calc_accel() {
 	else if ( diff > 0 && diff <= max_led * 2) diff = 1;
 	else if ( diff < 0 && diff >= -max_led * 2) diff = -1;
 	else if ( diff < -(max_led * 2) ) diff = 1;
-	speed_accel = round(diff * (ms - ms_1) * accel * 10 );
+	speed_accel = round(diff * accel * 25 );
 }
 
 void calc_grav() {
