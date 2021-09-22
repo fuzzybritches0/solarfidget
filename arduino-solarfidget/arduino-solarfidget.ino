@@ -455,7 +455,6 @@ void loop() {
         mpu.dmpGetGravity(&gravity, &q);
 	mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
         mpu.dmpGetLinearAccel(&aaReal, &aa, &gravity);
-        mpu.dmpGetLinearAccelInWorld(&aaWorld, &aaReal, &q);
          //   Serial.print("ypr\t");
          //   Serial.print(ypr[0]);
          //   Serial.print("\t");
@@ -466,7 +465,7 @@ void loop() {
          //   Serial.println(ypr[2]);
   	pixels.clear(); // Set all NeoPixel leds to 'off'
         grav_point(ypr[1],ypr[2], 0, 1, 0);
-        accel_point(aaWorld.x, aaWorld.y, 0, 1, 0);
+        accel_point(aaReal.x, aaReal.y, 0, 1, 0);
         calc_pos();
 
         // blink LED to indicate activity
