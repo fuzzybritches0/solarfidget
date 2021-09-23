@@ -176,21 +176,21 @@ void calc_accel() {
 
 	diff = accel_led - led;
 
-	if ( diff > max_led * 2) diff = -1;
-	else if ( diff > 0 && diff <= max_led * 2) diff = 1;
-	else if ( diff < 0 && diff >= -max_led * 2) diff = -1;
-	else if ( diff < -(max_led * 2) ) diff = 1;
-	speed_accel = round(diff * accel * 25 );
+	if (diff > max_led * 2) diff = -1;
+	else if (diff > 0 && diff <= max_led * 2) diff = 1;
+	else if (diff < 0 && diff >= -max_led * 2) diff = -1;
+	else if (diff < -(max_led * 2)) diff = 1;
+	speed_accel = round(diff * accel * 25);
 }
 
 void calc_grav() {
 
 	diff = grav_led - led;
 
-	if ( diff > max_led * 2) diff = -1;
-	else if ( diff > 0 && diff <= max_led * 2) diff = 1;
-	else if ( diff < 0 && diff >= -max_led * 2) diff = -1;
-	else if ( diff < -(max_led * 2) ) diff = 1;
+	if (diff > max_led * 2) diff = -1;
+	else if (diff > 0 && diff <= max_led * 2) diff = 1;
+	else if (diff < 0 && diff >= -max_led * 2) diff = -1;
+	else if (diff < -(max_led * 2)) diff = 1;
 	speed_grav = round(diff * grav * 2);
 }
 
@@ -198,10 +198,10 @@ void calc_pos() {
 
 	ms = millis();
 
-	if ( speed > 0 ) speed -= .2;
-	else if ( speed < 0 ) speed += .2;
-	if ( led > max_led * 4 - 1 ) led -= max_led * 4;
-	if ( led < 0 ) led += max_led * 4;
+	if (speed > 0) speed -= .2;
+	else if (speed < 0) speed += .2;
+	if (led > max_led * 4 - 1) led -= max_led * 4;
+	if (led < 0) led += max_led * 4;
 
 	calc_grav();
 	speed += speed_grav;
@@ -222,44 +222,44 @@ void accel_point(float x,float y) {
 	int quad;
 	float angle_accel = atan(y/x);
 
-	accel = sqrt(x*x+y*y) / 16384;
+	accel = sqrt(x*x + y*y) / 16384;
 
-	     if ( x > 0 && y < 0 ) quad = 0;
-	else if ( x < 0 && y < 0 ) quad = 1;
-	else if ( x < 0 && y > 0 ) quad = 2;
-	else if ( x > 0 && y > 0 ) quad = 3;
+	     if (x > 0 && y < 0) quad = 0;
+	else if (x < 0 && y < 0) quad = 1;
+	else if (x < 0 && y > 0) quad = 2;
+	else if (x > 0 && y > 0) quad = 3;
 
 	accel_led = max_led * quad;
 
-	if ( quad == 0 || quad == 2 ) accel_led += round(angle_accel * per_led) * -1;
-	else if ( quad == 1 || quad == 3 ) accel_led += max_led - round(angle_accel * per_led);
-	if ( accel_led != 0 ) accel_led -= 1;
+	if (quad == 0 || quad == 2) accel_led += round(angle_accel * per_led) * -1;
+	else if (quad == 1 || quad == 3) accel_led += max_led - round(angle_accel * per_led);
+	if (accel_led != 0) accel_led -= 1;
 }
 
 void grav_point(float pitch,float roll) {
 
 	int quad;
-	float angle_grav = atan(sin(roll)/tan(pitch));
-	grav = acos(cos(pitch)*cos(roll));
+	float angle_grav = atan(sin(roll) / tan(pitch));
+	grav = acos(cos(pitch) * cos(roll));
 
-	     if ( pitch > 0 && roll < 0 ) quad = 0;
-	else if ( pitch < 0 && roll < 0 ) quad = 1;
-	else if ( pitch < 0 && roll > 0 ) quad = 2;
-	else if ( pitch > 0 && roll > 0 ) quad = 3;
+	     if (pitch > 0 && roll < 0) quad = 0;
+	else if (pitch < 0 && roll < 0) quad = 1;
+	else if (pitch < 0 && roll > 0) quad = 2;
+	else if (pitch > 0 && roll > 0) quad = 3;
 	
-	if ( quad == 0 && angle_grav > 0 ) {
+	if (quad == 0 && angle_grav > 0) {
 		quad = 1;
 		flipped = true;
 	}
-	else if ( quad == 1 && angle_grav < 0 ) {
+	else if (quad == 1 && angle_grav < 0) {
 		quad = 0;
 		flipped = true;
 	}
-	else if ( quad == 2 && angle_grav > 0 ) {
+	else if (quad == 2 && angle_grav > 0) {
 		quad = 3;
 		flipped = true;
 	}
-	else if ( quad == 3 && angle_grav < 0 ) {
+	else if (quad == 3 && angle_grav < 0) {
 		quad = 2;
 		flipped = true;
 	}
@@ -267,14 +267,14 @@ void grav_point(float pitch,float roll) {
 
 	grav_led = max_led * quad;
 
-	if (  quad == 0 || quad == 2 ) grav_led += round(angle_grav * per_led) * -1;
-	else if ( quad == 1 || quad == 3 ) grav_led += max_led - round(angle_grav * per_led);
-	if ( flipped ) {
+	if (quad == 0 || quad == 2) grav_led += round(angle_grav * per_led) * -1;
+	else if (quad == 1 || quad == 3) grav_led += max_led - round(angle_grav * per_led);
+	if (flipped) {
 		grav_led = max_led * 4 - grav_led;
 		grav_led += max_led * 2;
-		if ( grav_led > max_led * 4 ) grav_led -= max_led * 4;
+		if (grav_led > max_led * 4) grav_led -= max_led * 4;
 	}
-	if ( grav_led != 0 ) grav_led -= 1;
+	if (grav_led != 0) grav_led -= 1;
 }
 
 void _pixels(int led, int r, int g, int b) {
@@ -284,14 +284,14 @@ void _pixels(int led, int r, int g, int b) {
 	int actual_led_1 = actual_led - 1;
 	int led_1 = led_bright_max - remainder;
 
-	if ( actual_led == 0 ) actual_led_1 = quad_led * 4 - 1;
-	if ( led - led_old > 0 || led - led_old < 0 ) {
+	if (actual_led == 0) actual_led_1 = quad_led * 4 - 1;
+	if (led - led_old > 0 || led - led_old < 0) {
 		led_off = 0;
 		pixels.setPixelColor(actual_led, pixels.Color(remainder*r, remainder*g, remainder*b));
 		pixels.setPixelColor(actual_led_1, pixels.Color(led_1*r, led_1*g, led_1*b));
 	}
 	else {
-		if ( led_off < 600 ) {
+		if (led_off < 600) {
 			led_off++;
 			pixels.setPixelColor(actual_led, pixels.Color(remainder*r, remainder*g, remainder*b));
 			pixels.setPixelColor(actual_led_1, pixels.Color(led_1*r, led_1*g, led_1*b));
