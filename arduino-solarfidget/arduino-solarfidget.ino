@@ -454,8 +454,8 @@ void loop() {
 	mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
         mpu.dmpGetLinearAccel(&aaReal, &aa, &gravity);
   	pixels.clear(); // Set all NeoPixel leds to 'off'
-        grav_point(ypr[1],ypr[2], 0, 1, 0);
-        accel_point(aaReal.x, aaReal.y, 0, 1, 0);
+        grav_point(ypr[1],ypr[2]);
+        accel_point(aaReal.x, aaReal.y);
         calc_pos();
 
         // blink LED to indicate activity
