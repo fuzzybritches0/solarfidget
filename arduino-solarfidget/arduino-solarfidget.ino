@@ -165,8 +165,6 @@ int led;
 float speed;
 float speed_grav;
 float speed_accel;
-int led_old;
-int led_off;
 
 int ms;
 int ms_1 = millis();
@@ -284,18 +282,10 @@ void _pixels(int led, int r, int g, int b) {
 	int led_1 = led_bright_max - remainder;
 
 	if (actual_led == 0) actual_led_1 = quad_led * 4 - 1;
-	if (led - led_old > 0 || led - led_old < 0) {
-		led_off = 0;
-		pixels.setPixelColor(actual_led, pixels.Color(remainder*r, remainder*g, remainder*b));
-		pixels.setPixelColor(actual_led_1, pixels.Color(led_1*r, led_1*g, led_1*b));
-	}
-	else {
-		if (led_off < 600) {
-			led_off++;
-			pixels.setPixelColor(actual_led, pixels.Color(remainder*r, remainder*g, remainder*b));
-			pixels.setPixelColor(actual_led_1, pixels.Color(led_1*r, led_1*g, led_1*b));
-		}
-	}
+
+  	pixels.clear(); // Set all NeoPixel leds to 'off'
+	pixels.setPixelColor(actual_led, pixels.Color(remainder*r, remainder*g, remainder*b));
+	pixels.setPixelColor(actual_led_1, pixels.Color(led_1*r, led_1*g, led_1*b));
 	pixels.show();
 }
 
@@ -452,7 +442,6 @@ void loop() {
         mpu.dmpGetGravity(&gravity, &q);
 	mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
         mpu.dmpGetLinearAccel(&aaReal, &aa, &gravity);
-  	pixels.clear(); // Set all NeoPixel leds to 'off'
         grav_point(ypr[1],ypr[2]);
         accel_point(aaReal.x, aaReal.y);
         calc_pos();
