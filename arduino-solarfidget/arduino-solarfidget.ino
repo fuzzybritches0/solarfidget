@@ -206,7 +206,6 @@ void calc_pos() {
 	calc_accel();
 	speed += speed_accel;
 
-	led_old = led;  
 	led += round((ms-ms_1) * speed / 10);
 
 	_pixels(led, 1, 0, 1);
