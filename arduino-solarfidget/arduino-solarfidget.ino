@@ -153,7 +153,7 @@ int multiply_led = 100;
 
 int max_led = quad_led * multiply_led;
 float per_led = max_led / max_rad_quad;
-int brightness = led_bright_max / multiply_led;
+float brightness = led_bright_max / multiply_led;
 
 int accel_led;
 float accel;
@@ -279,7 +279,7 @@ void grav_point(float pitch,float roll) {
 
 void _pixels(int led, int r, int g, int b) {
 
-	int remainder = led % multiply_led * brightness;
+	int remainder = round(led % multiply_led * brightness);
 	int actual_led = led / multiply_led;
 	int actual_led_1 = actual_led - 1;
 	int led_1 = led_bright_max - remainder;
