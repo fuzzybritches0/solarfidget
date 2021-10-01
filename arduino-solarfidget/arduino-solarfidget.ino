@@ -278,14 +278,14 @@ void _pixels(int led, int r, int g, int b) {
 
 	int remainder = round(led % multiply_led * brightness);
 	int actual_led = led / multiply_led;
-	int actual_led_1 = actual_led - 1;
+	int actual_led_1 = actual_led + 1;
 	int led_1 = led_bright_max - remainder;
 
-	if (actual_led == 0) actual_led_1 = quad_led * 4 - 1;
+	if (actual_led_1 == quad_led * 4) actual_led_1 = 0;
 
   	pixels.clear(); // Set all NeoPixel leds to 'off'
-	pixels.setPixelColor(actual_led, pixels.Color(remainder*r, remainder*g, remainder*b));
-	pixels.setPixelColor(actual_led_1, pixels.Color(led_1*r, led_1*g, led_1*b));
+	pixels.setPixelColor(actual_led, pixels.Color(led_1*r, led_1*g, led_1*b));
+	pixels.setPixelColor(actual_led_1, pixels.Color(remainder*r, remainder*g, remainder*b));
 	pixels.show();
 }
 
