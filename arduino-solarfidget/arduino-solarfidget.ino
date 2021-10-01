@@ -162,7 +162,6 @@ float grav;
 bool flipped;
 
 int led;
-int diff;
 float speed;
 float speed_grav;
 float speed_accel;
@@ -174,7 +173,7 @@ int ms_1 = millis();
 
 void calc_accel() {
 
-	diff = accel_led - led;
+	int diff = accel_led - led;
 
 	if (diff > max_led * 2) diff = -1;
 	else if (diff > 0 && diff <= max_led * 2) diff = 1;
@@ -185,7 +184,7 @@ void calc_accel() {
 
 void calc_grav() {
 
-	diff = grav_led - led;
+	int diff = grav_led - led;
 
 	if (diff > max_led * 2) diff = -1;
 	else if (diff > 0 && diff <= max_led * 2) diff = 1;
