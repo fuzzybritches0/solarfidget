@@ -274,7 +274,7 @@ void grav_point(float pitch,float roll) {
 	if (grav_led != 0) grav_led -= 1;
 }
 
-void _pixels(int led, int r, int g, int b) {
+void _pixels(int led, float r, float g, float b) {
 
 	int remainder = round(led % multiply_led * brightness);
 	int actual_led = led / multiply_led;
@@ -284,8 +284,8 @@ void _pixels(int led, int r, int g, int b) {
 	if (actual_led_1 == quad_led * 4) actual_led_1 = 0;
 
   	pixels.clear(); // Set all NeoPixel leds to 'off'
-	pixels.setPixelColor(actual_led, pixels.Color(led_1*r, led_1*g, led_1*b));
-	pixels.setPixelColor(actual_led_1, pixels.Color(remainder*r, remainder*g, remainder*b));
+	pixels.setPixelColor(actual_led, pixels.Color(round(led_1*r), round(led_1*g), round(led_1*b)));
+	pixels.setPixelColor(actual_led_1, pixels.Color(round(remainder*r), round(remainder*g), round(remainder*b)));
 	pixels.show();
 }
 
