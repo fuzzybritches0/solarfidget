@@ -188,7 +188,7 @@ void calc_grav() {
 	else if (diff > 0 && diff <= max_led * 2) diff = 1;
 	else if (diff < 0 && diff >= -max_led * 2) diff = -1;
 	else if (diff < -(max_led * 2)) diff = 1;
-	speed_grav = diff * grav * 3;
+	speed_grav = diff * grav * 2;
 }
 
 void calc_pos() {
