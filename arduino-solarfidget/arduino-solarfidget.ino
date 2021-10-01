@@ -236,6 +236,7 @@ void grav_point(float pitch,float roll) {
 
 	int quad;
 	float angle_grav = atan(sin(roll) / tan(pitch));
+
 	grav = acos(cos(pitch) * cos(roll));
 
 	     if (pitch > 0 && roll < 0) quad = 0;
