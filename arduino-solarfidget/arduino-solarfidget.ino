@@ -170,6 +170,16 @@ int action;
 bool active = true;
 int motion_counter;
 
+int body;
+
+// Mercury(0.38g) Venus(0.904g) Earth(1g) Mars(0.3794g)
+// Jupiter(2.528g) Saturn(1.065g) Uranus(0.886g) Neptune(1.14g)
+float bgrav[8] = {.38, 0.904, 1, .3794, 2.528, 1.065 , .886, 1.14};
+float br[8] = {.3, .1,  0, .8, .5, .5, .2, .1};
+float bg[8] = {.3, .3,  0, .1, .3, .4, .1, .7};
+float bb[8] = {.3, .5, .9,  0, .1,  0, .6, .1};
+//		ME  VE  EA  MA  JU  SA  UR  NE
+
 int led;
 float speed;
 float speed_grav;
@@ -197,15 +207,15 @@ void calc_grav() {
 	else if (diff > 0 && diff <= max_led * 2) diff = 1;
 	else if (diff < 0 && diff >= -max_led * 2) diff = -1;
 	else if (diff < -(max_led * 2)) diff = 1;
-	speed_grav = diff * grav * 2;
+	speed_grav = diff * grav * 3 * bgrav[body];
 }
 
 void calc_pos() {
 
 	ms = millis();
 
-	if (speed > 0) speed -= .25;
-	else if (speed < 0) speed += .25;
+	if (speed > 0) speed -= .3 * bgrav[body];
+	else if (speed < 0) speed += .3 * bgrav[body];
 	if (led > max_led * 4 - 1) led -= max_led * 4;
 	if (led < 0) led += max_led * 4;
 
@@ -217,7 +227,7 @@ void calc_pos() {
 
 	led += round((ms-ms_1) * speed / 10);
 
-	_pixels(led, .1, .2, .3);
+	_pixels(led, br[body], bg[body], bb[body]);
 
 	ms_1 = ms;
 }
@@ -298,6 +308,11 @@ void _pixels(int led, float r, float g, float b) {
 	pixels.show();
 }
 
+void next_body() {
+	body++;
+	if (body == 8) body = 0;
+}
+
 void flip_active() {
 	active=!active;
 	if (!active) {
@@ -307,6 +322,7 @@ void flip_active() {
 }
 
 void do_action() {
+	if (action == 1 && active) next_body();
 	if (action == 2) flip_active();
 }
 
