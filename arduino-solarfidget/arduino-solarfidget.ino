@@ -167,6 +167,9 @@ int counter_on;
 int counter;
 int action;
 
+bool active = true;
+int motion_counter;
+
 int led;
 float speed;
 float speed_grav;
@@ -320,6 +323,16 @@ void actions() {
 		counter=0;
 	}
 }
+
+void detect_motion() {
+	if (aaReal.x > -20 && aaReal.x < 20 && aaReal.y > -20 && aaReal.y < 20) motion_counter++;
+	else motion_counter = 0;
+	if (motion_counter > 500) {
+		motion_counter=0;
+		flip_active();
+	}
+}
+
 // ================================================================
 // ===                      INITIAL SETUP                       ===
 // ================================================================
@@ -473,9 +486,12 @@ void loop() {
         mpu.dmpGetGravity(&gravity, &q);
 	mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
         mpu.dmpGetLinearAccel(&aaReal, &aa, &gravity);
-        grav_point(ypr[1],ypr[2]);
-        accel_point(aaReal.x, aaReal.y);
-        calc_pos();
+	if (active) {
+		grav_point(ypr[1],ypr[2]);
+		accel_point(aaReal.x, aaReal.y);
+		calc_pos();
+		detect_motion();
+	}
 	actions();
         // blink LED to indicate activity
         blinkState = !blinkState;
