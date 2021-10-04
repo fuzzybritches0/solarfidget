@@ -298,6 +298,18 @@ void _pixels(int led, float r, float g, float b) {
 	pixels.show();
 }
 
+void flip_active() {
+	active=!active;
+	if (!active) {
+		pixels.clear();
+		pixels.show();
+	}
+}
+
+void do_action() {
+	if (action == 2) flip_active();
+}
+
 void actions() {
 
 	if (ypr[1] > -.4 && ypr[1] < .4 && ypr[2] > -.4 && ypr[2] < .4) {
