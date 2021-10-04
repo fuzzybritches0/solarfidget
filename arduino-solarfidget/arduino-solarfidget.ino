@@ -161,6 +161,12 @@ int grav_led;
 float grav;
 bool flipped;
 
+bool orientation;
+bool orientation_last;
+int counter_on;
+int counter;
+int action;
+
 int led;
 float speed;
 float speed_grav;
@@ -289,6 +295,31 @@ void _pixels(int led, float r, float g, float b) {
 	pixels.show();
 }
 
+void actions() {
+
+	if (ypr[1] > -.4 && ypr[1] < .4 && ypr[2] > -.4 && ypr[2] < .4) {
+		orientation=true;
+	}
+	else if ((ypr[1] < -2.74 || ypr[1] >2.74) && (ypr[2] < -2.74 || ypr[2] > 2.74)) {
+		orientation=false;
+	}
+
+	if (orientation != orientation_last) counter_on++;
+	orientation_last = orientation;
+	if (counter_on) counter++;
+	if (counter < 120 && counter_on == 3) {
+		action=2;
+	}
+	else if (counter < 120 && counter_on == 2) {
+		action=1;
+	}
+	if (counter > 120) {
+		if (action) do_action();
+		action=0;
+		counter_on=0;
+		counter=0;
+	}
+}
 // ================================================================
 // ===                      INITIAL SETUP                       ===
 // ================================================================
@@ -445,7 +476,7 @@ void loop() {
         grav_point(ypr[1],ypr[2]);
         accel_point(aaReal.x, aaReal.y);
         calc_pos();
-
+	actions();
         // blink LED to indicate activity
         blinkState = !blinkState;
         digitalWrite(LED_PIN, blinkState);
