@@ -172,13 +172,13 @@ int motion_counter;
 
 int body;
 
-// Mercury(0.38g) Venus(0.904g) Earth(1g) Mars(0.3794g)
-// Jupiter(2.528g) Saturn(1.065g) Uranus(0.886g) Neptune(1.14g)
-float bgrav[8] = {.38, 0.904, 1, .3794, 2.528, 1.065 , .886, 1.14};
-float br[8] = {.3, .1,  0, .8, .5, .5, .2, .1};
-float bg[8] = {.3, .3,  0, .1, .3, .4, .1, .7};
-float bb[8] = {.3, .5, .9,  0, .1,  0, .6, .1};
-//		ME  VE  EA  MA  JU  SA  UR  NE
+// Mercury(0.38g) Venus(0.904g) Earth(1g) Mars(0.3794g) Jupiter(2.528g)
+// Saturn(1.065g) Uranus(0.886g) Neptune(1.14g) Pluto(0.063g)
+float bgrav[9] = {.38, .904, 1, .3794, 2.528, 1.065 , .886, 1.14, .063};
+float br[9] = {.3, .1,  0, .8, .5, .5, .2, .1, .4};
+float bg[9] = {.3, .3,  0, .1, .3, .4, .1, .7,  0};
+float bb[9] = {.3, .5, .9,  0, .1,  0, .6, .1, .2};
+//             ME  VE  EA  MA  JU  SA  UR  NE  PL
 
 int led;
 float speed;
@@ -303,7 +303,7 @@ void _pixels(int led, float r, float g, float b) {
 
 void next_body() {
 	body++;
-	if (body == 8) body = 0;
+	if (body == 9) body = 0;
 }
 
 void flip_active() {
