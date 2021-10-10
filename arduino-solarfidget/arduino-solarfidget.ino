@@ -185,9 +185,6 @@ float speed;
 float speed_grav;
 float speed_accel;
 
-int ms;
-int ms_1 = millis();
-
 void calc_accel() {
 
 	int diff = accel_led - led;
@@ -212,8 +209,6 @@ void calc_grav() {
 
 void calc_pos() {
 
-	ms = millis();
-
 	if (speed > 0) speed -= .3 * bgrav[body];
 	else if (speed < 0) speed += .3 * bgrav[body];
 	if (led > max_led * 4 - 1) led -= max_led * 4;
@@ -225,11 +220,9 @@ void calc_pos() {
 	calc_accel();
 	speed += speed_accel;
 
-	led += round((ms-ms_1) * speed / 10);
+	led += round(speed);
 
 	_pixels(led, br[body], bg[body], bb[body]);
-
-	ms_1 = ms;
 }
 
 void accel_point(float x,float y) {
