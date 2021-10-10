@@ -222,7 +222,7 @@ void calc_pos() {
 
 	led += round(speed);
 
-	_pixels(led, br[body], bg[body], bb[body]);
+	_pixels();
 }
 
 void accel_point() {
@@ -302,8 +302,10 @@ void _pixels(int led, float r, float g, float b) {
 	if (actual_led_1 == quad_led * 4) actual_led_1 = 0;
 
   	pixels.clear(); // Set all NeoPixel leds to 'off'
-	pixels.setPixelColor(actual_led, pixels.Color(round(led_1*r), round(led_1*g), round(led_1*b)));
-	pixels.setPixelColor(actual_led_1, pixels.Color(round(remainder*r), round(remainder*g), round(remainder*b)));
+	pixels.setPixelColor(actual_led, pixels.Color(
+		round(led_1*br[body]), round(led_1*bg[body]), round(led_1*bb[body])));
+	pixels.setPixelColor(actual_led_1, pixels.Color(
+		round(remainder*br[body]), round(remainder*bg[body]), round(remainder*bb[body])));
 	pixels.show();
 }
 
