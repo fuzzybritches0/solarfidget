@@ -244,7 +244,6 @@ void accel_point() {
 
 	if (quad == 0 || quad == 2) accel_led += round(angle_accel * per_led) * -1;
 	else if (quad == 1 || quad == 3) accel_led += max_led - round(angle_accel * per_led);
-	if (accel_led != 0) accel_led -= 1;
 }
 
 void grav_point() {
@@ -289,7 +288,6 @@ void grav_point() {
 		grav_led += max_led * 2;
 		if (grav_led > max_led * 4) grav_led -= max_led * 4;
 	}
-	if (grav_led != 0) grav_led -= 1;
 }
 
 void _pixels(int led, float r, float g, float b) {
