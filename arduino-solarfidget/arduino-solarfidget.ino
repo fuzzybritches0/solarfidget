@@ -225,9 +225,12 @@ void calc_pos() {
 	_pixels(led, br[body], bg[body], bb[body]);
 }
 
-void accel_point(float x,float y) {
+void accel_point() {
 
 	int quad;
+
+	float x = aaReal.x;
+	float y = aaReal.y;
 	float angle_accel = atan(y/x);
 
 	accel = sqrt(x*x + y*y) / 16384;
@@ -511,7 +514,7 @@ void loop() {
         mpu.dmpGetLinearAccel(&aaReal, &aa, &gravity);
 	if (active) {
 		grav_point(ypr[1],ypr[2]);
-		accel_point(aaReal.x, aaReal.y);
+		accel_point();
 		calc_pos();
 		detect_motion();
 	}
