@@ -346,8 +346,10 @@ void actions() {
 }
 
 void detect_motion() {
-	if (aaReal.x > -20 && aaReal.x < 20 && aaReal.y > -20 && aaReal.y < 20) motion_counter++;
+	if (aaReal.x > -20 && aaReal.x < 20 && aaReal.y > -20 && aaReal.y < 20 &&
+	    speed < 2 && speed > -2) motion_counter++;
 	else motion_counter = 0;
+
 	if (motion_counter > 500) {
 		motion_counter=0;
 		flip_active();
