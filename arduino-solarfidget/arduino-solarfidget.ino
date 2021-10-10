@@ -161,6 +161,11 @@ int grav_led;
 float grav;
 bool flipped;
 
+int led;
+float speed;
+float speed_grav;
+float speed_accel;
+
 bool orientation;
 bool orientation_last;
 int counter_on;
@@ -179,11 +184,6 @@ float br[9] = {.3, .1,  0, .8, .5, .5, .2, .1, .4};
 float bg[9] = {.3, .3,  0, .1, .3, .4, .1, .7,  0};
 float bb[9] = {.3, .5, .9,  0, .1,  0, .6, .1, .2};
 //             ME  VE  EA  MA  JU  SA  UR  NE  PL
-
-int led;
-float speed;
-float speed_grav;
-float speed_accel;
 
 void calc_accel() {
 
