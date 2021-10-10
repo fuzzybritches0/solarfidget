@@ -211,7 +211,7 @@ void calc_pos() {
 
 	if (speed > 0) speed -= .3 * bgrav[body];
 	else if (speed < 0) speed += .3 * bgrav[body];
-	if (led > max_led * 4 - 1) led -= max_led * 4;
+	if (led > max_led * 4) led -= max_led * 4;
 	if (led < 0) led += max_led * 4;
 
 	calc_grav();
