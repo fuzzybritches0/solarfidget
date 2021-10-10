@@ -247,9 +247,12 @@ void accel_point() {
 	if (accel_led != 0) accel_led -= 1;
 }
 
-void grav_point(float pitch,float roll) {
+void grav_point() {
 
 	int quad;
+
+	float pitch = ypr[1];
+	float roll = ypr[2];
 	float angle_grav = atan(sin(roll) / tan(pitch));
 
 	grav = acos(cos(pitch) * cos(roll));
@@ -513,7 +516,7 @@ void loop() {
 	mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
         mpu.dmpGetLinearAccel(&aaReal, &aa, &gravity);
 	if (active) {
-		grav_point(ypr[1],ypr[2]);
+		grav_point();
 		accel_point();
 		calc_pos();
 		detect_motion();
