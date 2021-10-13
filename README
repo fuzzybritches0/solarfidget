@@ -113,8 +113,13 @@ Solder the extra cables we add to the charging towers to IN+ and IN-
 on the battery charging breakout board accordingly. Remember the red USB
 cable is +5V and the black one is GND.
 
-Solder BAT+ and BAT- from the battery charging breakout board to VIN
-and GND on the Arduino, respectively.
+Solder BAT+ and BAT- from the battery charging breakout board to VIN and
+GND on the Arduino, respectively. Make sure your Arduino can run with
+3.7V. Mine was meant for 5V but it works quite well for a few hours. If
+you want to use a voltage booster, it might be problematic for the
+MPU6050. At least mine didn't like it and acted up strangely. A solution
+might be to feed the MPU6050 directly from the battery, if you have the
+same issue. But I don't know what will happen then. 
 
 Solder VIN and GND from the MPU6050 to 3V3 and GND on the Arduino,
 respectively. Now, solder SCL, SDA and INT from the MPU6050 to A5, A4 and
