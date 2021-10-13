@@ -21,7 +21,7 @@ bodies in our solar system (including Pluto).
 
 			MANUAL INSTRUCTIONS
 
-To travel form planet to planet hold the fidget horizontally, turn it
+To travel from planet to planet hold the fidget horizontally, turn it
 twice by 180 degrees. If there is no change, try doing it faster.
 
 To turn off the lightfidget hold the fidget horizontally, turn it trice by
@@ -75,8 +75,8 @@ Cut the USB mini cable about 10cm from the mini USB plug side. Carefully
 remove the PVC coat and the shielding. There should be four cables: one
 black, one red, one white and one green. Also remove as much of the hard
 plastic from the mini USB plug as possible - we only have limited space -
-but don't break the plug. We only have limited space. Also make sure both
-the red and black cable are +5V and GND, respectively.
+but don't break the plug. Also make sure both the red and black cables are
++5V and GND, respectively.
 
 From here on, we will only work on the part of the fidget that houses all
 the electronics, that is, the top part.
@@ -87,8 +87,8 @@ plug as follows from top to bottom: black, white, green, red; and add two
 cables to the black and red cable; there are extra holes for that.
 We will later solder those two cables to the battery charging breakout
 board. Use the M3 nuts and M3x4mm bolts to secure the cables. Clean the
-inside of the towers if there is loose material inside from printing the
-overhang.
+inside of the towers if there is loose or deformed material inside from
+printing the overhang.
 
 Connect the Arduino Nano to the mini USB plug. Push the Arduino inside its
 proper place. Push the battery charging breakout board into its proper
@@ -141,9 +141,10 @@ Fix up the charging station by placing the four cables from the cut-off
 end of the USB cable inside the charging towers of the charging station.
 Don't forget to route the cable through the bottom part of the charger
 station first, before you wire it all up. Use the 0.3x4x5 mm compressing
-springs, the M3 locknuts and the M3x10 bolts to finish up the charger.
+springs, the M3 locknuts and the M3x10mm bolts to finish up the charger.
 Have the springs push down on the blank wires inside the towers. Clean the
-inside of the towers if needed.
+inside of the towers if needed. Have the bolts look out of the charger a
+bit so that the fidget gets good contact when pushed down by the magnets.
 
 Before we close up the fidget we need to do the software and fine-tune the
 position of the LED stripe.
