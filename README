@@ -1,7 +1,175 @@
-An Arduino Project for a light spinning fidget
+
+		ORIGINAL SOLARFIDGET
+	An Arduino Project for a light spinning fidget
+
+
+Concept, Design and Idea (C) 2021 Kurt Manucredo, under the
+Creative Commons Attribution-NonCommercial 3.0 Unported License
+
+For more information on Copyright please refer to the respective files and
+the LICENSE-* files.
+
+
+		THE ORIGINAL SOLARFIDGET
 
 Using an LED-Ring (of 36 rgb leds) and an MPU6050 gyro/accel, this
-programme calculates the position of an elusive light point that behaves
-like a ball reacting to acceleration and gravity in its one-dimensional
-space.
+fidget calculates the position of a rotating pendulum that reacts to
+acceleration and gravity and simulates the effect of gravity on different
+bodies in our solar system (including Pluto).
+
+
+
+			MANUAL INSTRUCTIONS
+
+To travel form planet to planet hold the fidget horizontally, turn it
+twice by 180 degrees. If there is no change, try doing it faster.
+
+To turn off the lightfidget hold the fidget horizontally, turn it trice by
+180 degrees. If there is no change, try doing it faster.
+
+
+
+		HOW TO BUILD ONE FOR YOURSELF
+
+PARTS NEEDED
+
+1x Arduino Nano
+1x MPU6050 breakout board
+1x battery charging breakout board
+1x 36 addressable LEDs stripe
+1x HS170 380mAh LiPo battery with Molex plug
+1x male Molex plug (*)
+1x 3d-printed models of both the fidget and charger parts (**)
+1x USB mini cable
+4x 0.3x4x5 mm compressing spring
+4x M3 locknut
+4x M3 nut
+4x M3x10mm bolt
+4x M3x4mm bolt
+8x cylinder magnet d=5mm,h=2.7mm,
+
+and a punch of single wire cables one can salvage from old LAN cables or
+similar.
+
+(*)  When buying a set of batteries there is normally a charger included
+     that can be salvaged for male Molex plugs.
+(**) all four parts can be found as .3mf files in the design-solarfidget
+     folder and can be imported directly into the 3d slicer software. If
+     you need to make changes to accommodate your own hardware, use the
+     solarfidget.scad file to do so.
+
+
+BUILD INSTRUCTIONS
+
+Place all eight magnets inside the charger and fidget so that the fidget
+and charger will only lock in place when the fidget is placed on top of
+the charger in the correct orientation; for example: place the magnets,
+next to the charger towers, with the same pole facing down. Do the opposite
+for the other two magnets. Repeat for the charger but reverse the poles.
+Use a crooked M6 key, place the magnet on the crooked end and use a
+hammer to fix the magnets in place.
+
+Cut the USB mini cable about 10cm from the mini USB plug side. Carefully
+remove the PVC coat around the wires. There should be four of them: one
+black, one red, one white and one green. Also remove as much of the hard
+plastic from the mini USB plug as possible but don't break the plug.
+We only have limited space. Also make sure both the red and black cable
+are +5V and GND, respectively.
+
+Place the top part of the fidget in front of you facing the inside and
+having the charging towers face left. Connect the wires of the mini USB plug
+as follows from top to bottom: black, white, green, red; and add two
+cables to the black and red cable; there are extra holes for that.
+We will later solder those two cables to the battery charging breakout
+board. Use the M3 nuts and M3x4mm bolts to secure the cables. Clean the
+inside of the towers if there is loose material inside from printing the
+overhang.
+
+Connect the Arduino Nano to the mini USB plug. Push the Arduino inside its
+proper place. Push the battery charging breakout board into its proper
+place. Finally push the MPU6050 breakout board into its proper place,
+next to the battery, on the right side. Have the MPU6050 face up. On the
+MPU6050 have the X-axis point to the right.
+
+Solder three wires onto the 36 addressable LED stripe. Note the direction
+of the arrows on the stripe and solder the wires on the right end. If the
+arrow points to the end of the stripe, it's the wrong end.
+
+Place the stripe around the inside of the fidget's top part. Start around
+the middle of the charging towers and continue counter-clockwise.
+
+Let's wire it all up:
+
+Solder the extra wires we add to the charging towers to IN+ and IN-
+on the battery charging breakout board accordingly. Remember the red USB
+cable is +5V and the black one is GND.
+
+Solder BAT+ and BAT- from the battery charging breakout board to VIN
+and GND on the Arduino, respectively.
+
+Solder VIN and GND from the MPU6050 to 3V3 and GND on the Arduino,
+respectively. Now, solder SCL, SDA and INT from the MPU6050 to A5, A4 and
+D2 on the Arduino, respectively.
+
+Solder two wires to the male MOLEX plug. When you connect a battery to the
+plug, you can see which cable is which. Make sure the plug and cable are
+properly isolated; use shrink tubing.
+
+Solder the two wires to BAT+ and BAT- accordingly.
+
+Now, solder +, - and DATA from the addressable LED stripe to 5V, GND
+and D6 on the Arduino, respectively.
+
+Now connect the battery to the MOLEX plug and place it inside the fidget.
+
+Fix up the charging station by placing the four wires from the cut-off end
+of the USB cable inside the charging towers of the charging station. Don't
+forget to route the cable trough the bottom part of the charger station
+first, before you wire all up. Use the 0.3x4x5 mm compressing springs, the
+M3 locknuts and the M3x10 bolts to finish up the charger. Have the springs
+push down on the blank wires inside the towers. Clean the inside of the
+towers if needed.
+
+Before we close up the fidget we need to do the software.
+
+SOFTWARE INSTRUCTIONS
+
+Copy or link the folder in arduino-solarfidget/libraries/solarfidget into
+your Arduino/libraries folder.
+
+Place the files at:
+https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/MPU6050
+in your Arduino/libraries folder
+
+Place the files at:
+https://github.com/adafruit/Adafruit_NeoPixel
+in your Arduino/libraries folder
+
+Open the Arduino IDE and load the file
+arduino-solarfidget/arduino-solarfidget.ino
+
+Place the fidget on top of the charger, the charger on a level surface and
+connect it to your computer.
+Open the serial monitor. Compile and upload the programme to the Arduino.
+Wait for the Arduino to reset and start. Look at the serial monitor and
+note down the calibration values. Now, open the file:
+arduino-solarfidget/arduino-solarfidget.ino and find the the follwoing
+lines:
+
+        mpu.CalibrateAccel(6);
+        mpu.CalibrateGyro(6);
+        mpu.PrintActiveOffsets();
+
+Comment those lines and uncomment the lines above starting with mpu.set???
+and replace the values you just noted down for Gyro and Accel. Save the
+file and upload the programme again.
+
+Finally make sure the LED stripe is placed correctly in the fidget and the
+light of the pendulum is at the right spot. Do this by holding the fidget
+askew and wait for the pendulum to rest. Now, move the stripe either left
+or right to bring the light into the correct position.
+
+After that, slide the other part of the fidget on.
+
+You should be all set now. Have fun travelling our solar system.
 
