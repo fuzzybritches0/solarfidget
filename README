@@ -83,12 +83,19 @@ the electronics, that is, the top part.
 
 Place the top part of the fidget in front of you facing the inside and
 having the charging towers face left. Connect the cables of the mini USB
-plug as follows from top to bottom: black, white, green, red; and add two
-cables to the black and red cable; there are extra holes for that.
-We will later solder those two cables to the battery charging breakout
-board. Use the M3 nuts and M3x4mm bolts to secure the cables. Clean the
-inside of the towers if there is loose or deformed material inside from
-printing the overhang.
+plug as follows from top to bottom: black, white, green, red; and add one
+cable to the red cable; there is an extra hole for that. Later solder this
+cable to the battery charging breakout board and ground the board on the
+Arduino.
+
+Use the M3 nuts and M3x4mm bolts to secure the cables. Clean the inside of
+the towers if there is loose or deformed material inside from printing the
+overhang. Use a longer M3 bolt to drive the nut into its place, enough so,
+that you can still push the cable into the hole below the nut. Then use
+the original bolts to drive the nuts down all the way end secure the
+cables. Make sure there is only blank wire between the nut and the tower.
+Keep the blank wire short. If it's too long it may curl up around the
+bold, when fixing it, which we don't want to happen.
 
 Connect the Arduino Nano to the mini USB plug. Push the Arduino inside its
 proper place. Push the battery charging breakout board into its proper
@@ -101,7 +108,7 @@ of the arrows on the stripe and solder the cables on the right end. If the
 arrow points to the end of the stripe, it's the wrong end.
 
 Place the stripe around the inside of the fidget's top part. Start around
-the middle of the charging towers and continue counter-clockwise.
+the middle of the charging towers and continue clockwise.
 
 Let's wire it all up:
 
@@ -134,6 +141,10 @@ Solder the two cables to BAT+ and BAT- accordingly.
 
 Now, solder +, - and DATA from the addressable LED stripe to 5V, GND
 and D6 on the Arduino, respectively.
+
+Solder the cable, coming from the charging tower, onto IN+ from the
+battery charging breakout board. Ground the battery charging breakout
+board.
 
 Now connect the battery to the MOLEX plug and place it inside the fidget.
 
