@@ -216,7 +216,7 @@ module charging_contact_post_i() {
 	cylinder(r=2.7, h=3.3, $fn=res);
 	cylinder(r=1.5, h=6, $fn=res);
 	translate([0,0,-3]) cylinder(r1=9.5, r2=0, h=5, $fn=res);
-	translate([0,0,5]) cylinder(r=3, h=3, $fn=6);
+	translate([0,0,5]) cylinder(r=3.15, h=3, $fn=6);
 	translate([0,0,5.75]) rotate([90,0,0]) cylinder(r=0.75, h=4, $fn=res);
 	translate([0,0,5.75]) rotate([90,0,-60]) cylinder(r=0.75, h=4, $fn=res);
 }
