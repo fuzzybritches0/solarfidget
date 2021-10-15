@@ -69,8 +69,6 @@ for the other two magnets. Repeat for the charger but reverse the poles.
 Use a crooked M6 key, place the magnet on the crooked end and use a
 hammer to fix the magnets in place.
 
-From here on we will only work on the top part of the fidget.
-
 Cut the USB mini cable about 10cm from the mini USB plug side. Carefully
 remove the PVC coat and the shielding. There should be four cables: one
 black, one red, one white and one green. Also remove as much of the hard
@@ -122,11 +120,7 @@ cable is +5V and the black one is GND.
 
 Solder BAT+ and BAT- from the battery charging breakout board to VIN and
 GND on the Arduino, respectively. Make sure your Arduino can run with
-3.7V. Mine was meant for 5V but it works quite well for a few hours. If
-you want to use a voltage booster, it might be problematic for the
-MPU6050. At least mine didn't like it and acted up strangely. A solution
-might be to feed the MPU6050 directly from the battery, if you have the
-same issue. But I don't know what will happen then. 
+3.7V. Mine was meant for 5V but it works quite well for a few hours. 
 
 Solder VIN and GND from the MPU6050 to 3V3 and GND on the Arduino,
 respectively. Now, solder SCL, SDA and INT from the MPU6050 to A5, A4 and
