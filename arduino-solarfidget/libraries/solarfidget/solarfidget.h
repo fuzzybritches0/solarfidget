@@ -34,14 +34,13 @@
 // ===                       SOLARFIDGET                        ===
 // ================================================================
 
-int led_bright_max = 255;
-float max_rad_quad = 1.57;
-int quad_led = 9;
-int multiply_led = 100;
-
-int max_led = quad_led * multiply_led;
-float per_led = max_led / max_rad_quad;
-float brightness = led_bright_max / multiply_led;
+#define QUAD_LED	NUMPIXELS_NEOPIXEL / 4
+#define LED_BRIGHT_MAX	255
+#define MAX_RAD_QUAD	1.57
+#define MULTIPLY_LED	100
+#define MAX_LED		QUAD_LED * MULTIPLY_LED
+#define PER_LED		MAX_LED / MAX_RAD_QUAD
+#define BRIGHTNESS	LED_BRIGHT_MAX / MULTIPLY_LED
 
 int accel_led;
 float accel;
@@ -77,10 +76,10 @@ void calc_accel() {
 
 	int diff = accel_led - led;
 
-	if (diff > max_led * 2) diff = -1;
-	else if (diff > 0 && diff <= max_led * 2) diff = 1;
-	else if (diff < 0 && diff >= -max_led * 2) diff = -1;
-	else if (diff < -(max_led * 2)) diff = 1;
+	if (diff > MAX_LED * 2) diff = -1;
+	else if (diff > 0 && diff <= MAX_LED * 2) diff = 1;
+	else if (diff < 0 && diff >= -MAX_LED * 2) diff = -1;
+	else if (diff < -(MAX_LED * 2)) diff = 1;
 	speed_accel = diff * accel * 33;
 }
 
@@ -88,21 +87,21 @@ void calc_grav() {
 
 	int diff = grav_led - led;
 
-	if (diff > max_led * 2) diff = -1;
-	else if (diff > 0 && diff <= max_led * 2) diff = 1;
-	else if (diff < 0 && diff >= -max_led * 2) diff = -1;
-	else if (diff < -(max_led * 2)) diff = 1;
+	if (diff > MAX_LED * 2) diff = -1;
+	else if (diff > 0 && diff <= MAX_LED * 2) diff = 1;
+	else if (diff < 0 && diff >= -MAX_LED * 2) diff = -1;
+	else if (diff < -(MAX_LED * 2)) diff = 1;
 	speed_grav = diff * grav * 3 * bgrav[body];
 }
 
 void _pixels() {
 
-	int remainder = round(led % multiply_led * brightness);
-	int actual_led = led / multiply_led;
+	int remainder = round(led % MULTIPLY_LED * BRIGHTNESS);
+	int actual_led = led / MULTIPLY_LED;
 	int actual_led_1 = actual_led + 1;
-	int led_1 = led_bright_max - remainder;
+	int led_1 = LED_BRIGHT_MAX - remainder;
 
-	if (actual_led_1 == quad_led * 4) actual_led_1 = 0;
+	if (actual_led_1 == QUAD_LED * 4) actual_led_1 = 0;
 
   	pixels.clear(); // Set all NeoPixel leds to 'off'
 	pixels.setPixelColor(actual_led, pixels.Color(
@@ -116,8 +115,8 @@ void calc_pos() {
 
 	if (speed > 0) speed -= .3 * bgrav[body];
 	else if (speed < 0) speed += .3 * bgrav[body];
-	if (led > max_led * 4) led -= max_led * 4;
-	if (led < 0) led += max_led * 4;
+	if (led > MAX_LED * 4) led -= MAX_LED * 4;
+	if (led < 0) led += MAX_LED * 4;
 
 	calc_grav();
 	speed += speed_grav;
@@ -145,10 +144,10 @@ void accel_point() {
 	else if (x < 0 && y > 0) quad = 2;
 	else if (x > 0 && y > 0) quad = 3;
 
-	accel_led = max_led * quad;
+	accel_led = MAX_LED * quad;
 
-	if (quad == 0 || quad == 2) accel_led += round(angle_accel * per_led) * -1;
-	else if (quad == 1 || quad == 3) accel_led += max_led - round(angle_accel * per_led);
+	if (quad == 0 || quad == 2) accel_led += round(angle_accel * PER_LED) * -1;
+	else if (quad == 1 || quad == 3) accel_led += MAX_LED - round(angle_accel * PER_LED);
 }
 
 void grav_point() {
@@ -184,14 +183,14 @@ void grav_point() {
 	}
 	else flipped = false;
 
-	grav_led = max_led * quad;
+	grav_led = MAX_LED * quad;
 
-	if (quad == 0 || quad == 2) grav_led += round(angle_grav * per_led) * -1;
-	else if (quad == 1 || quad == 3) grav_led += max_led - round(angle_grav * per_led);
+	if (quad == 0 || quad == 2) grav_led += round(angle_grav * PER_LED) * -1;
+	else if (quad == 1 || quad == 3) grav_led += MAX_LED - round(angle_grav * PER_LED);
 	if (flipped) {
-		grav_led = max_led * 4 - grav_led;
-		grav_led += max_led * 2;
-		if (grav_led > max_led * 4) grav_led -= max_led * 4;
+		grav_led = MAX_LED * 4 - grav_led;
+		grav_led += MAX_LED * 2;
+		if (grav_led > MAX_LED * 4) grav_led -= MAX_LED * 4;
 	}
 }
 
