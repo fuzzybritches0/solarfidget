@@ -36,7 +36,6 @@
 
 #define QUAD_LED	NUMPIXELS_NEOPIXEL / 4
 #define LED_BRIGHT_MAX	255
-#define MAX_RAD_QUAD	1.57
 #define MULTIPLY_LED	100
 #define MAX_LED		QUAD_LED * MULTIPLY_LED
 #define PER_LED		MAX_LED / MAX_RAD_QUAD
@@ -132,17 +131,14 @@ void calc_pos() {
 void accel_point() {
 
 	int quad;
+	float angle_accel = atan(ACCELY/ACCELX);
 
-	float x = aaReal.x;
-	float y = aaReal.y;
-	float angle_accel = atan(y/x);
+	accel = sqrt(ACCELX*ACCELX + ACCELY*ACCELY) / 16384;
 
-	accel = sqrt(x*x + y*y) / 16384;
-
-	     if (x > 0 && y < 0) quad = 0;
-	else if (x < 0 && y < 0) quad = 1;
-	else if (x < 0 && y > 0) quad = 2;
-	else if (x > 0 && y > 0) quad = 3;
+	     if (ACCELX > 0 && ACCELY < 0) quad = 0;
+	else if (ACCELX < 0 && ACCELY < 0) quad = 1;
+	else if (ACCELX < 0 && ACCELY > 0) quad = 2;
+	else if (ACCELX > 0 && ACCELY > 0) quad = 3;
 
 	accel_led = MAX_LED * quad;
 
@@ -151,19 +147,16 @@ void accel_point() {
 }
 
 void grav_point() {
-
 	int quad;
 
-	float pitch = ypr[1];
-	float roll = ypr[2];
-	float angle_grav = atan(sin(roll) / tan(pitch));
+	float angle_grav = atan(sin(ROLL) / tan(PITCH));
 
-	grav = acos(cos(pitch) * cos(roll));
+	grav = acos(cos(PITCH) * cos(ROLL));
 
-	     if (pitch > 0 && roll < 0) quad = 0;
-	else if (pitch < 0 && roll < 0) quad = 1;
-	else if (pitch < 0 && roll > 0) quad = 2;
-	else if (pitch > 0 && roll > 0) quad = 3;
+	     if (PITCH > 0 && ROLL < 0) quad = 0;
+	else if (PITCH < 0 && ROLL < 0) quad = 1;
+	else if (PITCH < 0 && ROLL > 0) quad = 2;
+	else if (PITCH > 0 && ROLL > 0) quad = 3;
 	
 	if (quad == 0 && angle_grav > 0) {
 		quad = 1;

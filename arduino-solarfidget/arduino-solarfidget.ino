@@ -117,6 +117,12 @@ uint8_t teapotPacket[14] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, '\r', '\
 
 
 // Include SOLARFIDGET code
+#define ACCELX		(float)aaReal.x
+#define ACCELY		(float)aaReal.y
+#define PITCH		ypr[1]
+#define ROLL		ypr[2]
+#define MAX_RAD_QUAD	1.57
+
 #include <solarfidget.h>
 
 // ================================================================
