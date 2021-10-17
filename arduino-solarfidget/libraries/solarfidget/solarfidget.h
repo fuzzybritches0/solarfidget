@@ -207,10 +207,10 @@ void do_action() {
 
 void actions() {
 
-	if (ypr[1] > -.4 && ypr[1] < .4 && ypr[2] > -.4 && ypr[2] < .4) {
+	if (PITCH > -.4 && PITCH < .4 && ROLL > -.4 && ROLL < .4) {
 		orientation=true;
 	}
-	else if ((ypr[1] < -2.74 || ypr[1] >2.74) && (ypr[2] < -2.74 || ypr[2] > 2.74)) {
+	else if ((PITCH < -2.74 || PITCH >2.74) && (ROLL < -2.74 || ROLL > 2.74)) {
 		orientation=false;
 	}
 
@@ -232,7 +232,7 @@ void actions() {
 }
 
 void detect_motion() {
-	if (aaReal.x > -20 && aaReal.x < 20 && aaReal.y > -20 && aaReal.y < 20 &&
+	if (ACCELX > -20 && ACCELX < 20 && ACCELY > -20 && ACCELY < 20 &&
 	    speed < 2 && speed > -2) motion_counter++;
 	else motion_counter = 0;
 
