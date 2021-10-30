@@ -24,8 +24,8 @@ bodies in our solar system (including Pluto).
 To travel from planet to planet hold the fidget horizontally, turn it
 twice by 180 degrees. If there is no change, try doing it faster.
 
-To turn off the lightfidget hold the fidget horizontally, turn it trice by
-180 degrees. If there is no change, try doing it faster.
+To turn off the lightfidget hold the fidget horizontally, turn it thrice
+by 180 degrees. If there is no change, try doing it faster.
 
 
 
@@ -76,24 +76,24 @@ plastic from the mini USB plug as possible - we only have limited space -
 but don't break the plug. Also make sure both the red and black cables are
 +5V and GND, respectively.
 
-From here on, we will only work on the part of the fidget that houses all
-the electronics, that is, the top part.
+Now, we will work on the part of the fidget that houses all the
+electronics, that is, the top part.
 
 Place the top part of the fidget in front of you facing the inside and
 having the charging towers face left. Connect the cables of the mini USB
 plug as follows from top to bottom: black, white, green, red; and add one
-cable to the red cable; there is an extra hole for that. Later solder this
-cable to the battery charging breakout board and ground the board on the
-Arduino.
+cable to the red cable; there is an extra hole for that. Later, solder
+this cable to the battery charging breakout board and ground the board on
+the Arduino.
 
 Use the M3 nuts and M3x4mm bolts to secure the cables. Clean the inside of
 the towers if there is loose or deformed material inside from printing the
 overhang. Use a longer M3 bolt to drive the nut into its place, enough so,
-that you can still push the cable into the hole below the nut. Then use
-the original bolts to drive the nuts down all the way end secure the
-cables. Make sure there is only blank wire between the nut and the tower.
-Keep the blank wire short. If it's too long it may curl up around the
-bold, when fixing it, which we don't want to happen.
+that you can still push the cable into the hole below the nut. Then drive
+the nuts down all the way and secure the cables. Make sure there is only
+blank wire between the nut and the tower. Keep the blank wire short. If
+it's too long it may curl up around the bold, when fixing it, which we
+don't want to happen.
 
 Connect the Arduino Nano to the mini USB plug. Push the Arduino inside its
 proper place. Push the battery charging breakout board into its proper
@@ -114,9 +114,9 @@ Wire all cables around the battery compartment when you solder them on.
 Make sure there will be enough place for the LED stripe around the inside
 of the fidget. Keep the cables as short as possible.
 
-Solder the extra cables we add to the charging towers to IN+ and IN-
-on the battery charging breakout board accordingly. Remember the red USB
-cable is +5V and the black one is GND.
+As I have mentioned before, at the beginning, solder the extra cable we
+add to the charging tower to IN+ on the battery charging breakout board.
+Don't forget to ground the battery charging breakout board.
 
 Solder BAT+ and BAT- from the battery charging breakout board to VIN and
 GND on the Arduino, respectively. Make sure your Arduino can run with
@@ -129,18 +129,15 @@ SCL and SDA. Your Arduino may differ.
 
 Solder two cables to the male MOLEX plug. When you connect a battery to
 the plug, you can see which cable is which. Make sure the plug and cable
-are properly isolated; use shrink tubing.
+are properly isolated. Use shrink tubing. Never solder with a connected
+battery!
 
 Solder the two cables to BAT+ and BAT- accordingly.
 
 Now, solder +, - and DATA from the addressable LED stripe to 5V, GND
 and D6 on the Arduino, respectively.
 
-Solder the cable, coming from the charging tower, onto IN+ from the
-battery charging breakout board. Ground the battery charging breakout
-board.
-
-Now connect the battery to the MOLEX plug and place it inside the fidget.
+Now, connect the battery to the MOLEX plug and place it inside the fidget.
 
 Fix up the charging station by placing the four cables from the cut-off
 end of the USB cable inside the charging towers of the charging station.
@@ -158,6 +155,10 @@ SOFTWARE INSTRUCTIONS
 
 Copy or link the folder in arduino-solarfidget/libraries/solarfidget into
 your Arduino/libraries folder.
+
+Place the files at:
+https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/I2Cdev
+in a subdirectory in your Arduino/libraries folder
 
 Place the files at:
 https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/MPU6050
@@ -193,5 +194,5 @@ or right to bring the light into the correct position.
 
 After that, slide the other part of the fidget on.
 
-You should be all set now. Have fun travelling our solar system.
+You should all be set now. Have fun travelling our solar system.
 
