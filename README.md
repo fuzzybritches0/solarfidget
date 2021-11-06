@@ -17,8 +17,6 @@ fidget calculates the position of a rotating pendulum that reacts to
 acceleration and gravity and simulates the effect of gravity on different
 bodies in our solar system (including Pluto).
 
-
-
 ## MANUAL INSTRUCTIONS
 
 To travel from planet to planet hold the fidget horizontally, turn it
@@ -26,8 +24,6 @@ twice by 180 degrees. If there is no change, try doing it faster.
 
 To turn off the lightfidget hold the fidget horizontally, turn it thrice
 by 180 degrees. If there is no change, try doing it faster.
-
-
 
 ## HOW TO BUILD ONE FOR YOURSELF
 
@@ -162,6 +158,8 @@ by the magnets.
 
 Before we close up the fidget we need to do the software and fine-tune the
 position of the LED stripe.
+
+* * *
 
 ### SOFTWARE INSTRUCTIONS
 
