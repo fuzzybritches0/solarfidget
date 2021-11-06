@@ -35,10 +35,10 @@ by 180 degrees. If there is no change, try doing it faster.
 - 1x Arduino Nano
 - 1x MPU6050 breakout board
 - 1x battery charging breakout board
-- 1x 36 addressable LEDs stripe [^1]
+- 1x 36 addressable LEDs stripe (\*)
 - 1x HS170 380mAh LiPo battery with Molex plug
-- 1x male Molex plug [^2]
-- 1x 3d-printed models of both the fidget and charger parts [^3]
+- 1x male Molex plug (\*\*)
+- 1x 3d-printed models of both the fidget and charger parts (\*\*\*)
 - 1x USB mini cable
 - 4x 0.3x4x5 mm compressing spring
 - 4x M3 locknut
@@ -48,13 +48,13 @@ by 180 degrees. If there is no change, try doing it faster.
 - 8x cylinder magnet d=5mm,h=2.7mm,
 - and a punch of cables one can salvage from old LAN cables or similar.
 
-[^1]: Use a stripe with a LED density of **144 LEDs per metre**.
-[^2]: When buying a set of batteries there is normally a charger included
-      from which you can salvage male Molex plugs.
-[^3]: all four parts can be found as .3mf files in the design-solarfidget
-      folder and can be imported directly into the 3d slicer software. If
-      you need to make changes to accommodate your own hardware, use the
-      solarfidget.scad file to do so.
+(\*):     Use a stripe with a LED density of **144 LEDs per metre**.\
+(\*\*):   When buying a set of batteries there is normally a charger
+          included from which you can salvage male Molex plugs.\
+(\*\*\*): all four parts can be found as .3mf files in the
+          design-solarfidget folder and can be imported directly into the
+          3d slicer software. If you need to make changes to accommodate
+          your own hardware, use the solarfidget.scad file to do so.
 
 
 ### BUILD INSTRUCTIONS
