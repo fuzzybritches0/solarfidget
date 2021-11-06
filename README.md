@@ -8,6 +8,7 @@ Creative Commons Attribution-NonCommercial 3.0 Unported License
 For more information on Copyright please refer to the respective files and
 the LICENSE-* files.
 
+![solarfidget](./assets/solarfidget.gif)\
 
 ##		THE ORIGINAL SOLARFIDGET
 
@@ -48,14 +49,24 @@ by 180 degrees. If there is no change, try doing it faster.
 - 8x cylinder magnet d=5mm,h=2.7mm,
 - and a punch of cables one can salvage from old LAN cables or similar.
 
-(\*):     Use a stripe with a LED density of **144 LEDs per metre**.\
-(\*\*):   When buying a set of batteries there is normally a charger
-          included from which you can salvage male Molex plugs.\
-(\*\*\*): all four parts can be found as .3mf files in the
-          design-solarfidget folder and can be imported directly into the
-          3d slicer software. If you need to make changes to accommodate
-          your own hardware, use the solarfidget.scad file to do so.
+> (\*):     Use a stripe with a LED density of **144 LEDs per metre**.\
+> (\*\*):   When buying a set of batteries there is normally a charger
+>           included from which you can salvage male Molex plugs.\
+> (\*\*\*): all four parts can be found as .3mf files in the
+>           design-solarfidget folder and can be imported directly into
+>           the 3d slicer software. If you need to make changes to
+>           accommodate your own hardware, use the solarfidget.scad file
+>           to do so.
 
+### OPENSCAD RENDERINGS
+
+![solarfidget](./assets/solarfidget.png)\
+*Fig. 1: The two parts pictured above compose the solarfidget*
+* * *
+
+![charger](./assets/charger.png)\
+*Fig. 2: These two parts compose the charger.*
+* * *
 
 ### BUILD INSTRUCTIONS
 
@@ -129,8 +140,8 @@ Arduino may differ.
 
 Solder two cables to the **male MOLEX plug**. When you connect a battery
 to the plug, you can see which cable is which. Make sure the plug and
-cable are properly isolated. Use **shrink tubing**. *Never solder with a
-connected battery!*
+cable are properly isolated. Use **shrink tubing**. ***Never solder with a
+connected battery!***
 
 Solder the two cables to **BAT+** and **BAT-** accordingly.
 
