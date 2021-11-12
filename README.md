@@ -117,7 +117,8 @@ the middle of the charging towers and continue **clockwise**.
 
 Wire all cables around the battery compartment when you solder them on.
 Make sure there will be enough place for the LED stripe around the inside
-of the fidget. Keep the cables as short as possible.
+of the fidget, should you remove the stripe while you solder the rest.
+Keep the cables as short as possible.
 
 As I have mentioned before, at the beginning, solder the extra cable we
 add to the charging tower to **IN+** on the battery charging breakout
