@@ -37,7 +37,7 @@ You can travel the following bodies in our solarsystem in order:
 twice by 180 degrees. If there is no change, try doing it faster.*
 * * *
 
-## 1.2 Turn the light on and off
+## 1.2 TURN THE LIGHT ON AND OFF
 
 ![solarfidget off](./assets/solarfidget_off.gif)\
 *To turn the lightfidget on or off hold the fidget horizontally, turn it
