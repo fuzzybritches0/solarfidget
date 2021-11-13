@@ -40,8 +40,8 @@ twice by 180 degrees. If there is no change, try doing it faster.*
 ## 1.2 Turn the light on and off
 
 ![solarfidget off](./assets/solarfidget_off.gif)\
-*To turn off the lightfidget hold the fidget horizontally, turn it thrice
-by 180 degrees. If there is no change, try doing it faster.*
+*To turn the lightfidget on or off hold the fidget horizontally, turn it
+thrice by 180 degrees. If there is no change, try doing it faster.*
 
 * * *
 
