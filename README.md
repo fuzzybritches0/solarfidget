@@ -2,6 +2,11 @@
 # 		ORIGINAL SOLARFIDGET
 ### 	An Arduino Project for a light spinning fidget
 
+Using an LED-Ring (of 36 rgb leds) and an MPU6050 gyro/accel, this
+fidget calculates the position of a rotating pendulum that reacts to
+acceleration and gravity and simulates the effect of gravity on different
+bodies in our solar system (including Pluto).
+
 Concept, Design and Idea (C) 2021 Kurt Manucredo, under the
 Creative Commons Attribution-NonCommercial 3.0 Unported License
 
@@ -11,16 +16,21 @@ the LICENSE-* files.
 ![solarfidget](./assets/solarfidget.gif)
 * * *
 
-##		THE ORIGINAL SOLARFIDGET
-
-Using an LED-Ring (of 36 rgb leds) and an MPU6050 gyro/accel, this
-fidget calculates the position of a rotating pendulum that reacts to
-acceleration and gravity and simulates the effect of gravity on different
-bodies in our solar system (including Pluto).
-
 # 1. MANUAL INSTRUCTIONS
 
-## 1.1 Travel from planet to planet
+## 1.1 TRAVEL FROM PLANET TO PLANET
+
+You can travel the following bodies in our solarsystem in order:
+
+- Mercury (0.38g)   (white)
+- Venus   (0.904g)  (light blue)
+- Earth   (1g)      (dark blue)
+- Mars    (0.3794g) (red braun)
+- Jupiter (2.528g)  (white grey)
+- Saturn  (1.065g)  (yellow)
+- Uranus  (0.886g)  (violet)
+- Neptune (1.14g)   (green)
+- Pluto   (0.063g)  (pink)
 
 ![solarfidget planet](./assets/solarfidget_planet.gif)\
 *To travel from planet to planet hold the fidget horizontally, turn it
@@ -32,6 +42,8 @@ twice by 180 degrees. If there is no change, try doing it faster.*
 ![solarfidget off](./assets/solarfidget_off.gif)\
 *To turn off the lightfidget hold the fidget horizontally, turn it thrice
 by 180 degrees. If there is no change, try doing it faster.*
+
+* * *
 
 # 2. HOW TO BUILD ONE FOR YOURSELF
 
@@ -140,27 +152,32 @@ out above in the picture.*
 Place the stripe around the inside of the fidget's top part. Start around
 the middle of the charging towers and continue **clockwise**.
 
-### 2.3.5 Let's wire it all up:
+### 2.3.5 Soldering
 
 Wire all cables around the battery compartment when you solder them on.
 Make sure there will be enough place for the LED stripe around the inside
 of the fidget, should you remove the stripe while you solder the rest.
-Keep the cables as short as possible.
+Keep the cables as short as possible. Ground all components on a common
+ground.
+
+#### 2.3.5.1 Battery charging breakout board
 
 As I have mentioned before, at the beginning, solder the extra cable we
 add to the charging tower to **IN+** on the battery charging breakout
 board. Don't forget to **ground** the battery charging breakout board.
 
-Solder **BAT+** and **BAT-** from the battery charging breakout board to
-**VIN** and **GND** on the Arduino, respectively. Make sure your Arduino
-can run with *3.7V*. Mine was meant for 5V but it works quite well for a
-few hours. 
+Solder **BAT+** from the battery charging breakout board to **VIN** and
+**ground** the board on the Arduino. Make sure your Arduino can run with
+*3.7V*. Mine was meant for 5V but it works quite well for a few hours. 
 
-Solder **VIN** and **GND** from the MPU6050 to **3V3** and **GND** on the
-Arduino, respectively. Now, solder **SCL**, **SDA** and **INT** from the
-MPU6050 to **A5**, **A4** and **D2** on the Arduino, respectively. On the
-Arduino I used, **A5** and **A4** are for **SCL** and **SDA**. Your
-Arduino may differ.
+#### 2.3.5.2 MPU6050
+
+Solder **VIN** from the MPU6050 to **BAT+** and **ground** the MPU6050.
+Now, solder **SCL**, **SDA** and **INT** from the MPU6050 to **A5**,
+**A4** and **D2** on the Arduino, respectively. On the Arduino I used,
+**A5** and **A4** are for **SCL** and **SDA**. Your Arduino may differ.
+
+#### 2.3.5.3 MOLEX plug
 
 Solder two cables to the **male MOLEX plug**. When you connect a battery
 to the plug, you can see which cable is which. Make sure the plug and
@@ -173,8 +190,12 @@ connected battery!***
 
 Solder the two cables to **BAT+** and **BAT-** accordingly.
 
-Now, solder **+**, **-** and **DATA** from the addressable LED stripe to
-**5V**, **GND** and **D6** on the Arduino, respectively.
+#### 2.3.5.4 36 addressable LEDs stripe
+
+Now, solder **+** from the LED stripe to **BAT+**, **DATA** to **D6** on
+the Arduino and **ground** the LED stripe.
+
+#### 2.3.5.5 Battery
 
 Now, connect the battery to the MOLEX plug and place it inside the fidget.
 
