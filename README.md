@@ -20,10 +20,14 @@ bodies in our solar system (including Pluto).
 
 # 1. MANUAL INSTRUCTIONS
 
+## 1.1 Travel from planet to planet
+
 ![solarfidget planet](./assets/solarfidget_planet.gif)\
 *To travel from planet to planet hold the fidget horizontally, turn it
 twice by 180 degrees. If there is no change, try doing it faster.*
 * * *
+
+## 1.2 Turn the light on and off
 
 ![solarfidget off](./assets/solarfidget_off.gif)\
 *To turn off the lightfidget hold the fidget horizontally, turn it thrice
