@@ -8,7 +8,8 @@ Creative Commons Attribution-NonCommercial 3.0 Unported License
 For more information on Copyright please refer to the respective files and
 the LICENSE-* files.
 
-![solarfidget](./assets/solarfidget.gif)\
+![solarfidget](./assets/solarfidget.gif)
+* * *
 
 ##		THE ORIGINAL SOLARFIDGET
 
