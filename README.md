@@ -17,7 +17,7 @@ fidget calculates the position of a rotating pendulum that reacts to
 acceleration and gravity and simulates the effect of gravity on different
 bodies in our solar system (including Pluto).
 
-## MANUAL INSTRUCTIONS
+# 1. MANUAL INSTRUCTIONS
 
 To travel from planet to planet hold the fidget horizontally, turn it
 twice by 180 degrees. If there is no change, try doing it faster.
@@ -25,9 +25,9 @@ twice by 180 degrees. If there is no change, try doing it faster.
 To turn off the lightfidget hold the fidget horizontally, turn it thrice
 by 180 degrees. If there is no change, try doing it faster.
 
-## HOW TO BUILD ONE FOR YOURSELF
+# 2. HOW TO BUILD ONE FOR YOURSELF
 
-### PARTS NEEDED
+## 2.1 PARTS NEEDED
 
 - 1x Arduino Nano
 - 1x MPU6050 breakout board
@@ -54,7 +54,7 @@ by 180 degrees. If there is no change, try doing it faster.
 >           accommodate your own hardware, use the solarfidget.scad file
 >           to do so.
 
-### OPENSCAD RENDERINGS
+## 2.2 OPENSCAD RENDERINGS
 
 ![solarfidget](./assets/solarfidget.png)\
 *Fig. 1: The two parts pictured above compose the solarfidget*
@@ -64,7 +64,9 @@ by 180 degrees. If there is no change, try doing it faster.
 *Fig. 2: These two parts compose the charger.*
 * * *
 
-### BUILD INSTRUCTIONS
+## 2.3 BUILD INSTRUCTIONS
+
+### 2.3.1 Magnets
 
 Place all eight magnets inside the charger and fidget so that the fidget
 and charger will only lock in place when the fidget is placed on top of
@@ -74,12 +76,16 @@ for the other two magnets. Repeat for the charger but reverse the poles.
 Use a crooked M6 key, place the magnet on the crooked end and use a
 hammer to fix the magnets in place.
 
+### 2.3.2 USB mini cable
+
 Cut the USB mini cable about 10cm from the mini USB plug side. Carefully
 remove the PVC coat and the shielding. There should be four cables: one
 **black**, one **red**, one **white** and one **green**. Also remove as
 much of the hard plastic from the mini USB plug as possible - we only
 have limited space - but don't break the plug. Also make sure both the
 **red** and **black** cables are **+5V** and **GND**, respectively.
+
+### 2.3.3 Fidget
 
 Now, we will work on the part of the fidget that houses all the
 electronics, that is, the top part.
@@ -106,14 +112,27 @@ place. Finally push the MPU6050 breakout board into its proper place,
 next to the battery, on the right side. Have the MPU6050 **face up**. On
 the MPU6050 have the **X-axis** point to the **right and left**.
 
+![all installed](./assets/all_installed.jpg)\
+*Fig. 3: Magnets and hardware installed. Arduino plugged in.*
+* * *
+
+### 2.3.4 LED stripe
+
 Solder three cables onto the 36 addressable LED stripe. Note the direction
 of the arrows on the stripe and solder the cables on the right end. If the
 arrow points to the end of the stripe, it's the wrong end.
 
+
+![led stripe end](./assets/led_stripe_end.jpg)\
+*Fig. 4: This is the right end. Solder the cables on to the back,
+pointing into the direction of the arrows. You can see a green cable stick
+out above in the picture.*
+* * *
+
 Place the stripe around the inside of the fidget's top part. Start around
 the middle of the charging towers and continue **clockwise**.
 
-### Let's wire it all up:
+### 2.3.5 Let's wire it all up:
 
 Wire all cables around the battery compartment when you solder them on.
 Make sure there will be enough place for the LED stripe around the inside
@@ -140,6 +159,10 @@ to the plug, you can see which cable is which. Make sure the plug and
 cable are properly isolated. Use **shrink tubing**. ***Never solder with a
 connected battery!***
 
+![molex_plug](./assets/molex_plug.jpg)\
+*Fig. 5: Male Molex plug.*
+* * *
+
 Solder the two cables to **BAT+** and **BAT-** accordingly.
 
 Now, solder **+**, **-** and **DATA** from the addressable LED stripe to
@@ -147,22 +170,44 @@ Now, solder **+**, **-** and **DATA** from the addressable LED stripe to
 
 Now, connect the battery to the MOLEX plug and place it inside the fidget.
 
+![fixed up](./assets/fixed_up.jpg)\
+*Fig. 6: This is about what it should look now.*
+* * *
+
+### 2.3.6 Charging station
+
 Fix up the charging station by placing the four cables from the cut-off
 end of the USB cable inside the charging towers of the charging station.
 **Don't forget** to route the cable through the bottom part of the charger
-station first, before you wire it all up. Use the **0.3x4x5 mm compressing
-springs**, the **M3 locknuts** and the **M3x10mm bolts** to finish up the
-charger. Have the springs push down on the **blank wires** inside the
-towers. Clean the inside of the towers if needed. Have the bolts look out
+station first, before you wire it all up.
+
+![charger wire](./assets/charger_wire.jpg)\
+*Fig. 7: That's how we figure out which cable goes where. Fix the cable
+with tuck tape.*
+* * *
+
+Use the **0.3x4x5 mm compressing springs**, the **M3 locknuts** and the
+**M3x10mm bolts** to finish up the charger. Have the springs push down on
+the **blank wires** inside the towers. Clean the inside of the towers if
+needed.
+
+![blank wire](./assets/blank_wire.jpg)\
+*Fig. 8: Here you see the blank wire inside the charger tower.*
+* * *
+
+Have the bolts look out
 of the charger a bit so that the fidget gets good contact when pushed down
 by the magnets.
+
+![charging port](./assets/charging_port.jpg)\
+*Fig. 9: Here you see the bolts looking out a little. Have them look out
+as little as possible, but make the charger work.*
+* * *
 
 Before we close up the fidget we need to do the software and fine-tune the
 position of the LED stripe.
 
-* * *
-
-### SOFTWARE INSTRUCTIONS
+### 2.3.7 Software
 
 Copy or link the folder in `arduino-solarfidget/libraries/solarfidget` into
 your `Arduino/libraries` folder.
