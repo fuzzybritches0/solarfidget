@@ -23,7 +23,7 @@ You can travel the following bodies in our solarsystem in order:
 - Mercury (0.38g)   (white)
 - Venus   (0.904g)  (light blue)
 - Earth   (1g)      (dark blue)
-- Mars    (0.3794g) (red braun)
+- Mars    (0.3794g) (red brown)
 - Jupiter (2.528g)  (white grey)
 - Saturn  (1.065g)  (yellow)
 - Uranus  (0.886g)  (violet)
@@ -162,7 +162,7 @@ ground.
 
 As I have mentioned before, at the beginning, solder the extra cable we
 add to the charging tower to **IN+** on the battery charging breakout
-board. Don't forget to **ground** the battery charging breakout board.
+board. Ground it in the next step. **IN-** and **BAT-** are the same.
 
 Solder **BAT+** from the battery charging breakout board to **VIN** and
 **ground** the board on the Arduino. Make sure your Arduino can run with
