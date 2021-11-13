@@ -1,6 +1,4 @@
-
 # 		ORIGINAL SOLARFIDGET
-### 	An Arduino Project for a light spinning fidget
 
 Using an LED-Ring (of 36 rgb leds) and an MPU6050 gyro/accel, this
 fidget calculates the position of a rotating pendulum that reacts to
@@ -65,7 +63,7 @@ thrice by 180 degrees. If there is no change, try doing it faster.*
 - 8x cylinder magnet d=5mm,h=2.7mm,
 - and a punch of cables one can salvage from old LAN cables or similar.
 
-> (\*):     Use a stripe with a LED density of **144 LEDs per metre**.\
+> (\*):     Use a stripe with an LED density of **144 LEDs per metre**.\
 > (\*\*):   When buying a set of batteries there is normally a charger
 >           included from which you can salvage male Molex plugs.\
 > (\*\*\*): all four parts can be found as .3mf files in the
