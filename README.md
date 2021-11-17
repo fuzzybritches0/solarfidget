@@ -60,7 +60,7 @@ thrice by 180 degrees. If there is no change, try doing it faster.*
 - 4x M3 nut
 - 4x M3x10mm bolt
 - 4x M3x4mm bolt
-- 8x cylinder magnet d=5mm,h=2.7mm,
+- 8x cylinder magnet d=5mm,h=2mm,
 - and a punch of cables one can salvage from old LAN cables or similar.
 
 > (\*):     Use a stripe with an LED density of **144 LEDs per metre**.\
