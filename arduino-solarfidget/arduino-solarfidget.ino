@@ -13,7 +13,6 @@
  * License along with NeoPixel.  If not, see
  * <http://www.gnu.org/licenses/>. */
 
-
 #include <Adafruit_NeoPixel.h>
 // Which pin on the Arduino is connected to the NeoPixels?
 #define PIN_NEOPIXEL        6 // On Trinket or Gemma, suggest changing this to 1
@@ -27,8 +26,29 @@
 // strandtest example for more information on possible values.
 Adafruit_NeoPixel pixels(NUMPIXELS_NEOPIXEL, PIN_NEOPIXEL, NEO_GRB + NEO_KHZ800);
 
-/*
-===============================================
+// I2C device class (I2Cdev) demonstration Arduino sketch for MPU6050 class using DMP (MotionApps v2.0)
+// 6/21/2012 by Jeff Rowberg <jeff@rowberg.net>
+// Updates should (hopefully) always be available at https://github.com/jrowberg/i2cdevlib
+//
+// Changelog:
+//      2019-07-08 - Added Auto Calibration and offset generator
+//		   - and altered FIFO retrieval sequence to avoid using blocking code
+//      2016-04-18 - Eliminated a potential infinite loop
+//      2013-05-08 - added seamless Fastwire support
+//                 - added note about gyro calibration
+//      2012-06-21 - added note about Arduino 1.0.1 + Leonardo compatibility error
+//      2012-06-20 - improved FIFO overflow handling and simplified read process
+//      2012-06-19 - completely rearranged DMP initialization code and simplification
+//      2012-06-13 - pull gyro and accel data from FIFO packet instead of reading directly
+//      2012-06-09 - fix broken FIFO read sequence and change interrupt detection to RISING
+//      2012-06-05 - add gravity-compensated initial reference frame acceleration output
+//                 - add 3D math helper file to DMP6 example sketch
+//                 - add Euler output and Yaw/Pitch/Roll output formats
+//      2012-06-04 - remove accel offset clearing for better results (thanks Sungon Lee)
+//      2012-06-01 - fixed gyro sensitivity to be 2000 deg/sec instead of 250
+//      2012-05-30 - basic DMP initialization working
+
+/* ============================================
 I2Cdev device library code is placed under the MIT license
 Copyright (c) 2012 Jeff Rowberg
 
@@ -51,7 +71,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ===============================================
 */
-
 
 // I2Cdev and MPU6050 must be installed as libraries, or else the .cpp/.h files
 // for both classes must be in the include path of your project
@@ -115,7 +134,6 @@ float ypr[3];           // [yaw, pitch, roll]   yaw/pitch/roll container and gra
 // packet structure for InvenSense teapot demo
 uint8_t teapotPacket[14] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, '\r', '\n' };
 
-
 // Include SOLARFIDGET code
 #define ACCELX		(float)aaReal.x
 #define ACCELY		(float)aaReal.y
@@ -139,10 +157,8 @@ void dmpDataReady() {
 // ================================================================
 
 void setup() {
-
     // INITIALIZE NeoPixel strip object
     pixels.begin();
-
     // join I2C bus (I2Cdev library doesn't do this automatically)
     #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
         Wire.begin();
@@ -155,7 +171,7 @@ void setup() {
     // (115200 chosen because it is required for Teapot Demo output, but it's
     // really up to you depending on your project)
     Serial.begin(115200);
-    //while (!Serial); // wait for Leonardo enumeration, others continue immediately
+    while (!Serial); // wait for Leonardo enumeration, others continue immediately
 
     // NOTE: 8MHz or slower host processors, like the Teensy @ 3.3V or Arduino
     // Pro Mini running at 3.3V, cannot handle this baud rate reliably due to
@@ -164,13 +180,13 @@ void setup() {
     // crystal solution for the UART timer.
 
     // initialize device
-    //Serial.println(F("Initializing I2C devices..."));
+    Serial.println(F("Initializing I2C devices..."));
     mpu.initialize();
     pinMode(INTERRUPT_PIN, INPUT);
 
     // verify connection
-    //Serial.println(F("Testing device connections..."));
-    //Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
+    Serial.println(F("Testing device connections..."));
+    Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
 
     // wait for ready
     //Serial.println(F("\nSend any character to begin DMP programming and demo: "));
@@ -179,16 +195,16 @@ void setup() {
     //while (Serial.available() && Serial.read()); // empty buffer again
 
     // load and configure the DMP
-    //Serial.println(F("Initializing DMP..."));
+    Serial.println(F("Initializing DMP..."));
     devStatus = mpu.dmpInitialize();
 
+    //mpu.setXAccelOffset(-1754);
+    //mpu.setYAccelOffset(-1097);
+    //mpu.setZAccelOffset(982);
     // supply your own gyro offsets here, scaled for min sensitivity
-    //mpu.setXGyroOffset(-139);
-    //mpu.setYGyroOffset(40);
-    //mpu.setZGyroOffset(-17);
-    //mpu.setXAccelOffset(-4391);
-    //mpu.setYAccelOffset(821);
-    //mpu.setZAccelOffset(975); // 1688 factory default for my test chip
+    //mpu.setXGyroOffset(121);
+    //mpu.setYGyroOffset(-12);
+    //mpu.setZGyroOffset(4);
 
     // make sure it worked (returns 0 if so)
     if (devStatus == 0) {
@@ -197,18 +213,18 @@ void setup() {
         mpu.CalibrateGyro(6);
         mpu.PrintActiveOffsets();
         // turn on the DMP, now that it's ready
-        //Serial.println(F("Enabling DMP..."));
+        Serial.println(F("Enabling DMP..."));
         mpu.setDMPEnabled(true);
 
         // enable Arduino interrupt detection
-        //Serial.print(F("Enabling interrupt detection (Arduino external interrupt "));
-        //Serial.print(digitalPinToInterrupt(INTERRUPT_PIN));
-        //Serial.println(F(")..."));
+        Serial.print(F("Enabling interrupt detection (Arduino external interrupt "));
+        Serial.print(digitalPinToInterrupt(INTERRUPT_PIN));
+        Serial.println(F(")..."));
         attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), dmpDataReady, RISING);
         mpuIntStatus = mpu.getIntStatus();
 
         // set our DMP Ready flag so the main loop() function knows it's okay to use it
-        //Serial.println(F("DMP ready! Waiting for first interrupt..."));
+        Serial.println(F("DMP ready! Waiting for first interrupt..."));
         dmpReady = true;
 
         // get expected DMP packet size for later comparison
@@ -218,16 +234,14 @@ void setup() {
         // 1 = initial memory load failed
         // 2 = DMP configuration updates failed
         // (if it's going to break, usually the code will be 1)
-        //Serial.print(F("DMP Initialization failed (code "));
-        //Serial.print(devStatus);
-        //Serial.println(F(")"));
+        Serial.print(F("DMP Initialization failed (code "));
+        Serial.print(devStatus);
+        Serial.println(F(")"));
     }
 
     // configure LED for output
     pinMode(LED_PIN, OUTPUT);
 }
-
-
 
 // ================================================================
 // ===                    MAIN PROGRAM LOOP                     ===
@@ -236,52 +250,8 @@ void setup() {
 void loop() {
     // if programming failed, don't try to do anything
     if (!dmpReady) return;
-
-    // wait for MPU interrupt or extra packet(s) available
-    while (!mpuInterrupt && fifoCount < packetSize) {
-        if (mpuInterrupt && fifoCount < packetSize) {
-          // try to get out of the infinite loop 
-          fifoCount = mpu.getFIFOCount();
-        }  
-        // other program behavior stuff here
-        // .
-        // .
-        // .
-        // if you are really paranoid you can frequently test in between other
-        // stuff to see if mpuInterrupt is true, and if so, "break;" from the
-        // while() loop to immediately process the MPU data
-        // .
-        // .
-        // .
-    }
-
-    // reset interrupt flag and get INT_STATUS byte
-    mpuInterrupt = false;
-    mpuIntStatus = mpu.getIntStatus();
-
-    // get current FIFO count
-    fifoCount = mpu.getFIFOCount();
-	if(fifoCount < packetSize){
-	        //Lets go back and wait for another interrupt. We shouldn't be here, we got an interrupt from another event
-			// This is blocking so don't do it   while (fifoCount < packetSize) fifoCount = mpu.getFIFOCount();
-	}
-    // check for overflow (this should never happen unless our code is too inefficient)
-    else if ((mpuIntStatus & _BV(MPU6050_INTERRUPT_FIFO_OFLOW_BIT)) || fifoCount >= 1024) {
-        // reset so we can continue cleanly
-        mpu.resetFIFO();
-      //  fifoCount = mpu.getFIFOCount();  // will be zero after reset no need to ask
-        //Serial.println(F("FIFO overflow!"));
-
-    // otherwise, check for DMP data ready interrupt (this should happen frequently)
-    } else if (mpuIntStatus & _BV(MPU6050_INTERRUPT_DMP_INT_BIT)) {
-
-        // read a packet from FIFO
-	while(fifoCount >= packetSize){ // Lets catch up to NOW, someone is using the dreaded delay()!
-		mpu.getFIFOBytes(fifoBuffer, packetSize);
-		// track FIFO count here in case there is > 1 packet available
-		// (this lets us immediately read more without waiting for an interrupt)
-		fifoCount -= packetSize;
-	}
+    // read a packet from FIFO
+    if (mpu.dmpGetCurrentFIFOPacket(fifoBuffer)) { // Get the Latest packet 
         mpu.dmpGetQuaternion(&q, fifoBuffer);
         mpu.dmpGetAccel(&aa, fifoBuffer);
         mpu.dmpGetGravity(&gravity, &q);
