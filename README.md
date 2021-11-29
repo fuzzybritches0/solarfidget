@@ -47,7 +47,7 @@ thrice by 180 degrees. If there is no change, try doing it faster.*
 
 ## 2.1 PARTS NEEDED
 
-- 1x Arduino Nano
+- 1x Arduino Nano or Arduino Nano 33
 - 1x MPU6050 breakout board
 - 1x battery charging breakout board
 - 1x 36 addressable LEDs stripe (\*)
@@ -164,9 +164,11 @@ As I have mentioned before, at the beginning, solder the extra cable we
 add to the charging tower to **IN+** on the battery charging breakout
 board. Ground it in the next step. **IN-** and **BAT-** are the same.
 
-Solder **BAT+** from the battery charging breakout board to **VIN** and
-**ground** the board on the Arduino. Make sure your Arduino can run with
-*3.7V*. Mine was meant for 5V but it works quite well for a few hours. 
+Solder **BAT+** from the battery charging breakout board to **VIN** on the
+Arduino and **ground** the board on the Arduino. If you are using an
+Arduino Nano 33, solder **BAT+** to **3V3** instead. Make sure your Arduino
+can run with *3.7V*.  Mine was meant for 5V but it works quite well for a
+few hours. 
 
 #### 2.3.5.2 MPU6050
 
