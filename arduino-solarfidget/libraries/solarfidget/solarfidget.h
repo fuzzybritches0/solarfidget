@@ -59,7 +59,7 @@ int counter;
 int action;
 
 bool active = true;
-int motion_counter;
+int idle_counter;
 
 int body;
 
@@ -233,11 +233,11 @@ void actions() {
 
 void detect_motion() {
 	if (speed < 5 && speed > -5 && ACCELX > -30 && ACCELX < 30 &&
-	    ACCELY > -30 && ACCELY < 30) motion_counter++;
-	else motion_counter = 0;
+	    ACCELY > -30 && ACCELY < 30) idle_counter++;
+	else idle_counter = 0;
 
-	if (motion_counter > 1000) {
-		motion_counter=0;
+	if (idle_counter > 1000) {
+		idle_counter=0;
 		flip_active();
 	}
 }
