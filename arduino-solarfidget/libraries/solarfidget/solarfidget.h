@@ -232,8 +232,8 @@ void actions() {
 }
 
 void detect_motion() {
-	if (ACCELX > -20 && ACCELX < 20 && ACCELY > -20 && ACCELY < 20 &&
-	    speed < 2 && speed > -2) motion_counter++;
+	if (speed < 5 && speed > -5 && ACCELX > -30 && ACCELX < 30 &&
+	    ACCELY > -30 && ACCELY < 30) motion_counter++;
 	else motion_counter = 0;
 
 	if (motion_counter > 1000) {
