@@ -114,8 +114,6 @@ void calc_pos() {
 
 	if (speed > 0) speed -= .3 * bgrav[body];
 	else if (speed < 0) speed += .3 * bgrav[body];
-	if (led > MAX_LED * 4) led -= MAX_LED * 4;
-	if (led < 0) led += MAX_LED * 4;
 
 	calc_grav();
 	speed += speed_grav;
@@ -124,6 +122,10 @@ void calc_pos() {
 	speed += speed_accel;
 
 	led += round(speed);
+
+	if (led == MAX_LED * 4) led = 0;
+	else if (led > MAX_LED * 4) led -= MAX_LED * 4;
+	else if (led < 0) led += MAX_LED * 4;
 
 	_pixels();
 }
