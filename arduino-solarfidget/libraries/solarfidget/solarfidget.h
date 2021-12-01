@@ -123,8 +123,7 @@ void calc_pos() {
 
 	led += round(speed);
 
-	if (led == MAX_LED * 4) led = 0;
-	else if (led > MAX_LED * 4) led -= MAX_LED * 4;
+	if (led >= MAX_LED * 4) led -= MAX_LED * 4;
 	else if (led < 0) led += MAX_LED * 4;
 
 	_pixels();
