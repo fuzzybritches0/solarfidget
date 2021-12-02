@@ -165,11 +165,14 @@ add to the charging tower to **IN+** on the battery charging breakout
 board. Ground it in the next step. **IN-** and **BAT-** are the same.
 
 Solder **BAT+** from the battery charging breakout board to **VIN** on the
-Arduino and **ground** the board on the Arduino. If you are using an
-Arduino Nano 33, solder a bridge marked VUSB on the back of the Arduino
-between RST and A7, if you haven't already done. Make sure your Arduino can
-run with *3.7V*.  My Arduino Nano was meant for 5V but it works quite well
-for a few hours. 
+Arduino and **ground** the board on the Arduino. 
+If you are using an Arduino Nano 33, bridge the contacts marked VUSB on the
+back of the Arduino with solder. The contacts are between RST and A7. For
+more information why this is required, please visit:
+https://support.arduino.cc/hc/en-us/articles/360014779679-About-Nano-boards-with-disabled-5-V-pins
+
+Make sure your Arduino can run with 3.7V. My Arduino Nano was meant for 5V
+but it works quite well for a few hours.
 
 #### 2.3.5.2 MPU6050
 
