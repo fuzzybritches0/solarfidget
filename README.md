@@ -276,8 +276,15 @@ mpu.PrintActiveOffsets();
 ```
 
 Comment those lines and uncomment the lines above starting with mpu.set???
-and replace the values you just noted down for Gyro and Accel. Save the
-file and upload the programme again.
+and replace the values you just noted down for Gyro and Accel. Then,
+comment the following line, so the Arduino won't wait for a serial
+connection when not connected to USB:
+
+```
+#define SERIAL_DEBUG
+```
+
+Save the file and upload the programme again.
 
 Finally make sure the LED stripe is placed correctly in the fidget and the
 light of the pendulum is at the right spot. Do this by holding the fidget
