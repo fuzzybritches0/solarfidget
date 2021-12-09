@@ -41,6 +41,21 @@
 #define PER_LED		MAX_LED / MAX_RAD_QUAD
 #define BRIGHTNESS	LED_BRIGHT_MAX / MULTIPLY_LED
 
+#define ORI_UP_TRES	.4
+#define ORI_DOWN_TRES	2.47
+#define SPEED_TRES	5
+#define ACCEL_TRES	50
+
+#define ACCEL_RES	16384
+#define ACCEL_MULTI	33
+#define GRAV_MULTI	3
+#define DRAG		.3
+
+#define IDLE_COUNTER	1000
+#define ACTION_COUNTER	120
+#define ACTION_1	1
+#define ACTION_2	2
+
 int accel_led;
 float accel;
 int grav_led;
@@ -79,7 +94,7 @@ void calc_accel() {
 	else if (diff > 0 && diff <= MAX_LED * 2) diff = 1;
 	else if (diff < 0 && diff >= -MAX_LED * 2) diff = -1;
 	else if (diff < -(MAX_LED * 2)) diff = 1;
-	speed_accel = diff * accel * 33;
+	speed_accel = diff * accel * ACCEL_MULTI;
 }
 
 void calc_grav() {
@@ -90,7 +105,7 @@ void calc_grav() {
 	else if (diff > 0 && diff <= MAX_LED * 2) diff = 1;
 	else if (diff < 0 && diff >= -MAX_LED * 2) diff = -1;
 	else if (diff < -(MAX_LED * 2)) diff = 1;
-	speed_grav = diff * grav * 3 * bgrav[body];
+	speed_grav = diff * grav * GRAV_MULTI * bgrav[body];
 }
 
 void _pixels() {
@@ -112,8 +127,8 @@ void _pixels() {
 
 void calc_pos() {
 
-	if (speed > 0) speed -= .3 * bgrav[body];
-	else if (speed < 0) speed += .3 * bgrav[body];
+	if (speed > 0) speed -= DRAG * bgrav[body];
+	else if (speed < 0) speed += DRAG * bgrav[body];
 
 	calc_grav();
 	speed += speed_grav;
@@ -134,7 +149,7 @@ void accel_point() {
 	int quad;
 	float angle_accel = atan(ACCELY/ACCELX);
 
-	accel = sqrt(ACCELX*ACCELX + ACCELY*ACCELY) / 16384;
+	accel = sqrt(ACCELX*ACCELX + ACCELY*ACCELY) / ACCEL_RES;
 
 	     if (ACCELX > 0 && ACCELY < 0) quad = 0;
 	else if (ACCELX < 0 && ACCELY < 0) quad = 1;
@@ -148,8 +163,8 @@ void accel_point() {
 }
 
 void grav_point() {
-	int quad;
 
+	int quad;
 	float angle_grav = atan(sin(ROLL) / tan(PITCH));
 
 	grav = acos(cos(PITCH) * cos(ROLL));
@@ -189,11 +204,13 @@ void grav_point() {
 }
 
 void next_body() {
+
 	body++;
-	if (body == 9) body = 0;
+	if (body == sizeof(bgrav)) body = 0;
 }
 
 void flip_active() {
+
 	active=!active;
 	if (!active) {
 		pixels.clear();
@@ -202,48 +219,52 @@ void flip_active() {
 }
 
 void do_action() {
+
 	if (action == 1 && active) next_body();
 	if (action == 2) flip_active();
 }
 
 void actions() {
 
-	if (PITCH > -.4 && PITCH < .4 && ROLL > -.4 && ROLL < .4) {
-		orientation=true;
+	if (PITCH > -ORI_UP_TRES && PITCH < ORI_UP_TRES && ROLL > -ORI_UP_TRES && ROLL < ORI_UP_TRES) {
+		orientation = true;
 	}
-	else if ((PITCH < -2.74 || PITCH >2.74) && (ROLL < -2.74 || ROLL > 2.74)) {
-		orientation=false;
+	else if ((PITCH < -ORI_DOWN_TRES || PITCH > ORI_DOWN_TRES) && (ROLL < -ORI_DOWN_TRES ||
+				ROLL > ORI_DOWN_TRES)) {
+		orientation = false;
 	}
 
 	if (orientation != orientation_last) counter_on++;
 	orientation_last = orientation;
 	if (counter_on) counter++;
-	if (counter < 120 && counter_on == 3) {
-		action=2;
+	if (counter < ACTION_COUNTER && counter_on == ACTION_2 + 1) {
+		action = ACTION_2;
 	}
-	else if (counter < 120 && counter_on == 2) {
-		action=1;
+	else if (counter < ACTION_COUNTER && counter_on == ACTION_1 + 1) {
+		action = ACTION_1;
 	}
-	if (counter > 120) {
+	if (counter > ACTION_COUNTER) {
 		if (action) do_action();
-		action=0;
-		counter_on=0;
-		counter=0;
+		action = 0;
+		counter_on = 0;
+		counter = 0;
 	}
 }
 
 void detect_motion() {
-	if (speed < 5 && speed > -5 && ACCELX > -30 && ACCELX < 30 &&
-	    ACCELY > -30 && ACCELY < 30) idle_counter++;
+
+	if (speed < SPEED_TRES && speed > -SPEED_TRES && ACCELX > -ACCEL_TRES && ACCELX < ACCEL_TRES &&
+	    ACCELY > -ACCEL_TRES && ACCELY < ACCEL_TRES) idle_counter++;
 	else idle_counter = 0;
 
-	if (idle_counter > 1000) {
-		idle_counter=0;
+	if (idle_counter > IDLE_COUNTER) {
+		idle_counter = 0;
 		flip_active();
 	}
 }
 
 void solarfidget() {
+
 	if (active) {
 		grav_point();
 		accel_point();
@@ -252,3 +273,4 @@ void solarfidget() {
 	}
 	actions();
 }
+
