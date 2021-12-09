@@ -84,7 +84,17 @@
 #define V2A(x)		BAT_RES / VOLTS * x
 #define MAX_DIFF_BAT	32
 #define BAT_GOOD	V2A(4.23)
+
+#ifdef ARDUINO_AVR_NANO
+
 #define BAT_CRIT	V2A(3.95)
+
+#else
+
+#define BAT_CRIT	V2A(3.775)
+
+#endif
+
 #define BATTERY_IND_CNT	300
 #define BAT_CNT		1000
 #define CH_CNT		50
@@ -246,7 +256,13 @@ void _battery() {
 void battery() {
 	if (bat_cnt <= 0) {
 		_battery();
+
+#ifndef ARDUINO_AVR_NANO
+
 		if (cha_level == 0 && active) flip_active();
+
+#endif
+
 		bat_cnt=BAT_CNT;
 	}
 	else bat_cnt--;
