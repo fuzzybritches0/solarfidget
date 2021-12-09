@@ -140,6 +140,9 @@ uint8_t teapotPacket[14] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, '\r', '\
 #define PITCH		ypr[1]
 #define ROLL		ypr[2]
 #define MAX_RAD_QUAD	1.57
+#define CHARGING_PIN	8
+
+//#define POWERREPORTING
 //#define POWERSAVING
 
 #include <solarfidget.h>

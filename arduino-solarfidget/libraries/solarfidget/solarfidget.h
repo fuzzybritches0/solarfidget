@@ -65,6 +65,45 @@
 
 #endif
 
+#ifdef POWERREPORTING
+
+#define BATTERY_PIN	A1
+
+	#ifdef ARDUINO_AVR_NANO
+
+#define VOLTS		((3.07 + 1.33 * charging) * 2)
+
+	#else
+
+#define VOLTS		(3.3 * 2)
+
+	#endif
+
+#define BAT_RES		1024
+#define V2A(x)		BAT_RES / VOLTS * x
+#define MAX_DIFF_BAT	32
+#define BAT_GOOD	V2A(4.23)
+#define BAT_CRIT	V2A(3.95)
+#define BATTERY_IND_CNT	300
+#define BAT_CNT		1000
+#define CH_CNT		50
+#define CH_DELAY	10
+
+bool charging;
+bool charging_last;
+int cha_led;
+int cha_level;
+int ch_cnt;
+int bat_cnt;
+int batv;
+int batv_last;
+int battery_ind_cnt;
+float batr[4] = {.006, .000, .000};
+float batg[4] = {.000, .002, .002};
+float batb[4] = {.000, .000, .000};
+
+#endif
+
 int accel_led;
 float accel;
 int grav_led;
@@ -96,6 +135,146 @@ float br[9] = {.3, .1,  0, .8, .5, .5, .2, .1, .6};
 float bg[9] = {.3, .3,  0, .1, .3, .4, .1, .7,  0};
 float bb[9] = {.3, .5, .9,  0, .1,  0, .6, .1, .3};
 //             ME  VE  EA  MA  JU  SA  UR  NE  PL
+
+void reset_pendulum() {
+
+	accel_led=0;
+	accel=0;
+	grav_led=0;
+	grav=0;
+	flipped=0;
+	led=0;
+	speed=0;
+	speed_grav=0;
+	speed_accel=0;
+}
+
+void flip_active() {
+
+	pixels.clear();
+	pixels.show();
+
+	active=!active;
+	if (!active) {
+
+#ifdef POWERREPORTING
+
+		battery_ind_cnt=BATTERY_IND_CNT;
+
+#endif
+
+		reset_pendulum();
+	}
+
+#ifdef POWERREPORTING
+
+	else {
+		if (cha_level == 0) {
+			battery_ind_cnt=BATTERY_IND_CNT;
+		}
+	}
+#endif
+
+}
+
+#ifdef POWERREPORTING
+
+void __charger() {
+	if (cha_level != 2) cha_led++;
+	if (cha_led == NUMPIXELS_NEOPIXEL / 4) cha_led = 0;
+	pixels.clear();
+	for ( int cnt=0; cnt < NUMPIXELS_NEOPIXEL; cnt++) {
+			if (cnt % (NUMPIXELS_NEOPIXEL / 4) == cha_led)
+				pixels.setPixelColor(cnt, pixels.Color(round(255 * batr[cha_level]),
+								round(255 * batg[cha_level]),
+								round(255 * batb[cha_level])));
+	}
+	pixels.show();
+}
+
+void _charger() {
+	charging = digitalRead(CHARGING_PIN);
+	if (charging != charging_last && batv != 0) bat_cnt = BAT_CNT;
+	if (charging) __charger();
+	charging_last = charging;
+}
+
+void charger() {
+	if (ch_cnt <= 0) {
+		_charger();
+		ch_cnt = CH_CNT;
+	}
+	ch_cnt--;
+}
+
+void battery_level() {
+	pixels.clear();
+	for ( int cnt=0; cnt < NUMPIXELS_NEOPIXEL; cnt++) {
+		pixels.setPixelColor(cnt, pixels.Color(round(255 * batr[cha_level]),
+								round(255 * batg[cha_level]),
+								round(255 * batb[cha_level])));
+	}
+	pixels.show();
+}
+
+void _battery() {
+
+	int diff;
+	batv = analogRead(BATTERY_PIN);
+
+	diff = batv_last - batv;
+	if (diff < 0) diff *= -1;
+
+	if (charging) {
+		if (batv < batv_last && diff < MAX_DIFF_BAT) batv = batv_last;
+	}
+	else {
+		if (batv > batv_last && diff < MAX_DIFF_BAT) batv = batv_last;
+	}
+
+	if (batv <= BAT_CRIT) cha_level = 0;
+	else if (batv > BAT_CRIT && batv < BAT_GOOD) cha_level = 1;
+	else cha_level = 2;
+
+	batv_last = batv;
+}
+
+void battery() {
+	if (bat_cnt <= 0) {
+		_battery();
+		if (cha_level == 0 && active) flip_active();
+		bat_cnt=BAT_CNT;
+	}
+	else bat_cnt--;
+}
+
+void battery_ind() {
+	if ( battery_ind_cnt == BATTERY_IND_CNT) battery_level();
+	if (battery_ind_cnt == 1) {
+		pixels.clear();
+		pixels.show();
+	}
+	battery_ind_cnt--;
+}
+
+void when_charging() {
+
+	if (charging) {
+		mpu.setSleepEnabled(true);
+		while (charging) {
+			battery();
+			charger();
+			delay(CH_DELAY);
+		}
+		pixels.clear();
+		pixels.show();
+		mpu.setSleepEnabled(false);
+		igno_counter=IGNO_COUNTER;
+		reset_pendulum();
+	}
+}
+
+#endif
 
 void calc_accel() {
 
@@ -220,28 +399,6 @@ void next_body() {
 	if (body == sizeof(bgrav)) body = 0;
 }
 
-void reset_pendulum() {
-
-	accel_led=0;
-	accel=0;
-	grav_led=0;
-	grav=0;
-	flipped=0;	
-	led=0;
-	speed=0;
-	speed_grav=0;
-	speed_accel=0;
-}
-
-void flip_active() {
-
-	pixels.clear();
-	pixels.show();
-
-	active=!active;
-	if (!active) reset_pendulum();
-}
-
 void do_action() {
 
 	if (action == 1 && active) next_body();
@@ -301,7 +458,7 @@ void detect_motion() {
 	}
 }
 
-void solarfidget() {
+void _solarfidget() {
 
 #ifdef POWERSAVING
 
@@ -336,3 +493,20 @@ void solarfidget() {
 
 }
 
+void solarfidget() {
+
+#ifdef POWERREPORTING
+
+	charger();
+	battery();
+	when_charging();
+	if (battery_ind_cnt > 0) battery_ind();
+	else _solarfidget();
+
+#else
+
+	_solarfidget();
+
+#endif
+
+}
