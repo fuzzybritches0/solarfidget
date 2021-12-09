@@ -35,6 +35,7 @@
 // ================================================================
 
 #define QUAD_LED	NUMPIXELS_NEOPIXEL / 4
+#define MAX_RAD_QUAD	1.57
 #define LED_BRIGHT_MAX	255
 #define MULTIPLY_LED	100
 #define MAX_LED		QUAD_LED * MULTIPLY_LED
@@ -125,8 +126,11 @@ int body;
 bool active = true;
 int idle_counter;
 
+#ifdef POWERSAVING
+
 int igno_counter = IGNO_COUNTER;
 
+#endif
 
 // Mercury(0.38g) Venus(0.904g) Earth(1g) Mars(0.3794g) Jupiter(2.528g)
 // Saturn(1.065g) Uranus(0.886g) Neptune(1.14g) Pluto(0.063g)
@@ -432,6 +436,8 @@ void actions() {
 	}
 }
 
+#ifdef POWERSAVING
+
 void powersave() {
 	mpu.setSleepEnabled(true);
 	delay(POWERSAVE_DELAY);
@@ -439,6 +445,8 @@ void powersave() {
 	mpu.setSleepEnabled(false);
 	igno_counter=IGNO_COUNTER;
 }
+
+#endif
 
 void detect_motion() {
 
