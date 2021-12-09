@@ -276,13 +276,25 @@ mpu.PrintActiveOffsets();
 ```
 
 Comment those lines and uncomment the lines above starting with mpu.set???
-and replace the values you just noted down for Gyro and Accel. Then,
-comment the following line, so the Arduino won't wait for a serial
+and replace the values you just noted down for Gyro and Accel.
+
+Then, comment the following line, so the Arduino won't wait for a serial
 connection when not connected to USB:
 
 ```
 #define SERIAL_DEBUG
 ```
+
+If you want power saving, uncomment the following line.
+
+```
+//#define POWERSAVING
+```
+
+If in power saving mode, before you try enabling the fidget, hold it for a
+few seconds in your hands. If you have trouble enabling it, just flip it
+continuously by 180 degrees until it enables. Power saving mode is only
+active when the fidget is off and sitting still.
 
 Save the file and upload the programme again.
 
