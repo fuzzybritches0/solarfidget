@@ -56,12 +56,20 @@
 #define ACTION_1	1
 #define ACTION_2	2
 
+#ifdef POWERSAVING
+
+#define IGNO_COUNTER	180
+#define POWERSAVE_DELAY	5000
+#define POWERSAVE_MODE	6
+#define NORMAL_MODE	2
+
+#endif
+
 int accel_led;
 float accel;
 int grav_led;
 float grav;
 bool flipped;
-
 int led;
 float speed;
 float speed_grav;
@@ -73,10 +81,13 @@ int counter_on;
 int counter;
 int action;
 
+int body;
+
 bool active = true;
 int idle_counter;
 
-int body;
+int igno_counter = IGNO_COUNTER;
+
 
 // Mercury(0.38g) Venus(0.904g) Earth(1g) Mars(0.3794g) Jupiter(2.528g)
 // Saturn(1.065g) Uranus(0.886g) Neptune(1.14g) Pluto(0.063g)
@@ -209,13 +220,26 @@ void next_body() {
 	if (body == sizeof(bgrav)) body = 0;
 }
 
+void reset_pendulum() {
+
+	accel_led=0;
+	accel=0;
+	grav_led=0;
+	grav=0;
+	flipped=0;	
+	led=0;
+	speed=0;
+	speed_grav=0;
+	speed_accel=0;
+}
+
 void flip_active() {
 
+	pixels.clear();
+	pixels.show();
+
 	active=!active;
-	if (!active) {
-		pixels.clear();
-		pixels.show();
-	}
+	if (!active) reset_pendulum();
 }
 
 void do_action() {
@@ -251,19 +275,54 @@ void actions() {
 	}
 }
 
+void powersave() {
+	mpu.setSleepEnabled(true);
+	delay(POWERSAVE_DELAY);
+	idle_counter=IDLE_COUNTER;
+	mpu.setSleepEnabled(false);
+	igno_counter=IGNO_COUNTER;
+}
+
 void detect_motion() {
 
 	if (speed < SPEED_TRES && speed > -SPEED_TRES && ACCELX > -ACCEL_TRES && ACCELX < ACCEL_TRES &&
 	    ACCELY > -ACCEL_TRES && ACCELY < ACCEL_TRES) idle_counter++;
 	else idle_counter = 0;
 
-	if (idle_counter > IDLE_COUNTER) {
-		idle_counter = 0;
-		flip_active();
+	if (idle_counter >= IDLE_COUNTER) {
+		if (active) flip_active();
+
+#ifdef POWERSAVING
+
+		powersave();
+
+#endif
+
 	}
 }
 
 void solarfidget() {
+
+#ifdef POWERSAVING
+
+	if (igno_counter > 0) igno_counter--;
+	else {
+		actions();
+		if (active) {
+			if (mpu.getDLPFMode() != NORMAL_MODE) {
+				mpu.setDLPFMode(NORMAL_MODE);
+				igno_counter=IGNO_COUNTER;
+				reset_pendulum();
+			}
+			grav_point();
+			accel_point();
+			calc_pos();
+		}
+		else mpu.setDLPFMode(POWERSAVE_MODE);
+		detect_motion();
+	}
+
+#else
 
 	if (active) {
 		grav_point();
@@ -272,5 +331,8 @@ void solarfidget() {
 		detect_motion();
 	}
 	actions();
+
+#endif
+
 }
 
