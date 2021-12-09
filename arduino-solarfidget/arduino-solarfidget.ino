@@ -144,6 +144,7 @@ uint8_t teapotPacket[14] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, '\r', '\
 
 //#define POWERREPORTING
 //#define POWERSAVING
+#define SERIAL_DEBUG
 
 #include <solarfidget.h>
 
@@ -171,6 +172,7 @@ void setup() {
         Fastwire::setup(400, true);
     #endif
 
+    #ifdef SERIAL_DEBUG
     // initialize serial communication
     // (115200 chosen because it is required for Teapot Demo output, but it's
     // really up to you depending on your project)
@@ -185,12 +187,16 @@ void setup() {
 
     // initialize device
     Serial.println(F("Initializing I2C devices..."));
+    #endif
+
     mpu.initialize();
     pinMode(INTERRUPT_PIN, INPUT);
 
+    #ifdef SERIAL_DEBUG
     // verify connection
     Serial.println(F("Testing device connections..."));
     Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
+    #endif
 
     // wait for ready
     //Serial.println(F("\nSend any character to begin DMP programming and demo: "));
@@ -198,8 +204,11 @@ void setup() {
     //while (!Serial.available());                 // wait for data
     //while (Serial.available() && Serial.read()); // empty buffer again
 
+    #ifdef SERIAL_DEBUG
     // load and configure the DMP
     Serial.println(F("Initializing DMP..."));
+    #endif
+
     devStatus = mpu.dmpInitialize();
 
     //mpu.setXAccelOffset(-1754);
@@ -216,24 +225,36 @@ void setup() {
         mpu.CalibrateAccel(6);
         mpu.CalibrateGyro(6);
         mpu.PrintActiveOffsets();
+
+        #ifdef SERIAL_DEBUG
         // turn on the DMP, now that it's ready
         Serial.println(F("Enabling DMP..."));
+        #endif
+
         mpu.setDMPEnabled(true);
 
+        #ifdef SERIAL_DEBUG
         // enable Arduino interrupt detection
         Serial.print(F("Enabling interrupt detection (Arduino external interrupt "));
         Serial.print(digitalPinToInterrupt(INTERRUPT_PIN));
         Serial.println(F(")..."));
+        #endif
+
         attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), dmpDataReady, RISING);
         mpuIntStatus = mpu.getIntStatus();
 
+        #ifdef SERIAL_DEBUG
         // set our DMP Ready flag so the main loop() function knows it's okay to use it
         Serial.println(F("DMP ready! Waiting for first interrupt..."));
+        #endif
+
         dmpReady = true;
 
         // get expected DMP packet size for later comparison
         packetSize = mpu.dmpGetFIFOPacketSize();
     } else {
+
+        #ifdef SERIAL_DEBUG
         // ERROR!
         // 1 = initial memory load failed
         // 2 = DMP configuration updates failed
@@ -241,6 +262,8 @@ void setup() {
         Serial.print(F("DMP Initialization failed (code "));
         Serial.print(devStatus);
         Serial.println(F(")"));
+        #endif
+
     }
 
     // configure LED for output
