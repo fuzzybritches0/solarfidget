@@ -100,6 +100,8 @@
 #define CH_CNT		50
 #define CH_DELAY	10
 
+#define BODIES		9
+
 bool charging;
 bool charging_last;
 int cha_led;
@@ -416,7 +418,7 @@ void grav_point() {
 void next_body() {
 
 	body++;
-	if (body == sizeof(bgrav)) body = 0;
+	if (body == BODIES) body = 0;
 }
 
 void do_action() {
