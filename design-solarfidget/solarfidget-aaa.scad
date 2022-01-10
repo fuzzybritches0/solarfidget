@@ -51,7 +51,7 @@ module washer_inserts() {
 
 module battery_wiring_holes() {
 
-	translate([-26,2.3,4.8]) rotate([0,90,0]) cylinder(r=.75, h=5, $fn=res);
+	translate([-27,2.3,4.8]) rotate([0,90,0]) cylinder(r=.75, h=5, $fn=res);
 	translate([22.2,-aaar*4+2.5,3.9]) rotate([0,90,0]) cylinder(r=.75, h=5, $fn=res);
 	translate([-24.8,-17,7]) rotate([0,90,90]) cylinder(r=.5, h=12, $fn=res);
 	translate([25.2,-7,7]) rotate([0,90,90]) cylinder(r=.5, h=12, $fn=res);
