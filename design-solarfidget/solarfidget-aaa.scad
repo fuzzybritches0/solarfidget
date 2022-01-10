@@ -336,6 +336,6 @@ module LEDstripe() {
 	}
 }
 
-//top();
+top();
 translate([0,0,-40]) bottom();
 
