@@ -52,6 +52,8 @@
 #define GRAV_MULTI	3
 #define DRAG		.3
 
+#define BODIES		9
+
 #define IDLE_COUNTER	1000
 #define ACTION_COUNTER	120
 #define ACTION_1	1
@@ -59,48 +61,28 @@
 
 #ifdef POWERSAVING
 
-#define IGNO_COUNTER	180
+#define AUTO_OFF
 #define POWERSAVE_DELAY	5000
 #define POWERSAVE_MODE	6
 #define NORMAL_MODE	2
 
 #endif
+#define IGNO_COUNTER	180
 
 #ifdef POWERREPORTING
 
 #define BATTERY_PIN	A1
-
-	#ifdef ARDUINO_AVR_NANO
-
-#define VOLTS		((3.07 + 1.33 * charging) * 2)
-
-	#else
-
-#define VOLTS		(3.3 * 2)
-
-	#endif
-
+#define VOLTS		(3.33 * 2)
 #define BAT_RES		1024
 #define V2A(x)		BAT_RES / VOLTS * x
 #define MAX_DIFF_BAT	32
-#define BAT_GOOD	V2A(4.23)
-
-#ifdef ARDUINO_AVR_NANO
-
-#define BAT_CRIT	V2A(3.95)
-
-#else
-
+#define BAT_GOOD	V2A(4.24)
 #define BAT_CRIT	V2A(3.775)
-
-#endif
 
 #define BATTERY_IND_CNT	300
 #define BAT_CNT		1000
 #define CH_CNT		50
 #define CH_DELAY	10
-
-#define BODIES		9
 
 bool charging;
 bool charging_last;
@@ -111,9 +93,9 @@ int bat_cnt;
 int batv;
 int batv_last;
 int battery_ind_cnt;
-float batr[4] = {.006, .000, .000};
-float batg[4] = {.000, .002, .002};
-float batb[4] = {.000, .000, .000};
+float batr[3] = {.006, .000, .000};
+float batg[3] = {.000, .002, .002};
+float batb[3] = {.000, .000, .000};
 
 #endif
 
@@ -135,21 +117,19 @@ int action;
 
 int body;
 
+#ifdef AUTO_OFF
 bool active = true;
 int idle_counter;
-
-#ifdef POWERSAVING
+#endif
 
 int igno_counter = IGNO_COUNTER;
 
-#endif
-
 // Mercury(0.38g) Venus(0.904g) Earth(1g) Mars(0.3794g) Jupiter(2.528g)
 // Saturn(1.065g) Uranus(0.886g) Neptune(1.14g) Pluto(0.063g)
-float bgrav[9] = {.38, .904, 1, .3794, 2.528, 1.065 , .886, 1.14, .063};
-float br[9] = {.3, .1,  0, .8, .5, .5, .2, .1, .6};
-float bg[9] = {.3, .3,  0, .1, .3, .4, .1, .7,  0};
-float bb[9] = {.3, .5, .9,  0, .1,  0, .6, .1, .3};
+float bgrav[BODIES] = {.38, .904, 1, .3794, 2.528, 1.065 , .886, 1.14, .063};
+float br[BODIES] = {.3, .1,  0, .8, .5, .5, .2, .1, .6};
+float bg[BODIES] = {.3, .3,  0, .1, .3, .4, .1, .7,  0};
+float bb[BODIES] = {.3, .5, .9,  0, .1,  0, .6, .1, .3};
 //             ME  VE  EA  MA  JU  SA  UR  NE  PL
 
 void reset_pendulum() {
@@ -165,6 +145,8 @@ void reset_pendulum() {
 	speed_accel=0;
 }
 
+#ifdef AUTO_OFF
+
 void flip_active() {
 
 	pixels.clear();
@@ -173,25 +155,24 @@ void flip_active() {
 	active=!active;
 	if (!active) {
 
-#ifdef POWERREPORTING
+
+	#ifdef POWERREPORTING
 
 		battery_ind_cnt=BATTERY_IND_CNT;
-
-#endif
+	#endif
 
 		reset_pendulum();
 	}
 
 #ifdef POWERREPORTING
-
 	else {
 		if (cha_level == 0) {
 			battery_ind_cnt=BATTERY_IND_CNT;
 		}
 	}
 #endif
-
 }
+#endif
 
 #ifdef POWERREPORTING
 
@@ -259,11 +240,11 @@ void battery() {
 	if (bat_cnt <= 0) {
 		_battery();
 
-#ifndef ARDUINO_AVR_NANO
+	#ifndef ARDUINO_AVR_NANO
 
 		if (cha_level == 0 && active) flip_active();
 
-#endif
+	#endif
 
 		bat_cnt=BAT_CNT;
 	}
@@ -423,8 +404,13 @@ void next_body() {
 
 void do_action() {
 
+#ifdef AUTO_OFF
 	if (action == 1 && active) next_body();
 	if (action == 2) flip_active();
+#else
+	if (action == 1 ) next_body();
+
+#endif
 }
 
 void actions() {
@@ -463,8 +449,9 @@ void powersave() {
 	mpu.setSleepEnabled(false);
 	igno_counter=IGNO_COUNTER;
 }
-
 #endif
+
+#ifdef AUTO_OFF
 
 void detect_motion() {
 
@@ -474,48 +461,43 @@ void detect_motion() {
 
 	if (idle_counter >= IDLE_COUNTER) {
 		if (active) flip_active();
-
 #ifdef POWERSAVING
-
 		powersave();
-
 #endif
-
 	}
 }
+#endif
 
 void _solarfidget() {
-
-#ifdef POWERSAVING
 
 	if (igno_counter > 0) igno_counter--;
 	else {
 		actions();
+#ifdef AUTO_OFF
 		if (active) {
+#ifdef POWERSAVING
 			if (mpu.getDLPFMode() != NORMAL_MODE) {
 				mpu.setDLPFMode(NORMAL_MODE);
 				igno_counter=IGNO_COUNTER;
 				reset_pendulum();
 			}
+#endif
 			grav_point();
 			accel_point();
 			calc_pos();
 		}
-		else mpu.setDLPFMode(POWERSAVE_MODE);
-		detect_motion();
-	}
-
 #else
-
-	if (active) {
 		grav_point();
 		accel_point();
 		calc_pos();
-		detect_motion();
-	}
-	actions();
-
 #endif
+#ifdef POWERSAVING
+		else mpu.setDLPFMode(POWERSAVE_MODE);
+#endif
+#ifdef AUTO_OFF
+		detect_motion();
+#endif
+	}
 
 }
 
