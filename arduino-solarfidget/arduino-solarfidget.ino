@@ -18,7 +18,8 @@
 #define PIN_NEOPIXEL        6 // On Trinket or Gemma, suggest changing this to 1
 
 // How many NeoPixels are attached to the Arduino?
-#define NUMPIXELS_NEOPIXEL 36 // Popular NeoPixel ring size
+#define NUMPIXELS_NEOPIXEL 36
+//#define NUMPIXELS_NEOPIXEL 32
 
 // When setting up the NeoPixel library, we tell it how many pixels,
 // and which pin to use to send signals. Note that for older NeoPixel
@@ -139,12 +140,12 @@ uint8_t teapotPacket[14] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, '\r', '\
 #define ACCELY		(float)aaReal.y
 #define PITCH		ypr[1]
 #define ROLL		ypr[2]
-#define MAX_RAD_QUAD	1.57
 #define CHARGING_PIN	8
-
 //#define POWERREPORTING
 //#define POWERSAVING
-#define SERIAL_DEBUG
+#define AUTO_OFF
+//#define SERIAL_DEBUG
+//#define FIDGET 1
 
 #include <solarfidget.h>
 
@@ -162,8 +163,10 @@ void dmpDataReady() {
 // ================================================================
 
 void setup() {
+
     // INITIALIZE NeoPixel strip object
     pixels.begin();
+
     // join I2C bus (I2Cdev library doesn't do this automatically)
     #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
         Wire.begin();
@@ -177,7 +180,7 @@ void setup() {
     // (115200 chosen because it is required for Teapot Demo output, but it's
     // really up to you depending on your project)
     Serial.begin(115200);
-    //while (!Serial); // wait for Leonardo enumeration, others continue immediately
+    while (!Serial); // wait for Leonardo enumeration, others continue immediately
 
     // NOTE: 8MHz or slower host processors, like the Teensy @ 3.3V or Arduino
     // Pro Mini running at 3.3V, cannot handle this baud rate reliably due to
@@ -198,39 +201,34 @@ void setup() {
     Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
     #endif
 
-    // wait for ready
-    //Serial.println(F("\nSend any character to begin DMP programming and demo: "));
-    //while (Serial.available() && Serial.read()); // empty buffer
-    //while (!Serial.available());                 // wait for data
-    //while (Serial.available() && Serial.read()); // empty buffer again
-
-    #ifdef SERIAL_DEBUG
     // load and configure the DMP
+    #ifdef SERIAL_DEBUG
     Serial.println(F("Initializing DMP..."));
     #endif
-
     devStatus = mpu.dmpInitialize();
 
-    //mpu.setXAccelOffset(-1754);
-    //mpu.setYAccelOffset(-1097);
-    //mpu.setZAccelOffset(982);
-    // supply your own gyro offsets here, scaled for min sensitivity
-    //mpu.setXGyroOffset(121);
-    //mpu.setYGyroOffset(-12);
-    //mpu.setZGyroOffset(4);
+#if (FIDGET == 1)
+    mpu.setXAccelOffset(-5008);
+    mpu.setYAccelOffset(-1957);
+    mpu.setZAccelOffset(1520);
+    mpu.setXGyroOffset(26);
+    mpu.setYGyroOffset(-95);
+    mpu.setZGyroOffset(19);
+#endif
+
 
     // make sure it worked (returns 0 if so)
     if (devStatus == 0) {
         // Calibration Time: generate offsets and calibrate our MPU6050
-        mpu.CalibrateAccel(6);
-        mpu.CalibrateGyro(6);
+        #ifdef SERIAL_DEBUG
+        mpu.CalibrateAccel(20);
+	Serial.println("");
+        mpu.CalibrateGyro(20);
         mpu.PrintActiveOffsets();
 
-        #ifdef SERIAL_DEBUG
         // turn on the DMP, now that it's ready
         Serial.println(F("Enabling DMP..."));
         #endif
-
         mpu.setDMPEnabled(true);
 
         #ifdef SERIAL_DEBUG
@@ -243,32 +241,36 @@ void setup() {
         attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), dmpDataReady, RISING);
         mpuIntStatus = mpu.getIntStatus();
 
-        #ifdef SERIAL_DEBUG
         // set our DMP Ready flag so the main loop() function knows it's okay to use it
+        #ifdef SERIAL_DEBUG
         Serial.println(F("DMP ready! Waiting for first interrupt..."));
         #endif
-
         dmpReady = true;
 
         // get expected DMP packet size for later comparison
         packetSize = mpu.dmpGetFIFOPacketSize();
     } else {
-
-        #ifdef SERIAL_DEBUG
         // ERROR!
         // 1 = initial memory load failed
         // 2 = DMP configuration updates failed
         // (if it's going to break, usually the code will be 1)
+        #ifdef SERIAL_DEBUG
         Serial.print(F("DMP Initialization failed (code "));
         Serial.print(devStatus);
         Serial.println(F(")"));
         #endif
-
     }
 
     // configure LED for output
     pinMode(LED_PIN, OUTPUT);
+
+    #ifdef POWERREPORTING
+    // configure charging pin
+    pinMode(CHARGING_PIN, INPUT);
+    #endif
 }
+
+
 
 // ================================================================
 // ===                    MAIN PROGRAM LOOP                     ===
