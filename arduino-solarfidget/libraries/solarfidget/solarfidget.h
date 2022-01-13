@@ -59,17 +59,18 @@
 #define ACTION_1	1
 #define ACTION_2	2
 
-#ifdef POWERSAVING
+	#ifdef POWERSAVING
 
 #define AUTO_OFF
 #define POWERSAVE_DELAY	5000
 #define POWERSAVE_MODE	6
 #define NORMAL_MODE	2
 
-#endif
+	#endif
+
 #define IGNO_COUNTER	180
 
-#ifdef POWERREPORTING
+	#ifdef POWERREPORTING
 
 #define BATTERY_PIN	A1
 #define VOLTS		(3.33 * 2)
@@ -97,7 +98,7 @@ float batr[3] = {.006, .000, .000};
 float batg[3] = {.000, .002, .002};
 float batb[3] = {.000, .000, .000};
 
-#endif
+	#endif
 
 int accel_led;
 float accel;
@@ -117,10 +118,12 @@ int action;
 
 int body;
 
-#ifdef AUTO_OFF
+	#ifdef AUTO_OFF
+
 bool active = true;
 int idle_counter;
-#endif
+
+	#endif
 
 int igno_counter = IGNO_COUNTER;
 
@@ -145,7 +148,7 @@ void reset_pendulum() {
 	speed_accel=0;
 }
 
-#ifdef AUTO_OFF
+	#ifdef AUTO_OFF
 
 void flip_active() {
 
@@ -156,25 +159,30 @@ void flip_active() {
 	if (!active) {
 
 
-	#ifdef POWERREPORTING
+		#ifdef POWERREPORTING
 
 		battery_ind_cnt=BATTERY_IND_CNT;
-	#endif
+
+		#endif
 
 		reset_pendulum();
 	}
 
-#ifdef POWERREPORTING
+		#ifdef POWERREPORTING
+
 	else {
 		if (cha_level == 0) {
 			battery_ind_cnt=BATTERY_IND_CNT;
 		}
 	}
-#endif
-}
-#endif
 
-#ifdef POWERREPORTING
+		#endif
+
+}
+
+	#endif
+
+	#ifdef POWERREPORTING
 
 void __charger() {
 	if (cha_level != 2) cha_led++;
@@ -240,11 +248,11 @@ void battery() {
 	if (bat_cnt <= 0) {
 		_battery();
 
-	#ifndef ARDUINO_AVR_NANO
+		#ifndef ARDUINO_AVR_NANO
 
 		if (cha_level == 0 && active) flip_active();
 
-	#endif
+		#endif
 
 		bat_cnt=BAT_CNT;
 	}
@@ -277,7 +285,7 @@ void when_charging() {
 	}
 }
 
-#endif
+	#endif
 
 void calc_accel() {
 
@@ -404,13 +412,17 @@ void next_body() {
 
 void do_action() {
 
-#ifdef AUTO_OFF
+	#ifdef AUTO_OFF
+
 	if (action == 1 && active) next_body();
 	if (action == 2) flip_active();
-#else
+
+	#else
+
 	if (action == 1 ) next_body();
 
-#endif
+	#endif
+
 }
 
 void actions() {
@@ -440,7 +452,7 @@ void actions() {
 	}
 }
 
-#ifdef POWERSAVING
+	#ifdef POWERSAVING
 
 void powersave() {
 	mpu.setSleepEnabled(true);
@@ -449,9 +461,10 @@ void powersave() {
 	mpu.setSleepEnabled(false);
 	igno_counter=IGNO_COUNTER;
 }
-#endif
 
-#ifdef AUTO_OFF
+	#endif
+
+	#ifdef AUTO_OFF
 
 void detect_motion() {
 
@@ -461,49 +474,71 @@ void detect_motion() {
 
 	if (idle_counter >= IDLE_COUNTER) {
 		if (active) flip_active();
-#ifdef POWERSAVING
+
+		#ifdef POWERSAVING
+
 		powersave();
-#endif
+
+		#endif
+
 	}
 }
-#endif
+
+	#endif
 
 void _solarfidget() {
 
 	if (igno_counter > 0) igno_counter--;
 	else {
 		actions();
-#ifdef AUTO_OFF
+
+	#ifdef AUTO_OFF
+
 		if (active) {
-#ifdef POWERSAVING
+
+		#ifdef POWERSAVING
+
 			if (mpu.getDLPFMode() != NORMAL_MODE) {
 				mpu.setDLPFMode(NORMAL_MODE);
 				igno_counter=IGNO_COUNTER;
 				reset_pendulum();
 			}
-#endif
+
+		#endif
+
 			grav_point();
 			accel_point();
 			calc_pos();
 		}
-#else
+
+	#else
+
 		grav_point();
 		accel_point();
 		calc_pos();
-#endif
-#ifdef POWERSAVING
+
+	#endif
+
+	#ifdef POWERSAVING
+
 		else mpu.setDLPFMode(POWERSAVE_MODE);
-#endif
-#ifdef AUTO_OFF
+
+	#endif
+
+	#ifdef AUTO_OFF
+
 		detect_motion();
-#endif
+
+
+	#endif
+
 	}
 
 }
 
 void solarfidget() {
 
-#ifdef POWERREPORTING
+	#ifdef POWERREPORTING
 
 	charger();
 	battery();
@@ -511,10 +546,10 @@ void solarfidget() {
 	if (battery_ind_cnt > 0) battery_ind();
 	else _solarfidget();
 
-#else
+	#else
 
 	_solarfidget();
 
-#endif
+	#endif
 
 }
