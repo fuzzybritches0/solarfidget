@@ -5,7 +5,7 @@ fidget calculates the position of a rotating pendulum that reacts to
 acceleration and gravity and simulates the effect of gravity on different
 bodies in our solar system (including Pluto).
 
-Concept, Design and Idea **(C)** 2021 Kurt Manucredo, under the
+Concept, Design and Idea **(C)** 2021-2022 Kurt Manucredo, under the
 CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL 4.0 INTERNATIONAL PUBLIC LICENSE
 
 For more information on Copyright please refer to the respective files and
@@ -47,11 +47,11 @@ thrice by 180 degrees. If there is no change, try doing it faster.*
 
 ## 2.1 PARTS NEEDED
 
-- 1x Arduino Nano or Arduino compatible
+- 1x Arduino Nano or compatible
 - 1x MPU6050 breakout board
-- 1x battery charging breakout board
+- 1x TP4056 battery charging breakout board
 - 1x 32 addressable LEDs stripe (\*)
-- 1x HS170 380mAh LiPo battery with Molex plug
+- 1x 44x24.5x9mm 750mAh LiPo battery with Molex plug
 - 1x male Molex plug (\*\*)
 - 1x 3d-printed models of both the fidget and charger parts (\*\*\*)
 - 1x USB mini cable
