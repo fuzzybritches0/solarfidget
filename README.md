@@ -167,10 +167,9 @@ Arduino.
 #### 2.3.5.2 MPU6050
 
 Solder **VIN** from the MPU6050 to **3V3** on the Arduino and **ground**
-the MPU6050.  Now, solder **SCL**, **SDA** and **INT** from the MPU6050 to
-**A5**, **A4** and **D2** on the Arduino, respectively. On the Arduino I
-used, **A5** and **A4** are for **SCL** and **SDA**. Your Arduino may
-differ but both the Arduino Nano and Nano 33 use the same analogue pins.
+the MPU6050 on the battery charging breakout board.  Now, solder **SCL**,
+**SDA** and **INT** from the MPU6050 to **A5**, **A4** and **D2** on the
+Arduino, respectively.
 
 #### 2.3.5.3 MOLEX plug
 
