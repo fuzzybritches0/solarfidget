@@ -99,8 +99,9 @@ Cut the USB mini cable about 10cm from the mini USB plug side. Carefully
 remove the PVC coat and the shielding. There should be four cables: one
 **black**, one **red**, one **white** and one **green**. Also remove as
 much of the hard plastic from the mini USB plug as possible - we only
-have limited space - but don't break the plug. Also make sure both the
-**red** and **black** cables are **+5V** and **GND**, respectively.
+have limited space - but don't break the plug. We won't be using the
+**red** or the **black** cable. If you messed them up, we are still good to
+go.
 
 ### 2.3.3 Fidget
 
