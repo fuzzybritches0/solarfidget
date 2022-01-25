@@ -108,30 +108,30 @@ go.
 Now, we will work on the part of the fidget that houses all the
 electronics, that is, the top part.
 
-Place the top part of the fidget in front of you facing the inside and
-having the charging towers face left. Connect the cables of the mini USB
-plug as follows from top to bottom: **black**, **white**, **green**,
-**red**; and add one cable to the red cable; there is an extra hole for
-that. Later, solder this cable to the battery charging breakout board and
-ground the board on the Arduino.
+Place the top part of the fidget in front of you, facing the inside and
+having the charging towers face up. Connect the two cables of the mini USB
+plug as follows from left to right (leave the first and fourth empty):
+**white**, **green**
+
+Add a red cable for **+5V** to the first tower and a black cable to the
+last tower for **GND**.
 
 Use the **M3 nuts** and **M3x4mm bolts** to secure the cables. Clean the
 inside of the towers if there is loose or deformed material inside from
-printing the overhang. Use a **longer** M3 bolt to drive the nut into its
-place, enough so, that you can still push the cable into the hole below
-the nut. Then drive the nuts down all the way and secure the cables. Make
-sure there is **only blank wire** between the nut and the tower. Keep the
-blank wire **short**. If it's too long it may curl up around the bold,
-when fixing it, which we don't want to happen.
+printing the overhang. Push the nuts inside the towers.
+
+Make sure there is **only blank wire** between the nut and the tower. Keep
+the blank wire away form the bold. We don't want the wire to curl around
+the bolt.
 
 Connect the Arduino Nano to the mini USB plug. Push the Arduino inside its
 proper place. Push the battery charging breakout board into its proper
-place. Finally push the MPU6050 breakout board into its proper place,
-next to the battery, on the right side. Have the MPU6050 **face up**. On
-the MPU6050 have the **X-axis** point to the **right and left**.
+place. Finally push the MPU6050 breakout board into its proper place. Have
+the MPU6050 **face up**. On the MPU6050 have the **X-axis** point to the
+**right and left**.
 
-![all installed](./assets/all_installed.jpg)\
-*Fig. 3: Magnets and hardware installed. Arduino plugged in.*
+![all installed](./assets/images/fidget_hardware_installed.jpg)\
+*Pic. 3: Magnets and hardware installed. Arduino plugged in.*
 * * *
 
 ### 2.3.4 LED strip
