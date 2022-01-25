@@ -173,16 +173,18 @@ Arduino, respectively.
 
 #### 2.3.5.3 MOLEX plug
 
-Solder two cables to the **male MOLEX plug**. When you connect a battery
-to the plug, you can see which cable is which. Make sure the plug and
-cable are properly isolated. Use **shrink tubing**. ***Never solder with a
+Solder two cables to the **male MOLEX plug**. When you connect a battery to
+the plug, you can see which cable is which. Make sure the plug and cable
+are properly isolated. Use **shrink tubing**. ***Never solder with a
 connected battery!***
 
-![molex_plug](./assets/molex_plug.jpg)\
-*Fig. 5: Male Molex plug.*
+![molex_plug](./assets/images/molex_plug.jpg)\
+*Pic. 5: Male Molex plug.*
 * * *
 
-Solder the two cables to **BAT+** and **BAT-** accordingly.
+Solder the two cables to **BAT+** and **BAT-** on the battery charging
+breakout board, accordingly. **If you do it the wrong way and connect a
+battery your board will get fried and smoke will come out.**
 
 #### 2.3.5.4 32 addressable LEDs strip
 
