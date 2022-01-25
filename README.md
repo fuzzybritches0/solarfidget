@@ -234,14 +234,14 @@ opposite the charging station's charging towers.
 Now, wind the blank wires of the four cables around the end of the bolts.
 Have as much blank wire as possible go around and make it really tight.
 
-![charger contacts wound tight](./assets/images/charger_contacs_wound_tight.jpg)\
+![charger contacts wound tight](./assets/images/charger_contacts_wound_tight.jpg)\
 *Pic 10: The wire is wound up around the bolts tight so as to give a good
 contact and reduce the resistance as much as possible.*
 * * *
 
 Now, apply tin-solder on all of the blank wire.
 
-![charger contacts soldered](./assets/images/charger_contacs_soldered.jpg)\
+![charger contacts soldered](./assets/images/charger_contacts_soldered.jpg)\
 *Pic 11: The wire will act as a sponge when you apply tin-solder. Apply
 plenty.*
 
