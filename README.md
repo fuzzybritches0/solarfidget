@@ -11,7 +11,7 @@ CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL 4.0 INTERNATIONAL PUBLIC LICENSE
 For more information on Copyright please refer to the respective files and
 the LICENSE-* files.
 
-![solarfidget](./assets/solarfidget.gif)
+![solarfidget](./assets/gifs/solarfidget.gif)
 * * *
 
 # 1. MANUAL INSTRUCTIONS
@@ -30,14 +30,14 @@ You can travel the following bodies in our solarsystem in order:
 - Neptune (1.14g)   (green)
 - Pluto   (0.063g)  (pink)
 
-![solarfidget planet](./assets/solarfidget_planet.gif)\
+![solarfidget planet](./assets/gifs/solarfidget_planet.gif)\
 *To travel from planet to planet hold the fidget horizontally, turn it
 twice by 180 degrees. If there is no change, try doing it faster.*
 * * *
 
 ## 1.2 TURN THE LIGHT ON AND OFF
 
-![solarfidget off](./assets/solarfidget_off.gif)\
+![solarfidget off](./assets/gifs/solarfidget_off.gif)\
 *To turn the lightfidget on or off hold the fidget horizontally, turn it
 thrice by 180 degrees. If there is no change, try doing it faster.*
 
