@@ -274,23 +274,40 @@ Open the serial monitor. Compile and upload the programme to the Arduino.
 Wait for the Arduino to reset and start. Look at the serial monitor and
 note down the **calibration values**. Now, open the file:
 `arduino-solarfidget/arduino-solarfidget.ino` and find the follwoing
-lines:
-
-```
-mpu.CalibrateAccel(6);
-mpu.CalibrateGyro(6);
-mpu.PrintActiveOffsets();
-```
-
-Comment those lines and uncomment the lines above starting with mpu.set???
-and replace the values you just noted down for Gyro and Accel.
-
-Then, comment the following line, so the Arduino won't wait for a serial
-connection when not connected to USB:
+line:
 
 ```
 #define SERIAL_DEBUG
 ```
+
+Comment out this line so that it lookes like this:
+
+```
+//#define SERIAL_DEBUG
+```
+
+Find and uncomment the line:
+
+```
+//#define FIDGET 1
+```
+
+Now, find the lines:
+
+```
+#if (FIDGET == 1)
+    // Fill in your calibration values here
+    mpu.setXAccelOffset(0);
+    mpu.setYAccelOffset(0);
+    mpu.setZAccelOffset(0);
+    mpu.setXGyroOffset(0);
+    mpu.setYGyroOffset(0);
+    mpu.setZGyroOffset(0);
+#endif
+```
+
+and replace the **0 values** with the values you just noted down for Gyro
+and Accel.
 
 If you want power saving, uncomment the following line.
 
