@@ -1,9 +1,9 @@
 # 		ORIGINAL SOLARFIDGET
 
-Using an LED-Ring (of 32 rgb leds) and an MPU6050 gyro/accel, this
-fidget calculates the position of a rotating pendulum that reacts to
-acceleration and gravity and simulates the effect of gravity on different
-bodies in our solar system (including Pluto).
+Using an LED strip (of 32 WS2812B individually addressable LEDs) and an
+MPU6050 gyro/accel, this fidget calculates the position of a rotating
+pendulum that reacts to acceleration and gravity and simulates the effect
+of gravity on different bodies in our solar system (including Pluto).
 
 Concept, Design and Idea **(C)** 2021-2022 Kurt Manucredo, under the
 CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL 4.0 INTERNATIONAL PUBLIC LICENSE
