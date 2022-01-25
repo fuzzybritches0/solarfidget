@@ -75,11 +75,8 @@ thrice by 180 degrees. If there is no change, try doing it faster.*
 ## 2.2 OPENSCAD RENDERINGS
 
 ![solarfidget](./assets/images/solarfidget-scad.jpg)\
-*Fig. 1: The two parts pictured above compose the solarfidget*
-* * *
-
-![charger](./assets/charger.png)\
-*Fig. 2: These two parts compose the charger.*
+*Pic. 1: The four parts pictured above compose the solarfidget and the
+charger*
 * * *
 
 ## 2.3 BUILD INSTRUCTIONS
