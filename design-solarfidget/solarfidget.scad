@@ -1,10 +1,13 @@
-// SOLARFIDGET (C) 2021 Kurt Manucredo
+// (ORIGINAL) SOLARFIDGET (C) 2021 Kurt Manucredo
 
-// SOLARFIDGET is licensed under a
-// Creative Commons Attribution-NonCommercial 3.0 Unported License.
+// (ORIGINAL) SOLARFIDGET is licensed under a
+// CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL 4.0 INTERNATIONAL PUBLIC
+// LICENSE
 
 // You should have received a copy of the license along with this
-// work.  If not, see <http://creativecommons.org/licenses/by-nc/3.0/>.
+// work.  If not, see:
+// <https://creativecommons.org/licenses/by-nc/4.0/legalcode>
+
 
 LEDsWidth=12;
 LEDsHeight=2;

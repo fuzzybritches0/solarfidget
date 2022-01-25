@@ -1,3 +1,14 @@
+// (ORIGINAL) SOLARFIDGET (C) 2021 Kurt Manucredo
+
+// (ORIGINAL) SOLARFIDGET is licensed under a
+// CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL 4.0 INTERNATIONAL PUBLIC
+// LICENSE
+
+// You should have received a copy of the license along with this
+// work.  If not, see:
+// <https://creativecommons.org/licenses/by-nc/4.0/legalcode>
+
+
 res=100;
 innerRad=35.49;
 

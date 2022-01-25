@@ -6,7 +6,7 @@ acceleration and gravity and simulates the effect of gravity on different
 bodies in our solar system (including Pluto).
 
 Concept, Design and Idea **(C)** 2021 Kurt Manucredo, under the
-Creative Commons Attribution-NonCommercial 3.0 Unported License
+CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL 4.0 INTERNATIONAL PUBLIC LICENSE
 
 For more information on Copyright please refer to the respective files and
 the LICENSE-* files.
