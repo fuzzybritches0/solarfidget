@@ -168,7 +168,7 @@ the **Minus (-)** are the same. Then **ground** the board to the Arduino.
 
 #### 2.3.5.1 Battery charging breakout board
 
-Solder The **red** cable from the charging tower to **+In** on the battery
+Solder the **red** cable from the charging tower to **+In** on the battery
 charging breakout board. Then, solder the **black** cable to one of the
 **GND**s on the Arduino.
 
@@ -187,7 +187,8 @@ Arduino, respectively.
 Solder two cables to the **male MOLEX plug**. When you connect a battery to
 the plug, you can see which cable is which. Make sure the plug and cable
 are properly isolated. Use **shrink tubing**. ***Never solder with a
-connected battery!***
+connected battery!*** Don't bend the cables around the solder spots at the
+MOLEX plug. This will lead to broken contacts.
 
 ![molex_plug](./assets/images/molex_plug.jpg)\
 *Pic. 7: Male Molex plug.*
@@ -201,8 +202,9 @@ battery your board will get fried and smoke will come out.**
 
 Now, solder a **red** cable to **+5V**, a **black** cable to **GND** and a
 different coloured cable to **D6** on the Arduino. Then solder them to
-**+**, **DATA** and **-**, respectively; that is, the top most solder spot
-is **+**, the middle one is **DATA** and the lowest one is **-**.
+**Plus (+)**, **DATA** and **Minus (-)**, respectively; that is, the top
+most solder spot is **Plus (+)**, the middle one is **DATA** and the lowest
+one is **Minus (-)**.
 
 #### 2.3.5.5 Battery
 
@@ -235,14 +237,14 @@ Now, wind the blank wires of the four cables around the end of the bolts.
 Have as much blank wire as possible go around and make it really tight.
 
 ![charger contacts wound tight](./assets/images/charger_contacts_wound_tight.jpg)\
-*Pic 10: The wire is wound up around the bolts tight so as to give a good
+*Pic. 10: The wire is wound up around the bolts tight, so as to give a good
 contact and reduce the resistance as much as possible.*
 * * *
 
 Now, apply tin-solder on all of the blank wire.
 
 ![charger contacts soldered](./assets/images/charger_contacts_soldered.jpg)\
-*Pic 11: The wire will act as a sponge when you apply tin-solder. Apply
+*Pic. 11: The wire will act as a sponge when you apply tin-solder. Apply
 plenty.*
 
 Before we close up the fidget we need to do the software and fine-tune the
