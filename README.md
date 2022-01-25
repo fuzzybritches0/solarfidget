@@ -1,6 +1,6 @@
 # 		ORIGINAL SOLARFIDGET
 
-Using an LED-Ring (of 36 rgb leds) and an MPU6050 gyro/accel, this
+Using an LED-Ring (of 32 rgb leds) and an MPU6050 gyro/accel, this
 fidget calculates the position of a rotating pendulum that reacts to
 acceleration and gravity and simulates the effect of gravity on different
 bodies in our solar system (including Pluto).
@@ -47,10 +47,10 @@ thrice by 180 degrees. If there is no change, try doing it faster.*
 
 ## 2.1 PARTS NEEDED
 
-- 1x Arduino Nano or Arduino Nano 33
+- 1x Arduino Nano or Arduino compatible
 - 1x MPU6050 breakout board
 - 1x battery charging breakout board
-- 1x 36 addressable LEDs stripe (\*)
+- 1x 32 addressable LEDs stripe (\*)
 - 1x HS170 380mAh LiPo battery with Molex plug
 - 1x male Molex plug (\*\*)
 - 1x 3d-printed models of both the fidget and charger parts (\*\*\*)
@@ -136,7 +136,7 @@ the MPU6050 have the **X-axis** point to the **right and left**.
 
 ### 2.3.4 LED stripe
 
-Solder three cables onto the 36 addressable LED stripe. Note the direction
+Solder three cables onto the 32 addressable LED stripe. Note the direction
 of the arrows on the stripe and solder the cables on the right end. If the
 arrow points to the end of the stripe, it's the wrong end.
 
@@ -195,7 +195,7 @@ connected battery!***
 
 Solder the two cables to **BAT+** and **BAT-** accordingly.
 
-#### 2.3.5.4 36 addressable LEDs stripe
+#### 2.3.5.4 32 addressable LEDs stripe
 
 Now, solder **+** from the LED stripe to **BAT+**, **DATA** to **D6** on
 the Arduino and **ground** the LED stripe.
