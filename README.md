@@ -157,14 +157,14 @@ points to the end of the strip, it's the wrong end.
 * * *
 
 Place the strip around the inside of the fidget's top part. Start with the
-first LED at 9 o'clock and continue **clockwise**.
+first LED at **9 o'clock** and continue **clockwise**.
 
 ### 2.3.5 Soldering
 
 Wire all cables left and right through the openings in the battery
 compartment. Keep the cables as short as possible. Ground as many
-components on the battery charging breakout board. All spots marked **-**
-are the same. Then **ground** the board to the Arduino.
+components on the battery charging breakout board. All spots marked with
+the **Minus (-)** are the same. Then **ground** the board to the Arduino.
 
 #### 2.3.5.1 Battery charging breakout board
 
