@@ -124,6 +124,17 @@ Make sure there is **only blank wire** between the nut and the tower. Keep
 the blank wire away form the bold. We don't want the wire to curl around
 the bolt.
 
+Before we can install the battery charging breakout board, we need to get
+rid of the USB plug:
+
+![charging breakout board](./assets/images/charging_breakout_board.jpg)\
+*Pic. 5: Charging breakout board with the USB plug.*
+* * *
+
+![charging breakout board ready](./assets/images/charging_breakout_board_ready.jpg)\
+*Pic. 6: Charging breakout board with the USB plug removed.*
+* * *
+
 Connect the Arduino Nano to the mini USB plug. Push the Arduino inside its
 proper place. Push the battery charging breakout board into its proper
 place. Finally push the MPU6050 breakout board into its proper place. Have
@@ -156,17 +167,6 @@ components on the battery charging breakout board. All spots marked **-**
 are the same. Then **ground** the board to the Arduino.
 
 #### 2.3.5.1 Battery charging breakout board
-
-First we need to get rid of the USB plug on the battery charging breakout
-board:
-
-![charging breakout board](./assets/images/charging_breakout_board.jpg)\
-*Pic. 5: Charging breakout board with the USB plug.*
-* * *
-
-![charging breakout board ready](./assets/images/charging_breakout_board_ready.jpg)\
-*Pic. 6: Charging breakout board with the USB plug removed.*
-* * *
 
 Solder The **red** cable from the charging tower to **+In** on the battery
 charging breakout board. Then, solder the **black** cable to one of the
