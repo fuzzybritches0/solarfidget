@@ -136,19 +136,17 @@ the MPU6050 **face up**. On the MPU6050 have the **X-axis** point to the
 
 ### 2.3.4 LED strip
 
-Solder three cables onto the 32 addressable LED strip. Note the direction
-of the arrows on the strip and solder the cables on the right end. If the
-arrow points to the end of the strip, it's the wrong end.
+Solder three spots onto the 32 addressable LED strip. Note the direction of
+the arrows on the strip and solder the spots on the right end. If the arrow
+points to the end of the strip, it's the wrong end.
 
 
-![led strip end](./assets/led_stripe_end.jpg)\
-*Fig. 4: This is the right end. Solder the cables on to the back,
-pointing into the direction of the arrows. You can see a green cable stick
-out above in the picture.*
+![led strip solder spots](./assets/images/LED_strip_solder_spots.jpg)\
+*Pic. 4: Solder the spots onto the back.*
 * * *
 
-Place the strip around the inside of the fidget's top part. Start around
-the middle of the charging towers and continue **clockwise**.
+Place the strip around the inside of the fidget's top part. Start with the
+first LED at 9 o'clock and continue **clockwise**.
 
 ### 2.3.5 Soldering
 
