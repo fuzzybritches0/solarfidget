@@ -50,7 +50,7 @@ thrice by 180 degrees. If there is no change, try doing it faster.*
 - 1x Arduino Nano or compatible
 - 1x MPU6050 breakout board
 - 1x TP4056 battery charging breakout board
-- 1x 32 addressable LEDs stripe (\*)
+- 1x 32 addressable LEDs strip (\*)
 - 1x 44x24.5x9mm 750mAh LiPo battery with Molex plug
 - 1x male Molex plug (\*\*)
 - 1x 3d-printed models of both the fidget and charger parts (\*\*\*)
@@ -63,7 +63,7 @@ thrice by 180 degrees. If there is no change, try doing it faster.*
 - 8x cylinder magnet d=5mm,h=2mm,
 - and a punch of cables one can salvage from old LAN cables or similar.
 
-> (\*):     Use a stripe with an LED density of **144 LEDs per metre**.\
+> (\*):     Use a strip with an LED density of **144 LEDs per metre**.\
 > (\*\*):   When buying a set of batteries there is normally a charger
 >           included from which you can salvage male Molex plugs.\
 > (\*\*\*): all four parts can be found as .3mf files in the
@@ -134,27 +134,27 @@ the MPU6050 have the **X-axis** point to the **right and left**.
 *Fig. 3: Magnets and hardware installed. Arduino plugged in.*
 * * *
 
-### 2.3.4 LED stripe
+### 2.3.4 LED strip
 
-Solder three cables onto the 32 addressable LED stripe. Note the direction
-of the arrows on the stripe and solder the cables on the right end. If the
-arrow points to the end of the stripe, it's the wrong end.
+Solder three cables onto the 32 addressable LED strip. Note the direction
+of the arrows on the strip and solder the cables on the right end. If the
+arrow points to the end of the strip, it's the wrong end.
 
 
-![led stripe end](./assets/led_stripe_end.jpg)\
+![led strip end](./assets/led_stripe_end.jpg)\
 *Fig. 4: This is the right end. Solder the cables on to the back,
 pointing into the direction of the arrows. You can see a green cable stick
 out above in the picture.*
 * * *
 
-Place the stripe around the inside of the fidget's top part. Start around
+Place the strip around the inside of the fidget's top part. Start around
 the middle of the charging towers and continue **clockwise**.
 
 ### 2.3.5 Soldering
 
 Wire all cables around the battery compartment when you solder them on.
-Make sure there will be enough place for the LED stripe around the inside
-of the fidget, should you remove the stripe while you solder the rest.
+Make sure there will be enough place for the LED strip around the inside
+of the fidget, should you remove the strip while you solder the rest.
 Keep the cables as short as possible. Ground all components on a common
 ground.
 
@@ -195,10 +195,10 @@ connected battery!***
 
 Solder the two cables to **BAT+** and **BAT-** accordingly.
 
-#### 2.3.5.4 32 addressable LEDs stripe
+#### 2.3.5.4 32 addressable LEDs strip
 
-Now, solder **+** from the LED stripe to **BAT+**, **DATA** to **D6** on
-the Arduino and **ground** the LED stripe.
+Now, solder **+** from the LED strip to **BAT+**, **DATA** to **D6** on
+the Arduino and **ground** the LED strip.
 
 #### 2.3.5.5 Battery
 
@@ -239,7 +239,7 @@ as little as possible, but make the charger work.*
 * * *
 
 Before we close up the fidget we need to do the software and fine-tune the
-position of the LED stripe.
+position of the LED strip.
 
 ### 2.3.7 Software
 
@@ -298,9 +298,9 @@ active when the fidget is off and sitting still.
 
 Save the file and upload the programme again.
 
-Finally make sure the LED stripe is placed correctly in the fidget and the
+Finally make sure the LED strip is placed correctly in the fidget and the
 light of the pendulum is at the right spot. Do this by holding the fidget
-askew and wait for the pendulum to rest. Now, move the stripe either left
+askew and wait for the pendulum to rest. Now, move the strip either left
 or right to bring the light into the correct position.
 
 After that, slide the other part of the fidget on.
