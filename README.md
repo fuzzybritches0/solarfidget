@@ -157,19 +157,12 @@ are the same. Then **ground** the board to the Arduino.
 
 #### 2.3.5.1 Battery charging breakout board
 
-As I have mentioned before, at the beginning, solder the extra cable we
-add to the charging tower to **IN+** on the battery charging breakout
-board. Ground it in the next step. **IN-** and **BAT-** are the same.
+Solder The **red** cable from the charging tower to **+In** on the battery
+charging breakout board. Then, solder the **black** cable to one of the
+**GND**s on the Arduino.
 
-Solder **BAT+** from the battery charging breakout board to **VIN** on the
-Arduino and **ground** the board on the Arduino. 
-If you are using an Arduino Nano 33, bridge the contacts marked VUSB on the
-back of the Arduino with solder. The contacts are between RST and A7. For
-more information why this is required, please visit:
-https://support.arduino.cc/hc/en-us/articles/360014779679-About-Nano-boards-with-disabled-5-V-pins
-
-Make sure your Arduino can run with 3.7V. My Arduino Nano was meant for 5V
-but it works quite well for a few hours.
+Solder **OUT+** from the battery charging breakout board to **VIN** on the
+Arduino. 
 
 #### 2.3.5.2 MPU6050
 
