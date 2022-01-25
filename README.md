@@ -203,33 +203,36 @@ Now, connect the battery to the MOLEX plug and place it inside the fidget.
 
 ### 2.3.6 Charging station
 
-Fix up the charging station by placing the four cables from the cut-off
-end of the USB cable inside the charging towers of the charging station.
 **Don't forget** to route the cable through the bottom part of the charger
-station first, before you wire it all up.
-
-![charger wire](./assets/charger_wire.jpg)\
-*Fig. 7: That's how we figure out which cable goes where. Fix the cable
-with tuck tape.*
-* * *
-
-Use the **0.3x4x5 mm compressing springs**, the **M3 locknuts** and the
-**M3x10mm bolts** to finish up the charger. Have the springs push down on
-the **blank wires** inside the towers. Clean the inside of the towers if
+station first, before you continue. Clean the inside of the towers if
 needed.
 
-![blank wire](./assets/blank_wire.jpg)\
-*Fig. 8: Here you see the blank wire inside the charger tower.*
+Use the **0.3x4x5 mm compressing springs**, the **M3 locknuts** and the
+**M3x10mm bolts** to finish up the charger. Have the bolts look out of the
+charger around **one mm**, enough so that the fidget gets good contact when
+pushed down by the magnets. Get it right now. Later on it will be very
+difficult to alter it.
+
+![charging port](./assets/images/charging_port.jpg)\
+*Pic. 7: Here you see the bolts looking out a little.*
 * * *
 
-Have the bolts look out
-of the charger a bit so that the fidget gets good contact when pushed down
-by the magnets.
+To figure out which cable goes where place the fidget's charging towers
+opposite the charging station's charging towers.
 
-![charging port](./assets/charging_port.jpg)\
-*Fig. 9: Here you see the bolts looking out a little. Have them look out
-as little as possible, but make the charger work.*
+Now, wind the blank wires of the four cables around the end of the bolts.
+Have as much blank wire as possible go around and make it really tight.
+
+![charger contacts wound tight](./assets/images/charger_contacs_wound_tight.jpg)\
+*Pic 8: The wire is wound up around the bolts tight so as to give a good
+contact and reduce the resistance as much as possible.*
 * * *
+
+Now, apply tin-solder on all of the blank wire.
+
+![charger contacts soldered](./assets/images/charger_contacs_soldered.jpg)\
+*Pic 9: The wire will act as a sponge when you apply tin-solder. Apply
+plenty.*
 
 Before we close up the fidget we need to do the software and fine-tune the
 position of the LED strip.
