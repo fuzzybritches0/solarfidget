@@ -197,8 +197,8 @@ is **+**, the middle one is **DATA** and the lowest one is **-**.
 
 Now, connect the battery to the MOLEX plug and place it inside the fidget.
 
-![fixed up](./assets/fixed_up.jpg)\
-*Fig. 6: This is about what it should look now.*
+![fidget finished](./assets/images/fidget_finished.jpg)\
+*Pic. 6: This is about what it should look now.*
 * * *
 
 ### 2.3.6 Charging station
