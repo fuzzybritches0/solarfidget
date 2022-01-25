@@ -150,11 +150,10 @@ first LED at 9 o'clock and continue **clockwise**.
 
 ### 2.3.5 Soldering
 
-Wire all cables around the battery compartment when you solder them on.
-Make sure there will be enough place for the LED strip around the inside
-of the fidget, should you remove the strip while you solder the rest.
-Keep the cables as short as possible. Ground all components on a common
-ground.
+Wire all cables left and right through the openings in the battery
+compartment. Keep the cables as short as possible. Ground as many
+components on the battery charging breakout board. All spots marked **-**
+are the same. Then **ground** the board to the Arduino.
 
 #### 2.3.5.1 Battery charging breakout board
 
