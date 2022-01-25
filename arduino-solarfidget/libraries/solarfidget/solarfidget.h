@@ -479,7 +479,7 @@ void detect_motion() {
 
 		powersave();
 
-		#endif
+	#endif
 
 	}
 }
@@ -496,7 +496,7 @@ void _solarfidget() {
 
 		if (active) {
 
-		#ifdef POWERSAVING
+	#ifdef POWERSAVING
 
 			if (mpu.getDLPFMode() != NORMAL_MODE) {
 				mpu.setDLPFMode(NORMAL_MODE);
@@ -504,14 +504,14 @@ void _solarfidget() {
 				reset_pendulum();
 			}
 
-		#endif
+	#endif
 
 			grav_point();
 			accel_point();
 			calc_pos();
 		}
 
-	#else
+#else
 
 		grav_point();
 		accel_point();
@@ -528,7 +528,6 @@ void _solarfidget() {
 	#ifdef AUTO_OFF
 
 		detect_motion();
-
 
 	#endif
 
