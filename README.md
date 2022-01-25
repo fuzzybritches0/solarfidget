@@ -74,7 +74,7 @@ thrice by 180 degrees. If there is no change, try doing it faster.*
 
 ## 2.2 OPENSCAD RENDERINGS
 
-![solarfidget](./assets/solarfidget.png)\
+![solarfidget](./assets/images/solarfidget-scad.jpg)\
 *Fig. 1: The two parts pictured above compose the solarfidget*
 * * *
 
