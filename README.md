@@ -157,6 +157,17 @@ are the same. Then **ground** the board to the Arduino.
 
 #### 2.3.5.1 Battery charging breakout board
 
+First we need to get rid of the USB plug on the battery charging breakout
+board:
+
+![charging breakout board](./assets/images/charging_breakout_board.jpg)\
+*Pic. 5: Charging breakout board with the USB plug.*
+* * *
+
+![charging breakout board ready](./assets/images/charging_breakout_board_ready.jpg)\
+*Pic. 6: Charging breakout board with the USB plug removed.*
+* * *
+
 Solder The **red** cable from the charging tower to **+In** on the battery
 charging breakout board. Then, solder the **black** cable to one of the
 **GND**s on the Arduino.
@@ -179,7 +190,7 @@ are properly isolated. Use **shrink tubing**. ***Never solder with a
 connected battery!***
 
 ![molex_plug](./assets/images/molex_plug.jpg)\
-*Pic. 5: Male Molex plug.*
+*Pic. 7: Male Molex plug.*
 * * *
 
 Solder the two cables to **BAT+** and **BAT-** on the battery charging
@@ -198,7 +209,7 @@ is **+**, the middle one is **DATA** and the lowest one is **-**.
 Now, connect the battery to the MOLEX plug and place it inside the fidget.
 
 ![fidget finished](./assets/images/fidget_finished.jpg)\
-*Pic. 6: This is about what it should look now.*
+*Pic. 8: This is about what it should look now.*
 * * *
 
 ### 2.3.6 Charging station
@@ -214,7 +225,7 @@ pushed down by the magnets. Get it right now. Later on it will be very
 difficult to alter it.
 
 ![charging port](./assets/images/charging_port.jpg)\
-*Pic. 7: Here you see the bolts looking out a little.*
+*Pic. 9: Here you see the bolts looking out a little.*
 * * *
 
 To figure out which cable goes where place the fidget's charging towers
@@ -224,14 +235,14 @@ Now, wind the blank wires of the four cables around the end of the bolts.
 Have as much blank wire as possible go around and make it really tight.
 
 ![charger contacts wound tight](./assets/images/charger_contacs_wound_tight.jpg)\
-*Pic 8: The wire is wound up around the bolts tight so as to give a good
+*Pic 10: The wire is wound up around the bolts tight so as to give a good
 contact and reduce the resistance as much as possible.*
 * * *
 
 Now, apply tin-solder on all of the blank wire.
 
 ![charger contacts soldered](./assets/images/charger_contacs_soldered.jpg)\
-*Pic 9: The wire will act as a sponge when you apply tin-solder. Apply
+*Pic 11: The wire will act as a sponge when you apply tin-solder. Apply
 plenty.*
 
 Before we close up the fidget we need to do the software and fine-tune the
