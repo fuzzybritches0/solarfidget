@@ -83,13 +83,15 @@ charger*
 
 ### 2.3.1 Magnets
 
-Place all eight magnets inside the charger and fidget so that the fidget
-and charger will only lock in place when the fidget is placed on top of
-the charger in the correct orientation; for example: place the magnets,
-next to the charger towers, with the same pole facing down. Do the opposite
-for the other two magnets. Repeat for the charger but reverse the poles.
-Use a crooked M6 key, place the magnet on the crooked end and use a
-hammer to fix the magnets in place.
+Place four magnets inside the charger and four inside the fidget so that
+the both lock in place. Have the magnet's poles in the fidget all oriented
+in the same direction. Reverse the poles in the charger. There is no room
+for error, since you will have to destroy the parts to remove the magnets.
+
+![solarfidget](./assets/images/magnet_key.jpg)\
+*Pic. 2: Use a crooked M6 key, place the magnet on the crooked end and use a hammer
+to fix the magnets in place.*
+* * *
 
 ### 2.3.2 USB mini cable
 
