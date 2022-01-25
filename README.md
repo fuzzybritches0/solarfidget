@@ -50,7 +50,7 @@ thrice by 180 degrees. If there is no change, try doing it faster.*
 - 1x Arduino Nano or compatible
 - 1x MPU6050 breakout board
 - 1x TP4056 battery charging breakout board
-- 1x 32 addressable LEDs strip (\*)
+- 1x strip of 32 WS2812B individually addressable LEDs (\*)
 - 1x 44x24.5x9mm 750mAh LiPo battery with Molex plug
 - 1x male Molex plug (\*\*)
 - 1x 3d-printed models of both the fidget and charger parts (\*\*\*)
@@ -67,8 +67,8 @@ thrice by 180 degrees. If there is no change, try doing it faster.*
 > (\*\*):   When buying a set of batteries there is normally a charger
 >           included from which you can salvage male Molex plugs.\
 > (\*\*\*): all four parts can be found as .3mf files in the
->           design-solarfidget folder and can be imported directly into
->           the 3d slicer software. If you need to make changes to
+>           design-solarfidget/3mf folder and can be imported directly
+>           into the 3d slicer software. If you need to make changes to
 >           accommodate your own hardware, use the solarfidget.scad file
 >           to do so.
 
@@ -128,11 +128,11 @@ Before we can install the battery charging breakout board, we need to get
 rid of the USB plug:
 
 ![charging breakout board](./assets/images/charging_breakout_board.jpg)\
-*Pic. 5: Charging breakout board with the USB plug.*
+*Pic. 3: Charging breakout board with the USB plug.*
 * * *
 
 ![charging breakout board ready](./assets/images/charging_breakout_board_ready.jpg)\
-*Pic. 6: Charging breakout board with the USB plug removed.*
+*Pic. 4: Charging breakout board with the USB plug removed.*
 * * *
 
 Connect the Arduino Nano to the mini USB plug. Push the Arduino inside its
@@ -142,7 +142,7 @@ the MPU6050 **face up**. On the MPU6050 have the **X-axis** point to the
 **right and left**.
 
 ![all installed](./assets/images/fidget_hardware_installed.jpg)\
-*Pic. 3: Magnets and hardware installed. Arduino plugged in.*
+*Pic. 5: Magnets and hardware installed. Arduino plugged in.*
 * * *
 
 ### 2.3.4 LED strip
@@ -153,7 +153,7 @@ points to the end of the strip, it's the wrong end.
 
 
 ![led strip solder spots](./assets/images/LED_strip_solder_spots.jpg)\
-*Pic. 4: Solder the spots onto the back.*
+*Pic. 6: Solder the spots onto the back.*
 * * *
 
 Place the strip around the inside of the fidget's top part. Start with the
