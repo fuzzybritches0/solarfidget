@@ -188,8 +188,10 @@ battery your board will get fried and smoke will come out.**
 
 #### 2.3.5.4 32 addressable LEDs strip
 
-Now, solder **+** from the LED strip to **BAT+**, **DATA** to **D6** on
-the Arduino and **ground** the LED strip.
+Now, solder a **red** cable to **+5V**, a **black** cable to **GND** and a
+different coloured cable to **D6** on the Arduino. Then solder them to
+**+**, **DATA** and **-**, respectively; that is, the top most solder spot
+is **+**, the middle one is **DATA** and the lowest one is **-**.
 
 #### 2.3.5.5 Battery
 
