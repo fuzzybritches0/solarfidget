@@ -143,7 +143,7 @@ uint8_t teapotPacket[14] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, '\r', '\
 //#define POWERREPORTING
 //#define POWERSAVING
 #define AUTO_OFF
-//#define SERIAL_DEBUG
+#define SERIAL_DEBUG
 //#define FIDGET 1
 
 #include <solarfidget.h>
@@ -207,14 +207,14 @@ void setup() {
     devStatus = mpu.dmpInitialize();
 
 #if (FIDGET == 1)
-    mpu.setXAccelOffset(-5008);
-    mpu.setYAccelOffset(-1957);
-    mpu.setZAccelOffset(1520);
-    mpu.setXGyroOffset(26);
-    mpu.setYGyroOffset(-95);
-    mpu.setZGyroOffset(19);
+    // Fill in your calibration values here
+    mpu.setXAccelOffset(0);
+    mpu.setYAccelOffset(0);
+    mpu.setZAccelOffset(0);
+    mpu.setXGyroOffset(0);
+    mpu.setYGyroOffset(0);
+    mpu.setZGyroOffset(0);
 #endif
-
 
     // make sure it worked (returns 0 if so)
     if (devStatus == 0) {
