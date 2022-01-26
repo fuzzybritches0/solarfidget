@@ -1,7 +1,7 @@
 // 
 // BSD 3-Clause License
 // 
-// (ORIGINAL) SOLARFIDGET programme code Copyright (C) 2021,2022 Kurt Manucredo
+// (ORIGINAL) SOLARFIDGET programme code Copyright (C) 2021, 2022 Kurt Manucredo
 // 
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:

@@ -5,7 +5,7 @@ MPU6050 gyro/accel, this fidget calculates the position of a rotating
 pendulum that reacts to acceleration and gravity and simulates the effect
 of gravity on different bodies in our solar system (including Pluto).
 
-Concept, Design and Idea **(C)** 2021-2022 Kurt Manucredo, under the
+Concept, Design and Idea **(C)** 2021, 2022 Kurt Manucredo, under the
 CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL 4.0 INTERNATIONAL PUBLIC LICENSE
 
 For more information on Copyright please refer to the respective files and
