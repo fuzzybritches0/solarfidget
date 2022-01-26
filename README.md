@@ -247,15 +247,15 @@ Now, connect the battery to the MOLEX plug and place it inside the fidget.
 
 ### 2.4.6 Charging station
 
-**Don't forget** to route the cable through the bottom part of the charger
+**Don't forget** to route the cable through the bottom part of the charging
 station first, before you continue. Clean the inside of the towers if
 needed.
 
 Use the **0.3x4x5 mm compressing springs**, the **M3 locknuts** and the
 **M3x10mm bolts** to finish up the charger. Have the bolts look out of the
 charger around **one mm**, enough so that the fidget gets good contact when
-pushed down by the magnets. Get it right now. Later on it will be very
-difficult to alter it.
+pushed down by the magnets. Get it right now. Later on, it will be very
+difficult to change.
 
 ![charging port](./assets/images/charging_port.jpg)\
 *Pic. 9: Here you see the bolts looking out a little.*
