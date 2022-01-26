@@ -79,9 +79,35 @@ thrice by 180 degrees. If there is no change, try doing it faster.*
 charger*
 * * *
 
-## 2.3 BUILD INSTRUCTIONS
+## 2.3 PRINTING THE PARTS
 
-### 2.3.1 Magnets
+I printed the parts with a **PRUSA i3 MKR3s** printer, used the
+**PrusaSlicer 2.4.0 software**, selected **0.20mm QUALITY** print settings
+with **30% infill** and used a **transparent PLA material**. I printed the
+four parts all in one go. It took about 6 hours.
+
+I recommend transparent PLA material. White PLA works, too. The light,
+however, will not be as bright. Any other colour will only let through
+**that** colour and make it impossible to distinguish between planets.
+
+Using another material than PLA will likely result in slightly different
+dimensions and the electronics being loose or too tight to fit. The fit for
+the MPU6050 is particularity crucial and should be very tight to hold it in
+place perfectly.
+
+### 2.3.1 Customizing the parts
+
+If you need to make changes to the parts, use the solarfidget.scad file to
+do so. At the beginning of the file, change the dimensions of the
+electronic parts, then further down, in the file, adjust the placements for
+those parts so that they don't overlap. The electronic parts positions can
+be altered in the module named ***top***. ***batteryC*** is the battery
+charging breakout board. If you intend to change the amount of LEDs,
+remember, you can only change the amount by a **multiple of 4**.
+
+## 2.4 BUILD INSTRUCTIONS
+
+### 2.4.1 Magnets
 
 Place four magnets inside the charger and four inside the fidget so that
 the both lock in place. Have the magnet's poles in the fidget all oriented
@@ -93,7 +119,7 @@ for error, since you will have to destroy the parts to remove the magnets.
 to fix the magnets in place.*
 * * *
 
-### 2.3.2 USB mini cable
+### 2.4.2 USB mini cable
 
 Cut the USB mini cable about 10cm from the mini USB plug side. Carefully
 remove the PVC coat and the shielding. There should be four cables: one
@@ -103,7 +129,7 @@ have limited space - but don't break the plug. We won't be using the
 **red** or the **black** cable. If you messed them up, we are still good to
 go.
 
-### 2.3.3 Fidget
+### 2.4.3 Fidget
 
 Now, we will work on the part of the fidget that houses all the
 electronics, that is, the top part.
@@ -145,7 +171,7 @@ the MPU6050 **face up**. On the MPU6050 have the **X-axis** point to the
 *Pic. 5: Magnets and hardware installed. Arduino plugged in.*
 * * *
 
-### 2.3.4 LED strip
+### 2.4.4 LED strip
 
 Solder three spots onto the 32 addressable LED strip. Note the direction of
 the arrows on the strip and solder the spots on the right end. If the arrow
@@ -159,14 +185,14 @@ points to the end of the strip, it's the wrong end.
 Place the strip around the inside of the fidget's top part. Start with the
 first LED at **9 o'clock** and continue **clockwise**.
 
-### 2.3.5 Soldering
+### 2.4.5 Soldering
 
 Wire all cables left and right through the openings in the battery
 compartment. Keep the cables as short as possible. Ground as many
 components on the battery charging breakout board. All spots marked with
 the **Minus (-)** are the same. Then **ground** the board to the Arduino.
 
-#### 2.3.5.1 Battery charging breakout board
+#### 2.4.5.1 Battery charging breakout board
 
 Solder the **red** cable from the charging tower to **+In** on the battery
 charging breakout board. Then, solder the **black** cable to one of the
@@ -175,14 +201,14 @@ charging breakout board. Then, solder the **black** cable to one of the
 Solder **OUT+** from the battery charging breakout board to **VIN** on the
 Arduino. 
 
-#### 2.3.5.2 MPU6050
+#### 2.4.5.2 MPU6050
 
 Solder **VIN** from the MPU6050 to **3V3** on the Arduino and **ground**
 the MPU6050 on the battery charging breakout board.  Now, solder **SCL**,
 **SDA** and **INT** from the MPU6050 to **A5**, **A4** and **D2** on the
 Arduino, respectively.
 
-#### 2.3.5.3 MOLEX plug
+#### 2.4.5.3 MOLEX plug
 
 Solder two cables to the **male MOLEX plug**. When you connect a battery to
 the plug, you can see which cable is which. Make sure the plug and cable
@@ -198,7 +224,7 @@ Solder the two cables to **BAT+** and **BAT-** on the battery charging
 breakout board, accordingly. **If you do it the wrong way and connect a
 battery your board will get fried and smoke will come out.**
 
-#### 2.3.5.4 32 addressable LEDs strip
+#### 2.4.5.4 32 addressable LEDs strip
 
 Now, solder a **red** cable to **+5V**, a **black** cable to **GND** and a
 different coloured cable to **D6** on the Arduino. Then solder them to
@@ -206,7 +232,7 @@ different coloured cable to **D6** on the Arduino. Then solder them to
 most solder spot is **Plus (+)**, the middle one is **DATA** and the lowest
 one is **Minus (-)**.
 
-#### 2.3.5.5 Battery
+#### 2.4.5.5 Battery
 
 Now, connect the battery to the MOLEX plug and place it inside the fidget.
 
@@ -214,7 +240,7 @@ Now, connect the battery to the MOLEX plug and place it inside the fidget.
 *Pic. 8: This is about what it should look now.*
 * * *
 
-### 2.3.6 Charging station
+### 2.4.6 Charging station
 
 **Don't forget** to route the cable through the bottom part of the charger
 station first, before you continue. Clean the inside of the towers if
@@ -250,7 +276,7 @@ plenty.*
 Before we close up the fidget we need to do the software and fine-tune the
 position of the LED strip.
 
-### 2.3.7 Software
+### 2.4.7 Software
 
 Copy or link the folder in `arduino-solarfidget/libraries/solarfidget` into
 your `Arduino/libraries` folder.
