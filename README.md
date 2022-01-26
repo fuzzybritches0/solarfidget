@@ -229,7 +229,7 @@ Solder the two cables to **BAT+** and **BAT-** on the battery charging
 breakout board, accordingly. **If you do it the wrong way and connect a
 battery, your board will get fried and smoke will come out.**
 
-#### 2.4.5.4 32 LED strip
+#### 2.4.5.4 LED strip
 
 Now, solder a **red** cable to **+5V**, a **black** cable to **GND** and a
 different coloured cable to **D6** on the Arduino. Then solder them to
