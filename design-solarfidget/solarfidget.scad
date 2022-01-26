@@ -300,9 +300,9 @@ module charging_contact_posts_i() {
 }
 
 top();
-//translate([0,0,-30])
-//bottom();
-//translate([0,0,40])
-//charger_top();
-//translate([0,0,-60])
-//charger_bottom();
+translate([0,0,-30])
+bottom();
+translate([0,0,40])
+charger_top();
+translate([0,0,-60])
+charger_bottom();
