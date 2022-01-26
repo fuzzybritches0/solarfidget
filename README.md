@@ -162,10 +162,11 @@ rid of the USB plug:
 * * *
 
 Connect the Arduino Nano to the mini USB plug. Push the Arduino inside its
-proper place. Push the battery charging breakout board into its proper
-place. Finally push the MPU6050 breakout board into its proper place. Have
-the MPU6050 **face up**. On the MPU6050 have the **X-axis** point to the
-**right and left**.
+proper place. This shouldn't be too difficult. Push the battery charging
+breakout board into its proper place. Finally push the MPU6050 breakout
+board into its proper place. You might have difficulties there. But try,
+eventually, it will go in. It is a very tight fit. Have the MPU6050 **face
+up**. On the MPU6050 have the **X-axis** point to the **right and left**.
 
 ![all installed](./assets/images/fidget_hardware_installed.jpg)\
 *Pic. 5: Magnets and hardware installed. Arduino plugged in.*
