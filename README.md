@@ -9,7 +9,7 @@ Concept, Design and Idea **(C)** 2021-2022 Kurt Manucredo, under the
 CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL 4.0 INTERNATIONAL PUBLIC LICENSE
 
 For more information on Copyright please refer to the respective files and
-the LICENSE-* files.
+LICENSE files.
 
 ![solarfidget](./assets/gifs/solarfidget.gif)
 * * *
