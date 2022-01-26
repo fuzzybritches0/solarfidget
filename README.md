@@ -110,9 +110,13 @@ remember, you can only change the amount by a **multiple of 4**.
 ### 2.4.1 Magnets
 
 Place four magnets inside the charger and four inside the fidget so that
-the both lock in place. Have the magnet's poles in the fidget all oriented
-in the same direction. Reverse the poles in the charger. There is no room
-for error, since you will have to destroy the parts to remove the magnets.
+they both lock in place. The magnets go around the charging towers into the
+four round holes. Have the magnet's poles in the fidget all oriented in the
+same direction. Reverse the poles in the charger. There is no room for
+error, since you will have to destroy the parts to remove the magnets. If
+you have to do that, turn the parts around and hit the parts with something
+pointy and hard (a screw driver will do) at the points where the magnets
+are. They will fall out and collect together with each other.
 
 ![solarfidget](./assets/images/magnet_key.jpg)\
 *Pic. 2: Use a crooked M6 key, place the magnet on the crooked end and use a hammer
@@ -124,10 +128,9 @@ to fix the magnets in place.*
 Cut the USB mini cable about 10cm from the mini USB plug side. Carefully
 remove the PVC coat and the shielding. There should be four cables: one
 **black**, one **red**, one **white** and one **green**. Also remove as
-much of the hard plastic from the mini USB plug as possible - we only
-have limited space - but don't break the plug. We won't be using the
-**red** or the **black** cable. If you messed them up, we are still good to
-go.
+much of the hard plastic from the mini USB plug as possible - we only have
+limited space - but don't break the plug. We won't be using the **red** or
+the **black** cable. If you messed them up, we are still good to go.
 
 ### 2.4.3 Fidget
 
@@ -140,11 +143,12 @@ plug as follows from left to right (leave the first and fourth empty):
 **white**, **green**
 
 Add a red cable for **+5V** to the first tower and a black cable to the
-last tower for **GND**.
+last tower for **GND**. Don't use the cables form the USB plug.
 
 Use the **M3 nuts** and **M3x4mm bolts** to secure the cables. Clean the
 inside of the towers if there is loose or deformed material inside from
-printing the overhang. Push the nuts inside the towers.
+printing the overhang. Push the nuts inside the towers. This should be
+quite easy. If not, use a longer M3 bolt to drive them into place.
 
 Make sure there is **only blank wire** between the nut and the tower. Keep
 the blank wire away form the bold. We don't want the wire to curl around
@@ -164,11 +168,11 @@ rid of the USB plug:
 Connect the Arduino Nano to the mini USB plug. Push the Arduino inside its
 proper place. This shouldn't be too difficult. Push the battery charging
 breakout board into its proper place. Finally push the MPU6050 breakout
-board into its proper place. You might have difficulties there. But try,
-eventually, it will go in. It is a very tight fit. Have the MPU6050 **face
+board into its proper place. You might have difficulties there. But try!
+Eventually, it will go in. It is a very tight fit. Have the MPU6050 **face
 up**. On the MPU6050 have the **X-axis** point to the **right and left**.
 
-![all installed](./assets/images/fidget_hardware_installed.jpg)\
+![fidget hardware installed](./assets/images/fidget_hardware_installed.jpg)\
 *Pic. 5: Magnets and hardware installed. Arduino plugged in.*
 * * *
 
@@ -184,7 +188,7 @@ points to the end of the strip, it's the wrong end.
 * * *
 
 Place the strip around the inside of the fidget's top part. Start with the
-first LED at **9 o'clock** and continue **clockwise**.
+centre of the first LED at **9 o'clock** and continue **clockwise**.
 
 ### 2.4.5 Soldering
 
@@ -223,7 +227,7 @@ MOLEX plug. This will lead to broken contacts.
 
 Solder the two cables to **BAT+** and **BAT-** on the battery charging
 breakout board, accordingly. **If you do it the wrong way and connect a
-battery your board will get fried and smoke will come out.**
+battery, your board will get fried and smoke will come out.**
 
 #### 2.4.5.4 32 addressable LEDs strip
 
@@ -258,7 +262,7 @@ difficult to alter it.
 * * *
 
 To figure out which cable goes where place the fidget's charging towers
-opposite the charging station's charging towers.
+next to the charging station's charging towers.
 
 Now, wind the blank wires of the four cables around the end of the bolts.
 Have as much blank wire as possible go around and make it really tight.
@@ -301,9 +305,10 @@ Place the fidget on top of the charger, the charger on a level surface and
 connect it to your computer.
 Open the serial monitor. Compile and upload the programme to the Arduino.
 Wait for the Arduino to reset and start. Look at the serial monitor and
-note down the **calibration values**. Now, open the file:
-`arduino-solarfidget/arduino-solarfidget.ino` and find the follwoing
-line:
+note down the **calibration values**.
+
+Now, in the file:
+`arduino-solarfidget/arduino-solarfidget.ino` find the follwoing line:
 
 ```
 #define SERIAL_DEBUG
@@ -338,17 +343,6 @@ Now, find the lines:
 and replace the **0 values** with the values you just noted down for Gyro
 and Accel.
 
-If you want power saving, uncomment the following line.
-
-```
-//#define POWERSAVING
-```
-
-If in power saving mode, before you try enabling the fidget, hold it for a
-few seconds in your hands. If you have trouble enabling it, just flip it
-continuously by 180 degrees until it enables. Power saving mode is only
-active when the fidget is off and sitting still.
-
 Save the file and upload the programme again.
 
 Finally make sure the LED strip is placed correctly in the fidget and the
@@ -357,6 +351,18 @@ askew and wait for the pendulum to rest. Now, move the strip either left
 or right to bring the light into the correct position.
 
 After that, slide the other part of the fidget on.
+
+If you want power saving, uncomment the following line.
+
+```
+//#define POWERSAVING
+```
+
+If in power saving mode, before you try enabling the fidget, hold it for a
+few seconds in your hands. If you have trouble enabling it, just flip it
+continuously by 180 degrees until it enables.
+
+Power saving mode is only active when the fidget is off and sitting still.
 
 You should all be set now. Have fun travelling our solar system.
 
