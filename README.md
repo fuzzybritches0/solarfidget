@@ -193,15 +193,19 @@ centre of the first LED at **9 o'clock** and continue **clockwise**.
 ### 2.4.5 Soldering
 
 Wire all cables left and right through the openings in the battery
-compartment. Keep the cables as short as possible. Ground as many
-components on the battery charging breakout board. All spots marked with
-the **Minus (-)** are the same. Then **ground** the board to the Arduino.
+compartment, if they come from the MPU or battery charging breakout board.
+Keep the cables as short as possible. Have them stacked on both sides of
+the battery, left and right, so that the battery gets a nice fit. They
+should not stack below the battery. If so, you won't be able to close up
+the fidget, or even damage the battery or other components, when you try.
+Have them go next to each other. 
 
 #### 2.4.5.1 Battery charging breakout board
 
-Solder the **red** cable from the charging tower to **+In** on the battery
-charging breakout board. Then, solder the **black** cable to one of the
-**GND**s on the Arduino.
+All spots marked with the **Minus (-)**, on the battery charging breakout
+board, are the same. **Ground** that board to the Arduino. Solder the
+**red** cable from the charging tower to **+In** on the battery charging
+breakout board. Use the **black** cable to ground the board.
 
 Solder **OUT+** from the battery charging breakout board to **VIN** on the
 Arduino. 
@@ -231,11 +235,12 @@ battery, your board will get fried and smoke will come out.**
 
 #### 2.4.5.4 LED strip
 
-Now, solder a **red** cable to **+5V**, a **black** cable to **GND** and a
-different coloured cable to **D6** on the Arduino. Then solder them to
-**Plus (+)**, **DATA** and **Minus (-)** on the LED strip, respectively;
-that is, the top most solder spot is **Plus (+)**, the middle one is
-**DATA** and the lowest one is **Minus (-)**.
+Now, solder a **red** cable to **+5V**, a **black** cable to **GND**
+(either on the Arduino or the battery charging breakout board - whichever
+is easier for you) and a different coloured cable to **D6** on the Arduino.
+Then solder them to **Plus (+)**, **DATA** and **Minus (-)** on the LED
+strip, respectively; that is, the top most solder spot is **Plus (+)**, the
+middle one is **DATA** and the lowest one is **Minus (-)**.
 
 #### 2.4.5.5 Battery
 
