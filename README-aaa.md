@@ -241,7 +241,7 @@ into the **Arduino** and solder them on from above the **Arduino**. If the
 wires are too long, we won't be able to push the **Arduino** into its
 place.
 
-### 2.4.5.1 Voltage Booster Module
+#### 2.4.5.1 Voltage Booster Module
 
 Solder a **red cable** onto the **Voltage Booster Module** where the boosted
 voltage will come out.
@@ -254,12 +254,12 @@ resistor.*
 Next, solder two **black cables** to **In-**. Solder one of them to **GND**
 on the **MPU6050**. Leave the other for the **Arduino**.
 
-### 2.4.5.2 MPU6050
+#### 2.4.5.2 MPU6050
 
 Now, solder four cables onto the **MPU6050**, one onto **VIN**, one onto
 **SCL**, one onto **SDA** and another onto **INT**. Keep them short.
 
-### 2.4.5.3 Arduino
+#### 2.4.5.3 Arduino
 
 Have the **red cable** stick through **VIN** and the **black cable** stick
 through **GND** on the **Arduino**. Have the cables coming from **SCL**,
