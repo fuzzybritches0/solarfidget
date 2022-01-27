@@ -100,8 +100,8 @@ however, will not be as bright. Any other colour will only let through
 
 Using another material than PLA will likely result in slightly different
 dimensions and the electronics being loose or too tight to fit. The fit for
-the MPU6050 is particularity crucial and should be very tight to hold it in
-place perfectly.
+the **MPU6050** is particularity crucial and should be very tight to hold
+it in place perfectly.
 
 ### 2.3.1 Customizing the parts
 
@@ -109,8 +109,8 @@ If you need to make changes to the parts, use the solarfidget.scad file to
 do so. At the beginning of the file, change the dimensions of the
 electronic parts, then further down, in the file, adjust the placements for
 those parts so that they don't overlap. The electronic parts positions can
-be altered in the module named ***top***. ***batteryC*** is the battery
-charging breakout board. If you intend to change the amount of LEDs,
+be altered in the module named ***top***. ***batteryC*** is the **battery
+charging breakout board**. If you intend to change the amount of LEDs,
 remember, you can only change the amount by a **multiple of 4**.
 
 ## 2.4 BUILD INSTRUCTIONS
@@ -162,33 +162,34 @@ Make sure there is **only blank wire** between the nut and the tower. Keep
 the blank wire away form the bold. We don't want the wire to curl around
 the bolt.
 
-Before we can install the battery charging breakout board, we need to get
-rid of the USB plug:
+Before we can install the **battery charging breakout board**, we need to
+get rid of the USB plug:
 
 ![charging breakout board](./assets/images/charging_breakout_board.jpg)\
-*Pic. 3: Charging breakout board with the USB plug.*
+*Pic. 3:* **Charging breakout board** *with the USB plug.*
 * * *
 
 ![charging breakout board ready](./assets/images/charging_breakout_board_ready.jpg)\
-*Pic. 4: Charging breakout board with the USB plug removed.*
+*Pic. 4:* **Charging breakout board** *with the USB plug removed.*
 * * *
 
-Connect the Arduino Nano to the mini USB plug. Push the Arduino inside its
-proper place. This shouldn't be too difficult. Push the battery charging
-breakout board into its proper place. Finally push the MPU6050 breakout
-board into its proper place. You might have difficulties there. But try!
-Eventually, it will go in. It is a very tight fit. Have the MPU6050 **face
-up**. On the MPU6050 have the **X-axis** point to the **right and left**.
+Connect the **Arduino Nano** to the mini USB plug. Push the **Arduino**
+inside its proper place. This shouldn't be too difficult. Push the
+**battery charging breakout board** into its proper place. Finally push the
+**MPU6050 breakout board** into its proper place. You might have
+difficulties there. But try! Eventually, it will go in. It is a very tight
+fit. Have the **MPU6050** **face up**. On the **MPU6050** have the
+**X-axis** point to the **right and left**.
 
 ![fidget hardware installed](./assets/images/fidget_hardware_installed.jpg)\
-*Pic. 5: Magnets and hardware installed. Arduino plugged in.*
+*Pic. 5: Magnets and hardware installed.* **Arduino** *plugged in.*
 * * *
 
 ### 2.4.4 LED strip
 
-Solder three spots onto the 32 addressable LED strip. Note the direction of
-the arrows on the strip and solder the spots on the right end. If the arrow
-points to the end of the strip, it's the wrong end.
+Solder three spots onto the **32 addressable LED strip**. Note the
+direction of the arrows on the strip and solder the spots on the right end.
+If the arrow points to the end of the strip, it's the wrong end.
 
 
 ![led strip solder spots](./assets/images/LED_strip_solder_spots.jpg)\
@@ -201,29 +202,29 @@ centre of the first LED at **9 o'clock** and continue **clockwise**.
 ### 2.4.5 Soldering
 
 Wire all cables left and right through the openings in the battery
-compartment, if they come from the MPU or battery charging breakout board.
-Keep the cables as short as possible. Have them stacked on both sides of
-the battery, left and right, so that the battery gets a nice fit. They
-should not stack below the battery. If so, you won't be able to close up
-the fidget, or even damage the battery or other components, when you try.
-Have them go next to each other. 
+compartment, if they come from the **MPU6050** or **battery charging
+breakout board**. Keep the cables as short as possible. Have them stacked
+on both sides of the **battery**, left and right, so that the **battery**
+gets a nice fit. They should not stack below the **battery**. If so, you
+won't be able to close up the fidget, or even damage the **battery** or
+other components, when you try. Have them go next to each other. 
 
 #### 2.4.5.1 Battery charging breakout board
 
-All spots marked with the **Minus (-)**, on the battery charging breakout
-board, are the same. **Ground** that board to the Arduino. Solder the
-**red** cable from the charging tower to **+In** on the battery charging
-breakout board. Use the **black** cable to ground the board.
+All spots marked with the **Minus (-)**, on the **battery charging breakout
+board**, are the same. **Ground** that board to the **Arduino**. Solder the
+**red** cable from the charging tower to **+In** on the **battery charging
+breakout board**. Use the **black** cable to ground the board.
 
-Solder **OUT+** from the battery charging breakout board to **VIN** on the
-Arduino. 
+Solder **OUT+** from the **battery charging breakout board** to **VIN** on
+the **Arduino**. 
 
 #### 2.4.5.2 MPU6050
 
-Solder **VIN** from the MPU6050 to **3V3** on the Arduino and **ground**
-the MPU6050 on the battery charging breakout board.  Now, solder **SCL**,
-**SDA** and **INT** from the MPU6050 to **A5**, **A4** and **D2** on the
-Arduino, respectively.
+Solder **VIN** from the **MPU6050** to **3V3** on the **Arduino** and
+**ground** the **MPU6050** on the **battery charging breakout board**.
+Now, solder **SCL**, **SDA** and **INT** from the **MPU6050** to **A5**,
+**A4** and **D2** on the **Arduino**, respectively.
 
 #### 2.4.5.3 MOLEX plug
 
@@ -231,28 +232,30 @@ Solder two cables to the **male MOLEX plug**. When you connect a battery to
 the plug, you can see which cable is which. Make sure the plug and cable
 are properly isolated. Use **shrink tubing**. ***Never solder with a
 connected battery!*** Don't bend the cables around the solder spots at the
-MOLEX plug. This will lead to broken contacts.
+**MOLEX plug**. This will lead to broken contacts.
 
 ![molex_plug](./assets/images/molex_plug.jpg)\
-*Pic. 7: Male Molex plug.*
+*Pic. 7:* **Male Molex plug**.
 * * *
 
-Solder the two cables to **BAT+** and **BAT-** on the battery charging
-breakout board, accordingly. **If you do it the wrong way and connect a
+Solder the two cables to **BAT+** and **BAT-** on the **battery charging
+breakout board**, accordingly. **If you do it the wrong way and connect a
 battery, your board will get fried and smoke will come out.**
 
 #### 2.4.5.4 LED strip
 
 Now, solder a **red** cable to **+5V**, a **black** cable to **GND**
-(either on the Arduino or the battery charging breakout board - whichever
-is easier for you) and a different coloured cable to **D6** on the Arduino.
-Then solder them to **Plus (+)**, **DATA** and **Minus (-)** on the LED
-strip, respectively; that is, the top most solder spot is **Plus (+)**, the
-middle one is **DATA** and the lowest one is **Minus (-)**.
+(either on the **Arduino** or the **battery charging breakout board** -
+whichever is easier for you) and a different coloured cable to **D6** on
+the **Arduino**. Then solder them to **Plus (+)**, **DATA** and **Minus
+(-)** on the **LED strip**, respectively; that is, the top most solder spot
+is **Plus (+)**, the middle one is **DATA** and the lowest one is **Minus
+(-)**.
 
 #### 2.4.5.5 Battery
 
-Now, connect the battery to the MOLEX plug and place it inside the fidget.
+Now, connect the **battery** to the **MOLEX plug** and place it inside the
+fidget.
 
 ![fidget finished](./assets/images/fidget_finished.jpg)\
 *Pic. 8: This is about what it should look now.*
@@ -292,7 +295,7 @@ Now, apply tin-solder on all of the blank wire.
 plenty.*
 
 Before we close up the fidget we need to do the software and fine-tune the
-position of the LED strip.
+position of the **LED strip**.
 
 ### 2.4.7 Software
 
@@ -311,17 +314,16 @@ Place the files at:
 <https://github.com/adafruit/Adafruit_NeoPixel>
 in a subdirectory in your `Arduino/libraries` folder
 
-Open the Arduino IDE and load the file:
+Open the **Arduino IDE** and load the file:
 `arduino-solarfidget/arduino-solarfidget.ino`
 
 Place the fidget on top of the charger, the charger on a level surface and
-connect it to your computer.
-Open the serial monitor. Compile and upload the programme to the Arduino.
-Wait for the Arduino to reset and start. Look at the serial monitor and
-note down the **calibration values**.
+connect it to your computer. Open the serial monitor. Compile and upload
+the programme to the **Arduino**. Wait for the **Arduino** to reset and
+start. Look at the serial monitor and note down the **calibration values**.
 
 Now, in the file:
-`arduino-solarfidget/arduino-solarfidget.ino` find the follwoing line:
+`arduino-solarfidget/arduino-solarfidget.ino` find the following line:
 
 ```
 #define SERIAL_DEBUG
@@ -358,7 +360,7 @@ and Accel.
 
 Save the file and upload the programme again.
 
-Finally make sure the LED strip is placed correctly in the fidget and the
+Finally make sure the **LED strip** is placed correctly in the fidget and the
 light of the pendulum is at the right spot. Do this by holding the fidget
 askew and wait for the pendulum to rest. Now, move the strip either left
 or right to bring the light into the correct position.
