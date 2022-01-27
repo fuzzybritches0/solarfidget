@@ -171,8 +171,8 @@ with the blank wire.*
 
 ### 2.4.3 Install the Voltage Booster Module
 
-Before we can continue with the rest, we put the Voltage Booster Module in
-its right place.
+Before we can continue with the rest, we put the **Voltage Booster Module**
+in its right place.
 
 ![fidget voltage booster](./assets/images/aaa/fidget_voltage_booster.jpg)\
 *Pic. 9: That looks nice!*
@@ -213,8 +213,8 @@ it over the **MPU6050**. Push the last washer in and solder the wire to the
 **Voltage Booster Board** on its **In+** pole.
 
 If this is all done, insert three batteries and test the mechanism. Close
-the two parts and try out. If you see the Voltage Booster Module light up,
-congratulations, you've done it.
+the two parts and try out. If you see the **Voltage Booster Module** light
+up, congratulations, you've done it.
 
 If not, the fault may be with the button or the contacts of the batteries
 compartment. Push the washers and springs harder in. Then check the button
@@ -228,8 +228,8 @@ the button is too high. Try to grind down the button tower to fix it.
 Although, this might be a difficult task. I recommend altering the button
 tower in the solarfidget-aaa.scad design file.
 
-If the Voltage Booster Module enables as soon as you install all batteries
-you soldered the wires to the wrong terminals on the button.
+If the **Voltage Booster Module** enables as soon as you install all
+batteries you soldered the wires to the wrong terminals on the button.
 
 
 ### 2.4.5 Soldering
@@ -240,10 +240,10 @@ into the **Arduino** and solder them on from above the **Arduino**. If the
 wires are too long, we won't be able to push the **Arduino** into its
 place.
 
-### 2.4.5.1 Voltage Booster Board
+### 2.4.5.1 Voltage Booster Module
 
-Solder a **red cable** onto the **Voltage Booster Board** where the boosted
-Voltage will come out.
+Solder a **red cable** onto the **Voltage Booster Module** where the boosted
+voltage will come out.
 
 ![voltage booster ready](./assets/images/aaa/voltage_booster_ready.jpg)\
 *Pic. 13: There! It's that round spot where the trace leads away to the
@@ -275,7 +275,7 @@ shorter. It's a tight fit here, but it works.*
 
 Next, find that oval hole between the **Arduino** and the **MPU6050**.
 We'll use it to route the cables for the **LED strip** through it. But
-first we'll prepare the **LED strip**.
+first, we'll prepare the **LED strip**.
 
 Solder three spots onto the **32 addressable LED strip**. Note the
 direction of the arrows on the strip and solder the spots on the right end.
@@ -290,11 +290,11 @@ with the centre of the first LED at **9 o'clock** and continue
 **clockwise**. **9 o'clock** is where the oval hole is located.
 
 Now, solder a **red** cable to **+5V**, a **black** cable to **GND** and a
-different coloured cable to **D6** on the Arduino. Now, route them through
-that oval hole. Then solder them to **Plus (+)**, **DATA** and **Minus
-(-)** on the LED strip, respectively; that is, the top most solder spot is
-**Plus (+)**, the middle one is **DATA** and the lowest one is **Minus
-(-)**.
+different coloured cable to **D6** on the **Arduino**. Now, route them
+through that oval hole. Then solder them to **Plus (+)**, **DATA** and
+**Minus (-)** on the LED strip, respectively; that is, the top most solder
+spot is **Plus (+)**, the middle one is **DATA** and the lowest one is
+**Minus (-)**.
 
 ### 2.4.6 Software
 
@@ -313,16 +313,16 @@ Place the files at:
 <https://github.com/adafruit/Adafruit_NeoPixel>
 in a subdirectory in your `Arduino/libraries` folder
 
-Open the Arduino IDE and load the file:
+Open the **Arduino IDE** and load the file:
 `arduino-solarfidget/arduino-solarfidget.ino`
 
-Place the fidget on a level surface and connect it to your computer.
-Open the serial monitor. Compile and upload the programme to the Arduino.
-Wait for the Arduino to reset and start. Look at the serial monitor and
+Place the fidget on a level surface and connect it to your computer. Open
+the serial monitor. Compile and upload the programme to the **Arduino**.
+Wait for the **Arduino** to reset and start. Look at the serial monitor and
 note down the **calibration values**.
 
 Now, in the file:
-`arduino-solarfidget/arduino-solarfidget.ino` find the follwoing line:
+`arduino-solarfidget/arduino-solarfidget.ino` find the following line:
 
 ```
 #define SERIAL_DEBUG
@@ -373,7 +373,7 @@ light of the pendulum is at the right spot. Do this by holding the fidget
 askew and wait for the pendulum to rest. Now, move the strip either left
 or right to bring the light into the correct position.
 
-After that, push the Arduino into its place.
+After that, push the **Arduino** into its place.
 
 ![fidget finished](./assets/images/aaa/fidget_finished.jpg)\
 *Pic. 16: All done. Batteries inserted.*
