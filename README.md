@@ -1,4 +1,4 @@
-# 		ORIGINAL SOLARFIDGET
+# 		ORIGINAL SOLARFIDGET LIPO EDITION
 
 Using an LED strip (of 32 WS2812B individually addressable LEDs) and an
 MPU6050 gyro/accel, this fidget calculates the position of a rotating
@@ -12,6 +12,14 @@ For more information on Copyright please refer to the respective files and
 LICENSE files.
 
 ![solarfidget](./assets/gifs/solarfidget.gif)
+* * *
+
+* * *
+There is also a version that runs with 3x AAA batteries. Click on the link
+below to follow the instructions for the:
+
+**ORIGINAL SOLARFIDGET - NO BATTERIES INCLUDED EDITION**
+<https://github.com/fuzzybritches0/solarfidget/blob/main/README-aaa.md>
 * * *
 
 # 1. MANUAL INSTRUCTIONS
