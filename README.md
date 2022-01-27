@@ -319,7 +319,7 @@ Now, in the file:
 #define SERIAL_DEBUG
 ```
 
-Comment out this line so that it lookes like this:
+Comment out this line so that it looks like this:
 
 ```
 //#define SERIAL_DEBUG
