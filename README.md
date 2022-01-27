@@ -14,7 +14,6 @@ LICENSE files.
 ![solarfidget](./assets/gifs/solarfidget.gif)
 * * *
 
-* * *
 There is also a version that runs with 3x AAA batteries. Click on the link
 below to follow the instructions for the:
 
