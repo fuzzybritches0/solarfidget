@@ -269,7 +269,7 @@ Now solder them on from above.
 
 ![fidget all wired up](./assets/images/aaa/fidget_all_wired_up.jpg)\
 *Pic. 14: That looks about right. Maybe you can get those cables a bit
-shorter. It's a tight fit here, but it works.*
+shorter. It's a tight fit here, but it works. Fold them in carefully.*
 * * *
 
 #### 2.4.5.4 32 addressable LED strip
