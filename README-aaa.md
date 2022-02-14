@@ -274,7 +274,7 @@ shorter. It's a tight fit here, but it works. Fold them in carefully.*
 
 #### 2.4.5.4 32 addressable LED strip
 
-Next, find that oval hole between the **Arduino** and the **MPU6050**.
+Next, find that elliptical hole between the **Arduino** and the **MPU6050**.
 We'll use it to route the cables for the **LED strip** through it. But
 first, we'll prepare the **LED strip**.
 
@@ -288,11 +288,11 @@ If the arrow points to the end of the strip, it's the wrong end.
 
 Place the **LED strip** around the inside of the fidget's top part. Start
 with the centre of the first LED at **9 o'clock** and continue
-**clockwise**. **9 o'clock** is where the oval hole is located.
+**clockwise**. **9 o'clock** is where the elliptical hole is located.
 
 Now, solder a **red** cable to **+5V**, a **black** cable to **GND** and a
 different coloured cable to **D6** on the **Arduino**. Now, route them
-through that oval hole. Then solder them to **Plus (+)**, **DATA** and
+through that elliptical hole. Then solder them to **Plus (+)**, **DATA** and
 **Minus (-)** on the LED strip, respectively; that is, the top most solder
 spot is **Plus (+)**, the middle one is **DATA** and the lowest one is
 **Minus (-)**.
