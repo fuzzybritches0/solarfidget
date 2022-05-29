@@ -49,7 +49,7 @@
 
 #define ACCEL_RES	16384
 #define ACCEL_MULTI	33
-#define GRAV_MULTI	3
+#define GRAV_MULTI	5
 #define DRAG		.3
 
 #define BODIES		9
