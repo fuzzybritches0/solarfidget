@@ -218,8 +218,8 @@ module button_holder() {
 	translate([-25.75,12.75,bottomHeight])
 		cylinder(r=3, h=LEDsWidth-buttonOffset, $fn=res);
 	difference() {
-		translate([-30.1,8.5,bottomHeight]) cube([8.5,8.5,LEDsWidth-1]);
-		translate([-29.1,9.5,bottomHeight]) cube([6.5,6.5,LEDsWidth-.5]);
+		translate([-30.1,8.5,bottomHeight]) cube([8.5,8.5,LEDsWidth-.2]);
+		translate([-29.1,9.5,bottomHeight]) cube([6.5,6.5,LEDsWidth+.3]);
 	}
 }
 
@@ -272,7 +272,7 @@ module top() {
 	ring_top();
 }
 
-module _fix_towers(rad=2.5) {
+module _fix_towers(rad) {
 
 	rotate([0,90,0]) translate([-10,0,-50]) cylinder(r=rad, h=100, $fn=res);
 	rotate([90,0,0]) translate([0,10,-50]) cylinder(r=rad, h=100, $fn=res);
@@ -285,7 +285,7 @@ module fix_towers() {
 		__bottom();
 		translate([0,0,6]) difference() {
 			cylinder(r=innerRad+LEDsHeight+wall*10, h=LEDsWidth-4, $fn=res);
-			cylinder(r=innerRad+LEDsHeight+2.4, h=LEDsWidth-4, $fn=res);
+			cylinder(r=innerRad+LEDsHeight+3, h=LEDsWidth-4, $fn=res);
 		}
 	}
 }
@@ -311,13 +311,14 @@ module fix_grooves() {
 		__bottom();
 		translate([0,0,6]) difference() {
 			cylinder(r=innerRad+LEDsHeight+wall*10, h=LEDsWidth-4, $fn=res);
-			cylinder(r=innerRad+LEDsHeight+2.7, h=LEDsWidth-4, $fn=res);
+			cylinder(r=innerRad+LEDsHeight+3.2, h=LEDsWidth-4, $fn=res);
 		}
 	}
 
 }
 
 module LEDstripe() {
+
 	difference() {
 		cylinder(r=innerRad+2, h=LEDsWidth, $fn=res);
 		translate([0,0,-1]) cylinder(r=innerRad, h=LEDsWidth+2, $fn=res);
