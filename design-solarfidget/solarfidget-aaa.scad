@@ -251,6 +251,7 @@ module top() {
 		}
 		translate([0,0,bottomHeight]) LEDstripe();
 	}
+	ring_bottom();
 }
 
 module _top() {
@@ -286,6 +287,7 @@ module bottom() {
 		translate([0,0,bottomHeight]) cylinder(r=innerRad+LEDsHeight+1.8,h=LEDsWidth+wall,$fn=res);
 		translate([0,0,-4]) fix_grooves();
 	}
+	ring_top();
 }
 
 module _fix_towers(rad=2.5) {
@@ -346,6 +348,32 @@ module LEDstripe() {
 		cylinder(r=innerRad+2, h=LEDsWidth, $fn=res);
 		translate([0,0,-1]) cylinder(r=innerRad, h=LEDsWidth+2, $fn=res);
 
+	}
+}
+
+
+module ring() {
+
+	difference() {
+		translate([0,0,8]) rotate_extrude($fn=res) translate([27,0,0]) circle(r=18.4, $fn=res);
+		translate([0,0,-50]) cylinder(r=innerRad+wall*2+LEDsHeight, h=100, $fn=res);
+		translate([-50,-50,-50]) cube([100,100,50]);
+	}
+}
+
+module ring_bottom() {
+
+	difference() {
+		ring();
+		translate([0,0,6]) cylinder(r=100, h=20);
+	}
+}
+
+module ring_top() {
+
+	difference() {
+		ring();
+		translate([0,0,10]) cylinder(r=100, h=20);
 	}
 }
 
