@@ -33,6 +33,8 @@ boosterWidth=21;
 LEDsWidth=12;
 LEDsHeight=2;
 
+buttonOffset=4.4;
+
 aaaLength=45.5;
 aaar=10.25/2+.3;
 
@@ -224,7 +226,7 @@ module electronics_wiring_holes() {
 module button_holder() {
 
 	translate([-25.75,12.75,bottomHeight])
-		cylinder(r=3, h=LEDsWidth-4.6, $fn=res);
+		cylinder(r=3, h=LEDsWidth-buttonOffset, $fn=res);
 	difference() {
 		translate([-30.1,8.5,bottomHeight]) cube([8.5,8.5,LEDsWidth-1]);
 		translate([-29.1,9.5,bottomHeight]) cube([6.5,6.5,LEDsWidth-.5]);
