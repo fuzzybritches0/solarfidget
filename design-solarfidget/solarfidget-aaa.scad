@@ -137,6 +137,7 @@ module compartmentOutside(location,size) {
 	translate([location[0]-walle,location[1]-walle,location[2]-walle*2])
 		cube([size[0]+walle*2,size[1]+walle*2,size[2]+walle]);
 }
+
 module compartmentInside(location,size) {
 
 	translate([location[0],location[1],location[2]-4]) cube([size[0],size[1],size[2]+5]);
@@ -198,6 +199,7 @@ module booster() {
 }
 
 module electronics() {
+
 	_arduino();
 	translate([.9,10.5,0]) mpu();
 	translate([-20.8-walle,8,0]) booster();
