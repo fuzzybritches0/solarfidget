@@ -292,26 +292,18 @@ module fix_grooves() {
 
 	difference() {
 		union() {
-			for (i = [.5:.25:4]) {
-				translate([0,0,i]) _fix_towers();
+			for (i = [1:1:5]) {
+				translate([0,0,i]) _fix_towers(2.3);
 			}
-			for (i = [1:1:3]) {
-				translate([0,0,.0]) rotate([0,0,i]) _fix_towers();
+			for (i = [-10:1:10]) {
+				translate([0,0,1]) rotate([0,0,i]) _fix_towers(2.3);
 			}
-			for (i = [4:1:6]) {
-				translate([0,0,.1]) rotate([0,0,i]) _fix_towers();
+			for (i = [0:1:25]) {
+				translate([0,0,1-i*.1]) rotate([0,0,i+10]) _fix_towers(2.3);
+
 			}
-			for (i = [7:1:9]) {
-				translate([0,0,.2]) rotate([0,0,i]) _fix_towers();
-			}
-			for (i = [10:1:12]) {
-				translate([0,0,.3]) rotate([0,0,i]) _fix_towers();
-			}
-			for (i = [13:1:20]) {
-				translate([0,0,.4]) rotate([0,0,i]) _fix_towers();
-			}
-			for (i = [-1:-1:-20]) {
-				translate([0,0,0]) rotate([0,0,i]) _fix_towers();
+			for (i = [0:1:25]) {
+				translate([0,0,1-i*.1]) rotate([0,0,-i-10]) _fix_towers(2.3);
 			}
 		}
 		__top();
