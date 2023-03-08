@@ -207,10 +207,10 @@ module electronics() {
 
 module electronics_wiring_holes() {
 
-	translate([.7,25,6.5]) rotate([0,90,90]) resize([0,6,0]) cylinder(r=1.2,h=3,$fn=100);
-	translate([-22.8,11,10]) rotate([0,90,0]) resize([10,0,0])cylinder(r=1,h=10,$fn=100);
-	translate([20,11,6.5]) rotate([0,90,0]) cylinder(r=1,h=10,$fn=100);
-	translate([-28,0,10]) rotate([0,90,90]) resize([10,0,0]) cylinder(r=1,h=10,$fn=100);
+	translate([.7,25,6.5]) rotate([0,90,90]) resize([0,6,0]) cylinder(r=1.2,h=3,$fn=res);
+	translate([-22.8,11,10]) rotate([0,90,0]) resize([10,0,0])cylinder(r=1,h=10,$fn=res);
+	translate([20,11,6.5]) rotate([0,90,0]) cylinder(r=1,h=10,$fn=res);
+	translate([-28,0,10]) rotate([0,90,90]) resize([10,0,0]) cylinder(r=1,h=10,$fn=res);
 }
 
 module button_holder() {
