@@ -223,14 +223,14 @@ module button_holder() {
 	}
 }
 
-module top() {
+module bottom() {
 
 	difference() {
 		union() {
 			fix_towers();
 			difference() {
 				union() {
-					translate([0,0,0]) _top();
+					translate([0,0,0]) _bottom();
 					electronics();
 					batteries();
 					button_holder();
@@ -244,21 +244,21 @@ module top() {
 	ring_bottom();
 }
 
-module _top() {
+module _bottom() {
 
 	difference() {
-		__top();
+		__bottom();
 		translate([0,0,2]) cylinder(r=innerRad+LEDsHeight, h=LEDsWidth+2, $fn=res);
 	}
 }
 
-module __top() {
+module __bottom() {
 
 	cylinder(r=innerRad+LEDsHeight+1.3, h=LEDsWidth+bottomHeight, $fn=res);
 	cylinder(r=innerRad+LEDsHeight+4, h=bottomHeight+4, $fn=res);
 }
 
-module bottom() {
+module top() {
 
 	difference() {
 		union() {
@@ -282,7 +282,7 @@ module fix_towers() {
 
 	difference() {
 		_fix_towers(2.3);
-		__top();
+		__bottom();
 		translate([0,0,6]) difference() {
 			cylinder(r=innerRad+LEDsHeight+wall*10, h=LEDsWidth-4, $fn=res);
 			cylinder(r=innerRad+LEDsHeight+2.4, h=LEDsWidth-4, $fn=res);
@@ -308,7 +308,7 @@ module fix_grooves() {
 				translate([0,0,1-i*.1]) rotate([0,0,-i-10]) _fix_towers(2.3);
 			}
 		}
-		__top();
+		__bottom();
 		translate([0,0,6]) difference() {
 			cylinder(r=innerRad+LEDsHeight+wall*10, h=LEDsWidth-4, $fn=res);
 			cylinder(r=innerRad+LEDsHeight+2.7, h=LEDsWidth-4, $fn=res);
@@ -324,7 +324,6 @@ module LEDstripe() {
 
 	}
 }
-
 
 module ring() {
 
@@ -364,6 +363,8 @@ module _off_cyl() {
 	rotate([0,0,270]) __off_cyl();
 }
 
+//bottom();
+//translate([0,0,16])
+//translate([0,0,40])
+//rotate([0,180,0])
 top();
-translate([0,0,-40])
-bottom();
