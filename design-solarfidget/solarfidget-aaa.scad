@@ -132,18 +132,6 @@ module plus() {
 	rotate([0,0,90]) translate([-1.5,-3.5,0]) cube([5,2,3]);
 }
 
-module clearCorners(ra) {
-
-	translate([0,0,0]) rotate_extrude(convexity=10,$fn=res)
-	translate([ra,0,0]) circle(r=1,$fn=res);
-}
-
-module roundCorners(ra) {
-
-	translate([0,0,1]) rotate_extrude(convexity=10,$fn=res)
-	translate([ra-1,0,0]) circle(r=1,$fn=res);
-}
-
 module compartmentOutside(location,size) {
 
 	translate([location[0]-walle,location[1]-walle,location[2]-walle*2])
@@ -264,28 +252,20 @@ module _top() {
 
 module __top() {
 
-	union() {
-		cylinder(r=innerRad+LEDsHeight+1.3, h=LEDsWidth+bottomHeight, $fn=res);
-		difference() {
-			cylinder(r=innerRad+LEDsHeight+4, h=bottomHeight+4, $fn=res);
-			clearCorners(innerRad+LEDsHeight+4);
-		}
-		roundCorners(innerRad+LEDsHeight+4);
-	}
-
+	cylinder(r=innerRad+LEDsHeight+1.3, h=LEDsWidth+bottomHeight, $fn=res);
+	cylinder(r=innerRad+LEDsHeight+4, h=bottomHeight+4, $fn=res);
 }
 
 module bottom() {
 
 	difference() {
-		cylinder(r=innerRad+LEDsHeight+4,h=bottomHeight,$fn=res);
-		clearCorners(innerRad+LEDsHeight+4);
-	}
-	roundCorners(innerRad+LEDsHeight+4);
-	difference() {
-		translate([0,0,bottomHeight]) cylinder(r=innerRad+LEDsHeight+4,h=LEDsWidth-4,$fn=res);
+		union() {
+			cylinder(r=innerRad+LEDsHeight+4,h=bottomHeight,$fn=res);
+			translate([0,0,bottomHeight]) cylinder(r=innerRad+LEDsHeight+4,h=LEDsWidth-4,$fn=res);
+		}
 		translate([0,0,bottomHeight]) cylinder(r=innerRad+LEDsHeight+1.8,h=LEDsWidth+wall,$fn=res);
 		translate([0,0,-4]) fix_grooves();
+		rotate([0,0,51]) translate([0,0,1]) for (i = [0:1:30]) rotate([0,0,i]) _off_cyl();
 	}
 	ring_top();
 }
@@ -375,6 +355,19 @@ module ring_top() {
 		ring();
 		translate([0,0,10]) cylinder(r=100, h=20);
 	}
+}
+
+module __off_cyl() {
+
+	translate([-25.75,12.75,0]) cylinder(r=2, h=10, $fn=res);
+}
+
+module _off_cyl() {
+
+	__off_cyl();
+	rotate([0,0,90]) __off_cyl();
+	rotate([0,0,180]) __off_cyl();
+	rotate([0,0,270]) __off_cyl();
 }
 
 top();
