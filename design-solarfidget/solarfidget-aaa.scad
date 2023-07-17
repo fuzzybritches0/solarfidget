@@ -329,7 +329,7 @@ module LEDstripe() {
 module ring() {
 
 	difference() {
-		translate([0,0,8]) rotate_extrude($fn=res) translate([27,0,0]) circle(r=18.4, $fn=res);
+		translate([0,0,8]) rotate_extrude($fn=res) translate([23.2,0,0]) circle(r=20, $fn=res);
 		translate([0,0,-50]) cylinder(r=innerRad+wall*2+LEDsHeight, h=100, $fn=res);
 		translate([-50,-50,-50]) cube([100,100,50]);
 	}
