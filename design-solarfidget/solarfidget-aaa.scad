@@ -284,8 +284,8 @@ module fix_towers() {
 		_fix_towers(2.3);
 		__bottom();
 		translate([0,0,6]) difference() {
-			cylinder(r=innerRad+LEDsHeight+wall*10, h=LEDsWidth-4, $fn=res);
-			cylinder(r=innerRad+LEDsHeight+3, h=LEDsWidth-4, $fn=res);
+			cylinder(r=innerRad+LEDsHeight+wall*10, h=LEDsWidth, $fn=res);
+			cylinder(r=innerRad+LEDsHeight+2.8, h=LEDsWidth, $fn=res);
 		}
 	}
 }
@@ -295,17 +295,17 @@ module fix_grooves() {
 	difference() {
 		union() {
 			for (i = [1:1:5]) {
-				translate([0,0,i]) _fix_towers(2.3);
+				translate([0,0,i]) _fix_towers(2.5);
 			}
 			for (i = [-10:1:10]) {
-				translate([0,0,1]) rotate([0,0,i]) _fix_towers(2.3);
+				translate([0,0,1]) rotate([0,0,i]) _fix_towers(2.5);
 			}
 			for (i = [0:1:25]) {
-				translate([0,0,1-i*.1]) rotate([0,0,i+10]) _fix_towers(2.3);
+				translate([0,0,1-i*.1]) rotate([0,0,i+10]) _fix_towers(2.5);
 
 			}
 			for (i = [0:1:25]) {
-				translate([0,0,1-i*.1]) rotate([0,0,-i-10]) _fix_towers(2.3);
+				translate([0,0,1-i*.1]) rotate([0,0,-i-10]) _fix_towers(2.5);
 			}
 		}
 		__bottom();
@@ -364,8 +364,8 @@ module _off_cyl() {
 	rotate([0,0,270]) __off_cyl();
 }
 
-//bottom();
+bottom();
 //translate([0,0,16])
 //translate([0,0,40])
 //rotate([0,180,0])
-top();
+//top();
