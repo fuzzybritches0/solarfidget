@@ -33,7 +33,7 @@ boosterWidth=21;
 LEDsWidth=12;
 LEDsHeight=2;
 
-buttonOffset=4.4;
+buttonOffset=4.6;
 
 aaaLength=45.5;
 aaar=10.25/2+.3;
