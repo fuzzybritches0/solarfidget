@@ -40,14 +40,20 @@ aaar=10.25/2+.3;
 
 module spring_inserts() {
 
-	translate([-.8,aaar,aaar+bottomHeight]) rotate([0,90,0]) cylinder(r=3,h=1,$fn=res);
+	translate([-.8,aaar,aaar+bottomHeight]) rotate([0,90,0]) cylinder(r=2.5,h=1,$fn=res);
 	translate([-2.7,aaar,aaar+bottomHeight]) rotate([0,90,0]) cylinder(r=3.4,h=2,$fn=res);
+	translate([-2.7,aaar,aaar+bottomHeight*2]) rotate([0,90,0]) cylinder(r=4,h=1,$fn=res);
+	translate([-2.7,aaar-2,aaar+bottomHeight*4]) rotate([0,90,0]) cube([5,1,5]);
 
-	translate([-.8,aaar*5,aaar+bottomHeight]) rotate([0,90,0]) cylinder(r=3,h=1,$fn=res);
+	translate([-.8,aaar*5,aaar+bottomHeight]) rotate([0,90,0]) cylinder(r=2.5,h=1,$fn=res);
 	translate([-2.7,aaar*5,aaar+bottomHeight]) rotate([0,90,0]) cylinder(r=3.4,h=2,$fn=res);
+	translate([-2.7,aaar*5,aaar+bottomHeight*2]) rotate([0,90,0]) cylinder(r=4,h=1,$fn=res);
+	translate([-2.7,aaar*5-2,aaar+bottomHeight*4]) rotate([0,90,0]) cube([5,1,5]);
 
-	translate([aaaLength-.1,aaar*3,aaar+bottomHeight]) rotate([0,90,0]) cylinder(r=3,h=1,$fn=res);
+	translate([aaaLength-.1,aaar*3,aaar+bottomHeight]) rotate([0,90,0]) cylinder(r=2.5,h=1,$fn=res);
 	translate([aaaLength+.8,aaar*3,aaar+bottomHeight]) rotate([0,90,0]) cylinder(r=3.4,h=2,$fn=res);
+	translate([aaaLength+2,aaar*3,aaar+bottomHeight*2]) rotate([0,90,0]) cylinder(r=4,h=1,$fn=res);
+	translate([aaaLength+.8-3,aaar*3+1,aaar+bottomHeight*4]) rotate([0,90,0]) cube([5,1,5]);
 }
 
 module washer_inserts() {
